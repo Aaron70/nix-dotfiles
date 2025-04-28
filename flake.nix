@@ -21,9 +21,12 @@
           inherit pkgs;
 
           # Specify your home configuration modules here, for example, the path to your home.nix.
-          modules = [ ./configuration/home/aaronv ];
+          modules = [ ./configurations/home/aaronv ];
 
           # Optionally use extraSpecialArgs to pass through arguments to home.nix
+          extraSpecialArgs = {
+            values = import ./configurations/home/aaronv/values.nix;
+          };
         };
       };
     };
