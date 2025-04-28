@@ -6,6 +6,11 @@
   };
 
   shells = {
+    default = "nu";
     nushell.enable = true;
+  };
+
+  terminals = {
+    alacritty.enable = true;
   };
 }

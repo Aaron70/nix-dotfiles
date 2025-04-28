@@ -4,6 +4,7 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixgl.url = "github:nix-community/nixGL";
 
     nvf.url = "github:notashelf/nvf";
 
@@ -13,10 +14,13 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nvf, ... }:
+  outputs = { nixpkgs, home-manager, nvf, nixgl, ... }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ nixgl.overlay ];
+      };
     in {
       homeConfigurations = {
         aaronv = home-manager.lib.homeManagerConfiguration {
@@ -30,6 +34,7 @@
 
           # Optionally use extraSpecialArgs to pass through arguments to home.nix
           extraSpecialArgs = {
+            inherit nixgl;
             values = import ./configurations/home/aaronv/values.nix;
           };
         };

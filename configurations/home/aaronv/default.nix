@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, nixgl, ... }:
 
 {
 
@@ -72,6 +72,12 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+  };
+
+  nixGL = {
+    packages = import nixgl { inherit pkgs; };
+    defaultWrapper = "mesa";
+    installScripts = [ "mesa" ];
   };
 
   # Let Home Manager install and manage itself.
