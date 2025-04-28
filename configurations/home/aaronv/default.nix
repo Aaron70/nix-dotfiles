@@ -21,6 +21,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    ripgrep
+    wl-clipboard
     #Fonts 
     nerd-fonts.jetbrains-mono
     openmoji-color
