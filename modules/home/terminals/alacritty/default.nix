@@ -41,7 +41,7 @@ with values.terminals;
       };
     
       font = {
-        size = 14;
+        size = 13;
     
         bold = {
           family = "JetBrainsMono Nerd Font";
@@ -108,7 +108,7 @@ with values.terminals;
       };
     
       window = {
-        decorations = "full";
+        decorations = "None";
         dynamic_title = true;
         option_as_alt = "Both";
         startup_mode = "Maximized";
