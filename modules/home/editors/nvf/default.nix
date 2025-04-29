@@ -1,4 +1,7 @@
+{ ... }:
+
 {
+  imports = [ ./autocmds.nix ];
   programs.nvf = {
     enable = true;
         
