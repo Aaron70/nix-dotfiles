@@ -8,6 +8,8 @@
   shells = {
     default = "nu";
     nushell.enable = true;
+
+    aliases = {};
   };
 
   terminals = {

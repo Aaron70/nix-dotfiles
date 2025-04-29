@@ -76,6 +76,10 @@
     # EDITOR = "emacs";
   };
 
+  home.shellAliases = {
+    cat = "bat";
+  };
+
   nixGL = {
     packages = import nixgl { inherit pkgs; };
     defaultWrapper = "mesa";
