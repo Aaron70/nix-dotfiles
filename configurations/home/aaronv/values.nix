@@ -13,4 +13,8 @@
   terminals = {
     alacritty.enable = true;
   };
+
+  editors = {
+    default = "nvim";
+  };
 }
