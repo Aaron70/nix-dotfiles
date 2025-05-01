@@ -1,6 +1,15 @@
 # Nix Dotfiles Configurations
 
-## Installation
+## Installation (NixOS)
+
+Run the following command to apply the NixOS configuration:
+
+```bash
+cd nix-dotfiles
+sudo nix-rebuild switch .#aaronv
+```
+
+## Installation (Non NixOS)
 
 Run the following command to install [_Nix_](https://nixos.org/):
 
@@ -9,6 +18,8 @@ mkdir ~/.config/nix
 echo "extra-experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 sh <(curl -L https://nixos.org/nix/install) --daemon
 ```
+
+## Apply home manager configurations
 
 Then run the following command to install [_Home manager_](https://nix-community.github.io/home-manager/) and apply the Nix configurations:
 

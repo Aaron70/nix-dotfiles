@@ -22,6 +22,16 @@
         overlays = [ nixgl.overlay ];
       };
     in {
+      nixosConfigurations = {
+        aaronv = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./nixos/configuration.nix
+          ];
+        };
+      };
+
+
       homeConfigurations = {
         aaronv = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
