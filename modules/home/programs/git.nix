@@ -20,13 +20,20 @@ in
     };
   };
                                                                                                 
-  config.programs = mkIf cfg.enable {
-    gh.enable = cfg.integrations;
-    lazygit.enable = cfg.integrations;
-    git = {
-      enable = cfg.enable;
-      userName = cfg.userName;
-      userEmail = cfg.userEmail;
+  config = mkIf cfg.enable { 
+   home.shellAliases = {
+     g = "git";
+     lg = "lazygit";
+   };
+
+   programs = {
+      gh.enable = cfg.integrations;
+      lazygit.enable = cfg.integrations;
+      git = {
+        enable = cfg.enable;
+        userName = cfg.userName;
+        userEmail = cfg.userEmail;
+      };
     };
   };
 }

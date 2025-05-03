@@ -1,6 +1,8 @@
 { inputs }:
 
-{
+let
+  myLib = import ./myLib.nix;
+in {
   mkSystemFor = host: let
       values = import ../hosts/${host}/values.nix;
       username = values.users.default.username;
@@ -14,7 +16,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = {
-              inherit inputs values;
+              inherit inputs values myLib;
             };
             users."${username}" = {...}: {
               imports = [ ../hosts/${host}/home.nix ];
@@ -27,7 +29,9 @@
   mkHomeFor = host:  let
       values = import ../hosts/${host}/values.nix;
     in inputs.home-manager.lib.homeManagerConfiguration {
-      extraSpecialArgs = { inherit values; };
+      extraSpecialArgs = { inherit values;  };
       modules = [ ../hosts/${host}/home.nix ];
     };
 }
+
+

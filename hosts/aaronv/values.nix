@@ -6,4 +6,8 @@
       email = "aarongeovanny70@gmail.com";
     };
   };
+
+  editors = {
+    default = "noevim";
+  };
 }

@@ -11,18 +11,18 @@
 
   outputs = { nixpkgs, home-manager, ... }@inputs: 
     let 
-      utils = import ./utils { inherit inputs; };
+      myLib = import ./libs/sysLib.nix { inherit inputs; };
     in {  
       # ====================|NixOS Configurations|====================
       nixosConfigurations = {
-        aaronv = utils.mkSystemFor "aaronv";
+        aaronv = myLib.mkSystemFor "aaronv";
       };
       # ====================|NixOS Configurations|====================
 
 
       # ====================|Home Manager Configurations|====================
       homeManagerConfigurations = {
-        aaronv = utils.mkHomeFor "aaronv";
+        aaronv = myLib.mkHomeFor "aaronv";
       };
       # ====================|Home Manager Configurations|====================
     };
