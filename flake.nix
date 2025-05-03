@@ -22,7 +22,7 @@
 
       # ====================|Home Manager Configurations|====================
       homeManagerConfigurations = {
-        aaronv = utils.mkHome ./hosts/aaronv/home.nix;
+        aaronv = utils.mkHomeFor "aaronv";
       };
       # ====================|Home Manager Configurations|====================
     };

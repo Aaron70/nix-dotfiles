@@ -5,7 +5,9 @@ let
   user = values.users.default;
 in {
 
-  imports = [ ];
+  imports = [ 
+    ../../modules/home/programs 
+  ];
 
   home.username = user.username;
   home.homeDirectory = "/home/${user.username}";

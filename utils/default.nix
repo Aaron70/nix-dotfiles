@@ -1,35 +1,33 @@
 { inputs }:
 
 {
-  mkSystemFor = host: inputs.nixpkgs.lib.nixosSystem {
-    specialArgs = { };
-    modules = let
-        values = import ../hosts/${host}/values.nix;
-        username = values.users.default.username;
-      in [ 
-      inputs.home-manager.nixosModules.home-manager 
-      ../hosts/${host}/configuration.nix
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = {
-            inherit inputs;
-          };
-          users = {
-            aaronv = {...}: {
-              imports = [
-                ../hosts/${host}/home.nix
-              ];
+  mkSystemFor = host: let
+      values = import ../hosts/${host}/values.nix;
+      username = values.users.default.username;
+    in inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit values; };
+      modules =  [ 
+        inputs.home-manager.nixosModules.home-manager 
+        ../hosts/${host}/configuration.nix
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {
+              inherit inputs values;
+            };
+            users."${username}" = {...}: {
+              imports = [ ../hosts/${host}/home.nix ];
             };
           };
-        };
-      }
-    ];
-  };
+        }
+      ];
+    };
 
-  mkHome = homeConfig: inputs.home-manager.lib.homeManagerConfiguration {
-    extraSpecialArgs = { };
-    modules = [ homeConfig ];
-  };
+  mkHomeFor = host:  let
+      values = import ../hosts/${host}/values.nix;
+    in inputs.home-manager.lib.homeManagerConfiguration {
+      extraSpecialArgs = { inherit values; };
+      modules = [ ../hosts/${host}/home.nix ];
+    };
 }
