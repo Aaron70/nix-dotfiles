@@ -15,7 +15,7 @@
     in {  
       # ====================|NixOS Configurations|====================
       nixosConfigurations = {
-        aaronv = utils.mkSystem ./hosts/aaronv;
+        aaronv = utils.mkSystemFor "aaronv";
       };
       # ====================|NixOS Configurations|====================
 
