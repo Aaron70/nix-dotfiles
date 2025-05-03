@@ -1,4 +1,4 @@
-{ inputs }:
+{ inputs, pkgs }:
 
 let
   myLib = import ./myLib.nix;
@@ -26,10 +26,11 @@ in {
       ];
     };
 
-  mkHomeFor = host:  let
+  mkHomeFor = host: system:  let
       values = import ../hosts/${host}/values.nix;
     in inputs.home-manager.lib.homeManagerConfiguration {
-      extraSpecialArgs = { inherit values;  };
+      inherit pkgs;
+      extraSpecialArgs = { inherit inputs values myLib;  };
       modules = [ ../hosts/${host}/home.nix ];
     };
 }

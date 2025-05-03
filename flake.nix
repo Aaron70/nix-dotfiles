@@ -11,7 +11,11 @@
 
   outputs = { nixpkgs, home-manager, ... }@inputs: 
     let 
-      myLib = import ./libs/sysLib.nix { inherit inputs; };
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        overlays = [ ];
+      };
+      myLib = import ./libs/sysLib.nix { inherit inputs pkgs; };
     in {  
       # ====================|NixOS Configurations|====================
       nixosConfigurations = {
@@ -21,8 +25,8 @@
 
 
       # ====================|Home Manager Configurations|====================
-      homeManagerConfigurations = {
-        aaronv = myLib.mkHomeFor "aaronv";
+      homeConfigurations = {
+        aaronv = myLib.mkHomeFor "aaronv" "x86_64-linux";
       };
       # ====================|Home Manager Configurations|====================
     };
