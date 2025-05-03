@@ -11,4 +11,10 @@ with lib; {
       description= "The default editor.";
     };
   }; 
+
+  config = {
+    programs.fzf = {
+      enable = true;
+    };
+  };
 }

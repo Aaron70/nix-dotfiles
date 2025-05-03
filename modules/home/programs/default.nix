@@ -1,10 +1,7 @@
-{ ... }:
+{ myLib, ... }:
 
 {
-  imports = [
-    ./git.nix
-    ./shells
-  ]; 
+  imports = myLib.importAll ./. "default.nix";
 
   homePrograms = {
     git = {
@@ -13,6 +10,7 @@
     };
     shells = {
       nushell.enable = true;
+      zoxide.enable = true;
     };
   };
 }
