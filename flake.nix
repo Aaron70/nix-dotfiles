@@ -15,14 +15,43 @@
     in {  
       # ====================|NixOS Configurations|====================
       nixosConfigurations = {
-        aaronv = utils.mkSystem ./hosts/aaronv;
+        aaronv = nixpkgs.lib.nixosSystem {
+          modules = [
+            inputs.home-manager.nixosModules.home-manager
+
+            ./hosts/aaronv/configuration.nix
+
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+
+                extraSpecialArgs = {
+                  inherit inputs;
+                  outputs = inputs.self.outputs;
+                };
+                users = {
+                  aaronv = {...}: {
+                    imports = [
+                      ./hosts/aaronv/home.nix
+                    ];
+                  };
+                };
+              };
+            }
+          ];
+        };
       };
       # ====================|NixOS Configurations|====================
 
 
       # ====================|Home Manager Configurations|====================
-      homeManagerConfigurations = {
-        aaronv = utils.mkHome ./hosts/aaronv/home.nix;
+      homeManagerConfigurations = home-manager.lib.homeManagerConfiguration {
+        aaronv = {
+          modules = [ 
+            ./hosts/aaronv/home.nix
+          ];
+        };
       };
       # ====================|Home Manager Configurations|====================
     };

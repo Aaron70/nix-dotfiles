@@ -12,6 +12,7 @@ in {
 
   home.packages = with pkgs; [
     cowsay
+    lolcat
     ripgrep
     wl-clipboard
     #Fonts 

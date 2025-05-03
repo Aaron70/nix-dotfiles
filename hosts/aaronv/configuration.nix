@@ -58,6 +58,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    neofetch
     home-manager
     git
   ];
