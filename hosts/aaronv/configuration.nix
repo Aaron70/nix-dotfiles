@@ -1,5 +1,8 @@
 { pkgs, ... }:
-
+let
+  values = import ./values.nix;
+  user = values.users.default;
+in 
 {
   imports = [ ./hardware-configuration.nix ];
 
@@ -13,7 +16,7 @@
 
 
   # ====================|Network Configuration|====================
-  networking.hostName = "aaronv";
+  networking.hostName = "${user.username}";
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # ====================|Network Configuration|====================
@@ -40,9 +43,9 @@
   
   # ====================|Users|====================
   users.users = {
-    aaronv = {
+    "${user.username}" = {
       isNormalUser = true;
-      description = "Aaron Vargas";
+      description = user.description;
       extraGroups = [ "networkmanager" "wheel" ];
       packages = with pkgs; [];
     };

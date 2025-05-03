@@ -13,8 +13,17 @@
     let 
       utils = import ./utils { inherit inputs; };
     in {  
+      # ====================|NixOS Configurations|====================
       nixosConfigurations = {
-        aaronv = utils.mkSystem ./aaronv;
+        aaronv = utils.mkSystem ./hosts/aaronv;
       };
+      # ====================|NixOS Configurations|====================
+
+
+      # ====================|Home Manager Configurations|====================
+      homeManagerConfigurations = {
+        aaronv = utils.mkHome ./hosts/aaronv/home.nix;
+      };
+      # ====================|Home Manager Configurations|====================
     };
 }
