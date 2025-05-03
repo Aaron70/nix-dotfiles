@@ -21,4 +21,31 @@
     extraSpecialArgs = { };
     modules = [ homeConfig ];
   };
+
+
+
+  mkSystemFor = host: inputs.nixpkgs.lib.nixosSystem {
+    modules = [
+      inputs.home-manager.nixosModules.home-manager
+      ../hosts/${host}/configuration.nix
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+
+          extraSpecialArgs = {
+            inherit inputs;
+            outputs = inputs.self.outputs;
+          };
+          users = {
+            aaronv = {...}: {
+              imports = [
+                ../hosts/${host}/home.nix
+              ];
+            };
+          };
+        };
+      }
+    ];
+  };
 }

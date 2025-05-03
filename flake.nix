@@ -15,32 +15,7 @@
     in {  
       # ====================|NixOS Configurations|====================
       nixosConfigurations = {
-        aaronv = nixpkgs.lib.nixosSystem {
-          modules = [
-            inputs.home-manager.nixosModules.home-manager
-
-            ./hosts/aaronv/configuration.nix
-
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-
-                extraSpecialArgs = {
-                  inherit inputs;
-                  outputs = inputs.self.outputs;
-                };
-                users = {
-                  aaronv = {...}: {
-                    imports = [
-                      ./hosts/aaronv/home.nix
-                    ];
-                  };
-                };
-              };
-            }
-          ];
-        };
+        aaronv = utils.mkSystemFor "aaronv";
       };
       # ====================|NixOS Configurations|====================
 
