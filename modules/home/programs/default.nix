@@ -11,6 +11,7 @@
     shells = {
       nushell.enable = true;
       zoxide.enable = true;
+      zellij.enable = true;
     };
   };
 }
