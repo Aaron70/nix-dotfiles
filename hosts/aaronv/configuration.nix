@@ -4,9 +4,17 @@ let
   user = values.users.default;
 in 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ 
+    ./hardware-configuration.nix
+    ../../modules/nixos/programs
+  ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    # This must be executed at least once before enable Hyprland
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
 
   # ====================|Bootloader|====================
   boot.loader.grub.enable = true;
@@ -47,7 +55,7 @@ in
       isNormalUser = true;
       description = user.description;
       extraGroups = [ "networkmanager" "wheel" ];
-      packages = with pkgs; [];
+      packages = [];
     };
   };
   # ====================|Users|====================
@@ -63,11 +71,35 @@ in
   ];
   # ====================|Packages|====================
 
+
+  # ====================|Hardware and Drivers|====================
+  hardware = {
+    graphics.enable = true;
+  };
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  # Enable the GNOME Desktop Environment.
+  #services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.desktopManager.gnome.enable = true;
+  # Enables the K Desktop Environment
+  #services.xserver.displayManager.sddm.enable = true;
+  #services.xserver.desktopManager.plasma5.enable = true;
+
   # Configure keymap in X11
-  #services.xserver.xkb = {
-  #  layout = "us";
-  #  variant = "";
-  #};
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
+
+  # Configure keymap in X11
+    #services.xserver = {
+    #  layout = "us";
+    #  xkbVariant = "";
+    #};
+  # ====================|Hardware and Drivers|====================
+
 
   system.stateVersion = "24.11";
 }

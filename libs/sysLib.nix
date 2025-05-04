@@ -2,6 +2,8 @@
 
 let
   myLib = import ./myLib.nix;
+  nixosSpecialArgs = homeSpecialArgs;
+  homeSpecialArgs = {inherit inputs myLib; };
   homeModules = [ 
     inputs.nvf.homeManagerModules.default
   ];
@@ -10,7 +12,7 @@ in {
       values = import ../hosts/${host}/values.nix;
       username = values.users.default.username;
     in inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit values; };
+      specialArgs = { inherit values; } // nixosSpecialArgs;
       modules =  [ 
         inputs.home-manager.nixosModules.home-manager 
         ../hosts/${host}/configuration.nix
@@ -18,9 +20,7 @@ in {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = {
-              inherit inputs values myLib;
-            };
+            extraSpecialArgs = { inherit values; } // homeSpecialArgs;
             users."${username}" = {...}: {
               imports = [ ../hosts/${host}/home.nix ] ++ homeModules;
             };
@@ -33,7 +33,7 @@ in {
       values = import ../hosts/${host}/values.nix;
     in inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      extraSpecialArgs = { inherit inputs values myLib;  };
+      extraSpecialArgs = { inherit values;  } // homeSpecialArgs;
       modules = [ ../hosts/${host}/home.nix ] ++ homeModules;
     };
 }
