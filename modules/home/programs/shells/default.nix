@@ -1,16 +1,9 @@
-{ lib, values, myLib, ... }:
+{ myLib, ... }:
 
-with lib; {
+{
   imports = myLib.importAll ./. "default.nix";
 
-  options.homePrograms.shells = {
-    # TODO: Move to editors modules
-    defaultEditor = mkOption {
-      type = types.str;
-      default = values.editors.default;
-      description= "The default editor.";
-    };
-  }; 
+  options.homePrograms.shells = { }; 
 
   config = {
     programs.fzf = {

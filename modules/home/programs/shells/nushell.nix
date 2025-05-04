@@ -15,7 +15,7 @@ in
       enable = true;
 
       configFile.text = ''
-        $env.config.buffer_editor = "${shellsCfg.defaultEditor}"
+        $env.config.buffer_editor = "${config.homePrograms.editors.defaultEditor}"
         $env.config.show_banner = false
       '';
     };

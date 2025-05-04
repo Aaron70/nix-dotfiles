@@ -2,6 +2,9 @@
 
 let
   myLib = import ./myLib.nix;
+  homeModules = [ 
+    inputs.nvf.homeManagerModules.default
+  ];
 in {
   mkSystemFor = host: let
       values = import ../hosts/${host}/values.nix;
@@ -19,7 +22,7 @@ in {
               inherit inputs values myLib;
             };
             users."${username}" = {...}: {
-              imports = [ ../hosts/${host}/home.nix ];
+              imports = [ ../hosts/${host}/home.nix ] ++ homeModules;
             };
           };
         }
@@ -31,7 +34,7 @@ in {
     in inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       extraSpecialArgs = { inherit inputs values myLib;  };
-      modules = [ ../hosts/${host}/home.nix ];
+      modules = [ ../hosts/${host}/home.nix ] ++ homeModules;
     };
 }
 

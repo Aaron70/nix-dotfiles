@@ -4,14 +4,13 @@
   imports = myLib.importAll ./. "default.nix";
 
   homePrograms = {
-    git = {
-      enable = true;
-      integrations = true;
-    };
-    shells = {
-      nushell.enable = true;
-      zoxide.enable = true;
-      zellij.enable = true;
-    };
+    git.enable = true;
+    git.integrations = true;
+
+    shells.nushell.enable = true;
+    shells.zoxide.enable = true;
+    shells.zellij.enable = true;
+
+    editors.neovim.nvf.enable = true;
   };
 }
