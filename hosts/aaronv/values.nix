@@ -7,6 +7,10 @@
     };
   };
 
+  shells = {
+    default = "nu";
+  };
+
   editors = {
     default = "noevim";
   };

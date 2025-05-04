@@ -11,6 +11,8 @@
     shells.zoxide.enable = true;
     shells.zellij.enable = true;
 
+    terminals.alacritty.enable = true;
+
     editors.neovim.nvf.enable = true;
   };
 }

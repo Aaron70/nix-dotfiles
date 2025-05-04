@@ -3,11 +3,11 @@
 with lib; {
   imports = myLib.importAll ./. "default.nix";
 
-  options.homePrograms.editors = {
+  options.homePrograms.terminals = {
     default = mkOption {
       type = types.str;
-      default = values.editors.default;
-      description= "The default editor.";
+      default = values.terminals.default;
+      description= "The default terminal.";
     };
   }; 
 
