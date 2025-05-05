@@ -15,6 +15,6 @@
 
     editors.neovim.nvf.enable = true;
 
-    windowManagers.sway.enable = true;
+    windowManagers.i3.enable = true;
   };
 }

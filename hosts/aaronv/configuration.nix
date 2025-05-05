@@ -91,20 +91,6 @@ in
     # To use JACK applications
     # jack.enable = true;
   };
-
-  # Added for sway: https://wiki.nixos.org/wiki/Sway
-  # kanshi systemd service
-  systemd.user.services.kanshi = {
-    description = "kanshi daemon";
-    environment = {
-      WAYLAND_DISPLAY="wayland-1";
-      DISPLAY = ":0";
-    }; 
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
-    };
-  };
   # ====================|Display and DE|====================
 
 
