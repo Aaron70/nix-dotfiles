@@ -69,33 +69,43 @@ in
   # ====================|Packages|====================
 
 
-  # ====================|Hardware and Drivers|====================
-  hardware = {
-    graphics.enable = true;
-  };
+  # ====================|Services, Display Managers and DE|====================
+  security.polkit.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  #services.xserver.displayManager.gdm.enable = true;
-  #services.xserver.desktopManager.gnome.enable = true;
-  # Enables the K Desktop Environment
-  #services.xserver.displayManager.sddm.enable = true;
-  #services.xserver.desktopManager.plasma5.enable = true;
-
-  # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
 
-  # Configure keymap in X11
-    #services.xserver = {
-    #  layout = "us";
-    #  xkbVariant = "";
-    #};
-  # ====================|Hardware and Drivers|====================
+  services.printing.enable = true;
+
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # To use JACK applications
+    # jack.enable = true;
+  };
+
+  # Added for sway: https://wiki.nixos.org/wiki/Sway
+  # kanshi systemd service
+  systemd.user.services.kanshi = {
+    description = "kanshi daemon";
+    environment = {
+      WAYLAND_DISPLAY="wayland-1";
+      DISPLAY = ":0";
+    }; 
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
+    };
+  };
+  # ====================|Display and DE|====================
 
 
   system.stateVersion = "24.11";

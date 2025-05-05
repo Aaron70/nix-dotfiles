@@ -14,5 +14,7 @@
     terminals.alacritty.enable = true;
 
     editors.neovim.nvf.enable = true;
+
+    windowManagers.sway.enable = true;
   };
 }

@@ -2,6 +2,6 @@
 
 {
   imports = myLib.importAll ./. "default.nix";
-
-  nixosPrograms = { };
+  options.homePrograms.windowManagers = { }; 
+  config = { };
 }
