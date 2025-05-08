@@ -14,8 +14,9 @@ in
   };
 
   # ====================|Bootloader|====================
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
   # ====================|Bootloader|====================
 
 
@@ -69,7 +70,7 @@ in
 
 
   # ====================|Services, Display Managers and DE|====================
-  services.xserver.enable = true;
+  security.polkit.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
