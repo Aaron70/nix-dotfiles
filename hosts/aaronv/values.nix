@@ -14,4 +14,8 @@
   editors = {
     default = "noevim";
   };
+
+  terminals = {
+    default = "alacritty";
+  };
 }
