@@ -3,5 +3,7 @@
 {
   imports = myLib.importAll ./. "default.nix";
 
-  nixosPrograms = { };
+  nixosPrograms = { 
+    windowManagers.hyprland.enable = true;
+  };
 }
