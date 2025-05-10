@@ -12,11 +12,24 @@ in
   };
 
   config = mkIf cfg.enable {
+    services.hyprpaper = {
+      enable = true;
+      settings = {
+        preload = "${./wallpapers/wallhaven.jpg}";
+        wallpaper = ",${./wallpapers/wallhaven.jpg}";
+      };
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
         "$mod" = "ALT";
         "$terminal" = config.homePrograms.terminals.default;
+
+        exec = [
+          "hyprpaper"
+        ];
+
         bind = [
           "$mod, SPACE, exec, $terminal"
           "$mod, M, exec, pkill wofi || wofi --show drun"
