@@ -3,7 +3,8 @@
 let
   wmCfg = config.homePrograms.windowManagers; 
   cfg = wmCfg.hyprland;
-
+  monitors = [ "HDMI-A-2" "HDMI-A-1" ];
+  workspacesCfg = import ./workspaces.nix { inherit monitors; };
 in
   with lib;
 {
@@ -36,29 +37,13 @@ in
           "$mod, Q, killactive"
           "$mod, F, fullscreen"
           "$mod SHIFT, F, togglefloating"
-
+         
           # Move focus with mod + hjkl
           "$mod, H, movefocus, l"
           "$mod, J, movefocus, d"
           "$mod, K, movefocus, u"
           "$mod, L, movefocus, l"
-
-          # Move active window to favorite workspaces
-          "$mod SHIFT, U, movetoworkspace, 1"
-          "$mod SHIFT, I, movetoworkspace, 2"
-          "$mod SHIFT, O, movetoworkspace, 3"
-          "$mod SHIFT, P, movetoworkspace, 4"
-
-          # Switch to favorite workspaces
-          "$mod, U, workspace, 1"
-          "$mod, I, workspace, 2"
-          "$mod, O, workspace, 3"
-          "$mod, P, workspace, 4"
-
-          # Scroll through workspaces
-          "$mod, mouse_down, workspace, e+1"
-          "$mod, mouse_up, workspace, e-1"
-        ];
+        ] ++ workspacesCfg.bind;
 
         # Mouse bindings
         bindm = [
@@ -66,9 +51,50 @@ in
           "$mod, mouse:273, resizewindow"
         ];
 
+        # Workspaces
+        workspace = workspacesCfg.workspaces;
+
+        general = {
+          gaps_in = 4;
+          gaps_out = 15;
+          border_size = 2;
+          resize_on_border = true;
+          allow_tearing = false;
+          layout = "dwindle";
+        };
+
+        animations = {
+          enabled = true;
+          bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+          animation = [
+            "windows, 1, 7, myBezier"
+            "windowsOut, 1, 7, default, popin 80%"
+            "border, 1, 10, default"
+            "borderangle, 1, 8, default"
+            "fade, 1, 7, default"
+            "workspaces, 1, 6, default"
+          ];
+        };
+
+        decoration = {
+          rounding = 7;
+          blur = {
+            enabled = true;
+            size = 2;
+            passes = 1;
+            new_optimizations = "on";
+            ignore_opacity = true;
+            xray = true;
+          };
+
+          active_opacity = 0.9;
+          inactive_opacity = 0.85;
+          fullscreen_opacity = 1.0;
+        };
+
         monitor = [
-          "HDMI-A-2, 1920x1080@100, 0x0, 1"
-          "HDMI-A-1, 2560x1440@74.93, -2560x0, 1"
+          "${elemAt monitors 0}, 1920x1080@100, 0x0, 1"
+          "${elemAt monitors 1}, 2560x1440@74.93, -2560x0, 1"
         ];
       };
     }; 
