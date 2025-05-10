@@ -13,6 +13,7 @@ in {
   home.homeDirectory = "/home/${user.username}";
 
   home.packages = with pkgs; [
+    bat
     cowsay
     ripgrep
     wl-clipboard
