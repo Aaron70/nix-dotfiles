@@ -52,6 +52,11 @@ in
           "$mod, mouse:272, movewindow"
           "$mod, mouse:273, resizewindow"
         ];
+
+        monitor = [
+          "HDMI-A-2, 1920x1080@100, 0x0, 1"
+          "HDMI-A-1, 2560x1440@74.93, -2560x0, 1"
+        ];
       };
     }; 
   };
