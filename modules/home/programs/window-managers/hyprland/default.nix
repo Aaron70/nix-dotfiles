@@ -19,6 +19,7 @@ in
         "$terminal" = config.homePrograms.terminals.default;
         bind = [
           "$mod, SPACE, exec, $terminal"
+          "$mod, M, exec, pkill wofi || wofi --show drun"
           "$mod, Q, killactive"
           "$mod, F, fullscreen"
           "$mod SHIFT, F, togglefloating"
@@ -44,8 +45,12 @@ in
           # Scroll through workspaces
           "$mod, mouse_down, workspace, e+1"
           "$mod, mouse_up, workspace, e-1"
+        ];
 
-          # TODO: Add support for moving and resizing windows with the mouse
+        # Mouse bindings
+        bindm = [
+          "$mod, mouse:272, movewindow"
+          "$mod, mouse:273, resizewindow"
         ];
       };
     }; 
