@@ -4,7 +4,7 @@ let
   wmCfg = config.homePrograms.windowManagers; 
   cfg = wmCfg.hyprland;
   monitors = [ "HDMI-A-2" "HDMI-A-1" ];
-  workspacesCfg = import ./workspaces.nix { inherit monitors; };
+  workspacesCfg = import ./config/workspaces.nix { inherit monitors; };
 in
   with lib;
 {
@@ -16,16 +16,21 @@ in
     services.hyprpaper = {
       enable = true;
       settings = {
-        preload = "${./wallpapers/wallhaven.jpg}";
-        wallpaper = ",${./wallpapers/wallhaven.jpg}";
+        preload = "${./config/wallpapers/wallhaven.jpg}";
+        wallpaper = ",${./config/wallpapers/wallhaven.jpg}";
       };
     };
 
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
+        "debug:disable_logs" = false;
         "$mod" = "ALT";
         "$terminal" = config.homePrograms.terminals.default;
+
+        exec-once = [
+          "waybar"
+        ];
 
         exec = [
           "hyprpaper"
@@ -37,6 +42,8 @@ in
           "$mod, Q, killactive"
           "$mod, F, fullscreen"
           "$mod SHIFT, F, togglefloating"
+          "$mod SUPER, E, exit"
+          "$mod SUPER, R, exec, hyprctl reload"
          
           # Move focus with mod + hjkl
           "$mod, H, movefocus, l"
@@ -96,6 +103,12 @@ in
           "${elemAt monitors 0}, 1920x1080@100, 0x0, 1"
           "${elemAt monitors 1}, 2560x1440@74.93, -2560x0, 1"
         ];
+
+        # misc = {
+        #   disable_hyprland_logo = true;
+        #   disable_splash_rendering = true;
+        # };
+        #
       };
     }; 
   };
