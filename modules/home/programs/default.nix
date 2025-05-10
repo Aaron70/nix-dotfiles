@@ -16,6 +16,7 @@
     editors.neovim.nvf.enable = true;
 
     windowManagers.hyprland.enable = true;
-    wofi.enable = true;
+    windowManagers.wofi.enable = true;
+    windowManagers.waybar.enable = true;
   };
 }
