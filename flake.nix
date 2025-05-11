@@ -2,11 +2,14 @@
   description = "Nix dotfiles configurations";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixgl.url = "github:nix-community/nixGL";
-
     nvf.url = "github:notashelf/nvf";
+
+    rose-pine-hyprcursor = {
+      url = "github:ndom91/rose-pine-hyprcursor";
+      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.hyprlang.follows = "hyprland/hyprlang";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -14,40 +17,27 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nvf, nixgl, ... }:
-    let
-      system = "x86_64-linux";
+  outputs = { nixpkgs, home-manager, ... }@inputs: 
+    let 
       pkgs = import nixpkgs {
-        inherit system;
-        overlays = [ nixgl.overlay ];
+        system = "x86_64-linux";
+        overlays = [ ];
       };
-    in {
+      myLib = import ./libs/sysLib.nix { inherit inputs pkgs; };
+    in {  
+      # ====================|NixOS Configurations|====================
       nixosConfigurations = {
-        aaronv = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./nixos/configuration.nix
-          ];
-        };
+        aaronv = myLib.mkSystemFor "aaronv";
+        vm-aaronv = myLib.mkSystemFor "vm-aaronv";
       };
+      # ====================|NixOS Configurations|====================
 
 
+      # ====================|Home Manager Configurations|====================
       homeConfigurations = {
-        aaronv = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          # Specify your home configuration modules here, for example, the path to your home.nix.
-          modules = [ 
-            nvf.homeManagerModules.default
-            ./configurations/home/aaronv
-          ];
-
-          # Optionally use extraSpecialArgs to pass through arguments to home.nix
-          extraSpecialArgs = {
-            inherit nixgl;
-            values = import ./configurations/home/aaronv/values.nix;
-          };
-        };
+        aaronv = myLib.mkHomeFor "aaronv" "x86_64-linux";
+        vm-aaronv = myLib.mkHomeFor "vm-aaronv" "x86_64-linux";
       };
+      # ====================|Home Manager Configurations|====================
     };
 }

@@ -1,0 +1,20 @@
+{ config, lib, inputs, pkgs, ... }:
+
+let
+  wmCfg = config.nixosPrograms.windowManagers; 
+  cfg = wmCfg.hyprland;
+in
+  with lib;
+{
+  options.nixosPrograms.windowManagers.hyprland = {
+    enable = mkEnableOption "Weather to enable Hyprland Window Manager";
+  };
+
+  config = mkIf cfg.enable {
+    programs.hyprland.enable = true;
+
+    environment.systemPackages = [
+      inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+    ];
+  };
+}
