@@ -7,6 +7,7 @@ in {
 
   imports = [ 
     ../../modules/home/programs 
+    ../../modules/home/services 
   ];
 
   home.username = user.username;

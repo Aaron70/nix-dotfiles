@@ -7,15 +7,8 @@
     };
   };
 
-  shells = {
-    default = "nu";
-  };
-
-  editors = {
-    default = "noevim";
-  };
-
-  terminals = {
-    default = "alacritty";
-  };
+  shells.default = "nu";
+  editors.default = "noevim";
+  terminals.default = "alacritty";
+  browsers.default = "firefox";
 }
