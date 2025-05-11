@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   values = import ./values.nix;
   user = values.users.default;
@@ -61,6 +61,7 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.systemPackages = with pkgs; [
     home-manager
     git
@@ -71,7 +72,8 @@ in
 
   # ====================|Services, Display Managers and DE|====================
   services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
+  services.displayManager.sddm.enable = true;
+  #services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.gnome.enable = true;
 
   services.xserver.xkb = {
@@ -92,6 +94,20 @@ in
     # jack.enable = true;
   };
   # ====================|Display and DE|====================
+
+
+  # ====================|Hardware|====================
+  hardware.nvidia = {
+    # Enable modesetting for Wayland compositors (hyprland)
+    modesetting.enable = true;
+    # Use the open source version of the kernel module (for driver 515.43.04+)
+    open = true;
+    # Enable the Nvidia settings menu
+    nvidiaSettings = true;
+    # Select the appropriate driver version for your specific GPU
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+  # ====================|Hardware|====================
 
 
   system.stateVersion = "24.11";

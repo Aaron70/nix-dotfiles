@@ -11,7 +11,11 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.hyprland.enable = true;
+    programs.hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+
 
     environment.systemPackages = [
       inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
