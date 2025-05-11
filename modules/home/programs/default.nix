@@ -18,5 +18,7 @@
     windowManagers.hyprland.enable = true;
     windowManagers.wofi.enable = true;
     windowManagers.waybar.enable = true;
+
+    browsers.firefox.enable = true;
   };
 }
