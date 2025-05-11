@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, inputs, pkgs, ... }:
 
 let
   wmCfg = config.nixosPrograms.windowManagers; 
@@ -12,5 +12,9 @@ in
 
   config = mkIf cfg.enable {
     programs.hyprland.enable = true;
+
+    environment.systemPackages = [
+      inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+    ];
   };
 }

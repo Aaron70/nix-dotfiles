@@ -29,6 +29,10 @@ in
         "$terminal" = config.homePrograms.terminals.default;
         "$browser" = config.homePrograms.browsers.default;
 
+        env = {
+          env = "HYPRCURSOR_THEME,rose-pine-hyprcursor";
+        };
+
         exec-once = [
           "waybar"
         ];
