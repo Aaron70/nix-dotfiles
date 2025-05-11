@@ -27,6 +27,7 @@ in
         "debug:disable_logs" = false;
         "$mod" = "ALT";
         "$terminal" = config.homePrograms.terminals.default;
+        "$browser" = config.homePrograms.browsers.default;
 
         exec-once = [
           "waybar"
@@ -61,9 +62,13 @@ in
         # Workspaces
         workspace = workspacesCfg.workspaces;
 
+        binds = {
+          window_direction_monitor_fallback = "false";
+        };
+
         general = {
           gaps_in = 4;
-          gaps_out = 15;
+          gaps_out = "7, 15, 15, 15";
           border_size = 2;
           resize_on_border = true;
           allow_tearing = false;
