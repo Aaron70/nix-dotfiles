@@ -27,7 +27,10 @@ in
    };
 
    programs = {
-      gh.enable = cfg.integrations;
+      gh = mkIf cfg.integrations {
+        enable = true;
+        gitCredentialHelper.enable = true;
+      };
       lazygit.enable = cfg.integrations;
       git = {
         enable = cfg.enable;
