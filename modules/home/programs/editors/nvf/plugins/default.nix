@@ -8,6 +8,7 @@ with builtins;
       statusline.lualine.enable = true;
       telescope.enable = true;
       spellcheck.enable = true;
+      notes.todo-comments.enable = true;
     };
   in
     foldl' (acc: elem: acc // elem) plugins pluginsSet 
