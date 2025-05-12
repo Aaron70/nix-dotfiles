@@ -59,7 +59,7 @@ in
     "${user.username}" = {
       isNormalUser = true;
       description = user.description;
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "audio" ];
       packages = [];
     };
   };
@@ -94,29 +94,35 @@ in
 
   services.printing.enable = true;
 
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # To use JACK applications
-    # jack.enable = true;
+  services.pulseaudio = { 
+    enable = false;
+    support32Bit = true;
+    extraConfig = "load-module module-combine-sink";
   };
+  security.rtkit.enable = true;
+  # services.pipewire = {
+  #   enable = true;
+  #   alsa.enable = true;
+  #   alsa.support32Bit = true;
+  #   pulse.enable = true;
+  #   # To use JACK applications
+  #   # jack.enable = true;
+  # };
   # ====================|Display and DE|====================
 
 
   # ====================|Hardware|====================
-  hardware.nvidia = {
-    # Enable modesetting for Wayland compositors (hyprland)
-    modesetting.enable = true;
-    # Use the open source version of the kernel module (for driver 515.43.04+)
-    open = true;
-    # Enable the Nvidia settings menu
-    nvidiaSettings = true;
-    # Select the appropriate driver version for your specific GPU
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware = {
+    nvidia = {
+      # Enable modesetting for Wayland compositors (hyprland)
+      modesetting.enable = true;
+      # Use the open source version of the kernel module (for driver 515.43.04+)
+      open = true;
+      # Enable the Nvidia settings menu
+      nvidiaSettings = true;
+      # Select the appropriate driver version for your specific GPU
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
   };
   # ====================|Hardware|====================
 
