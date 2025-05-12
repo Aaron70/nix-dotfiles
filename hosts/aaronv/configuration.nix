@@ -70,7 +70,9 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  # This env variable is commented because is causing 
+  # spotify to freeze and crash Hyprland
+  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.systemPackages = with pkgs; [
     home-manager
     git
