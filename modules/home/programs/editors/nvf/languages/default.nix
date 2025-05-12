@@ -3,7 +3,7 @@ with builtins;
     files = filter (name: name != "default.nix") (attrNames (readDir ./.));
     configsSet = map (file: import ./${file}) files;
     config = {
-      enableLSP = true;
+      enableFormat = false;
       enableTreesitter = true;
       enableDAP = true;
 

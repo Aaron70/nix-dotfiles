@@ -1,3 +1,5 @@
+{ ... }:
+
 {
   terminal.toggleterm = { 
     enable = true; 

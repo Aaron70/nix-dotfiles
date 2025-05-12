@@ -1,3 +1,5 @@
+{ ... }:
+
 {
   ui.noice = { 
     enable = true;
