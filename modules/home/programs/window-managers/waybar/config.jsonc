@@ -13,10 +13,10 @@
         "clock"
     ],
     "modules-right": [
-        "tray",
+        //"tray",
         //"cpu",
         //"memory",
-        "battery",
+        //"battery",
         "pulseaudio",
         "backlight",
         "hyprland/language",
@@ -203,7 +203,7 @@
         ],
     },
     "hyprland/language": {
-        "format": "󰌌  {}",
+        "format": "󰌌 {}",
         "format-en": "EN",
         "format-cs": "CZ",
     },
