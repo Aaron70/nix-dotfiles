@@ -19,7 +19,7 @@ in {
     "${extraWS}, monitor:${mainMonitor}"
   
     "${webWS}, monitor:${secondMonitor}, default:true, on-created-empty:$browser"
-    "${mediaWS}, monitor:${secondMonitor}, on-created-empty:spotify"
+    "${mediaWS}, monitor:${secondMonitor}, on-created-empty:multimedia-menu"
   ];
 
   bind = [
@@ -60,6 +60,8 @@ in {
     # Swap workspaces
     "$mod SHIFT, S, swapactiveworkspaces, 0 1"
     "$mod SHIFT, S, focusmonitor, ${mainMonitor}"
+    "$mod, PERIOD, movecurrentworkspacetomonitor, ${mainMonitor}"
+    "$mod, COMMA, movecurrentworkspacetomonitor, ${secondMonitor}"
     
     # Scroll through workspaces
     "$mod, mouse_down, workspace, e+1"
