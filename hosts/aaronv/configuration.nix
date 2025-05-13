@@ -69,6 +69,7 @@ in
   # ====================|Packages|====================
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowBroken = true;
 
   # This env variable is commented because is causing 
   # spotify to freeze and crash Hyprland
@@ -112,7 +113,9 @@ in
 
 
   # ====================|Hardware|====================
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
+    graphics.enable = true;
     nvidia = {
       # Enable modesetting for Wayland compositors (hyprland)
       modesetting.enable = true;
