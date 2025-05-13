@@ -7,11 +7,14 @@ in
   imports = [ 
     ./hardware-configuration.nix
     ../../modules/nixos/programs
+    ../../modules/nixos/source-persisted-configs.nix
   ];
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
   };
+
+  source-persisted-configs.enable = true; 
 
   # ====================|Bootloader|====================
   boot.loader.systemd-boot = {
