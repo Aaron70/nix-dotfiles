@@ -14,7 +14,14 @@ in
       text = ''
         HOME_PATH="/home/${values.users.default.username}"
         PERSIST_PATH="$HOME_PATH/.persist"
-        ln $PERSIST_PATH/gh/hosts.yml $HOME_PATH/.config/gh/hosts.yml
+
+        if [ ! -d "$PERSIST_PATH" ]; then
+          exit 0
+        fi
+
+        if [ ! -f "$HOME_PATH/.config/gh/hosts.yml" ]; then
+          ln $PERSIST_PATH/gh/hosts.yml $HOME_PATH/.config/gh/hosts.yml
+        fi
         '';
     };
   };
