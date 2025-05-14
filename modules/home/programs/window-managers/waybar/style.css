@@ -19,6 +19,7 @@ tooltip {
     /* tooltip rounded corners */
 }
 
+#submap,
 #custom-launcher,
 #workspaces button,
 #mpris,
@@ -76,6 +77,10 @@ tooltip {
 
 #cpu {
     color: #f38ba8;
+}
+
+#submap {
+    color: #ff9e64;
 }
 
 /* extend empty space on both side of the bar,

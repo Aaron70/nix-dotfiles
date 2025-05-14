@@ -1,6 +1,6 @@
 {
     "layer": "top",
-    "height": 47,
+    "height": 40,
     "reload_style_on_change": true,
     "modules-left": [
         "custom/launcher",
@@ -17,6 +17,7 @@
         //"cpu",
         //"memory",
         //"battery",
+        "hyprland/submap",
         "pulseaudio",
         "backlight",
         "hyprland/language",
@@ -25,7 +26,14 @@
     ],
     "custom/launcher": {
         //"format": "󰣇",
-        "format": "\udb84\udd05",
+        "format": "\udb84\udd05", // Nixos loggo
+        "on-click": "power-menu"
+    },
+    "hyprland/submap": {
+        "format": "\uf359 {}", // Hyprland logo
+        "on-click": "hyprctl dispatch submap reset",
+        "max-length": 16,
+        "tooltip": false
     },
     "hyprland/workspaces": {
         "format": "<span size='small' font='normal Font Awesome 6 Free'>{icon}</span>",
@@ -112,6 +120,9 @@
             "on-scroll-up": "shift_up",
             "on-scroll-down": "shift_down",
         },
+    },
+    "custom/hyprmode": {
+      "format": "default"
     },
     "tray": {
         "icon-size": 15,
