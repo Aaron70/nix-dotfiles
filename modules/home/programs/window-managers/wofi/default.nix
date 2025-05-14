@@ -16,6 +16,7 @@ in
 
     home.packages = [
       (pkgs.writeShellScriptBin "multimedia-menu" (readFile ./scripts/multimedia-menu.sh))
+      (pkgs.writeShellScriptBin "power-menu" (readFile ./scripts/power-menu.sh))
     ];
 
     programs.wofi.enable = true;

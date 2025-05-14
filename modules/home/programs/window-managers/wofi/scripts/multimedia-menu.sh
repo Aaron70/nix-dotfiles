@@ -7,7 +7,7 @@ YOUTUBE="Youtube"
 options="$SPOTIFY\n$YOUTUBE"
 
 # Show wofi menu and capture selection
-selection=$(echo -e "$options" | wofi --dmenu --prompt "Select an option:")
+selection=$(echo -e "$options" | wofi --insensitive --dmenu --prompt "Select an option:")
 
 # Run corresponding action
 case "$selection" in
