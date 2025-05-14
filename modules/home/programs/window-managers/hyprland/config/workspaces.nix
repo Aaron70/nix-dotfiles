@@ -10,16 +10,14 @@ let
   extraWS = "4";
 in {
 
-  variables = {
-    
-  };
+  variables = { };
 
   workspaces = [
     "${codingWS}, monitor:${mainMonitor}, default:true, on-created-empty:$terminal"
     "${extraWS}, monitor:${mainMonitor}"
   
     "${webWS}, monitor:${secondMonitor}, default:true, on-created-empty:$browser"
-    "${mediaWS}, monitor:${secondMonitor}, on-created-empty:multimedia-menu"
+    "${mediaWS}, monitor:${secondMonitor}, on-created-empty:multimedia-menu.sh"
   ];
 
   bind = [

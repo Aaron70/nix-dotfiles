@@ -3,8 +3,10 @@
 let
   wmCfg = config.homePrograms.windowManagers; 
   cfg = wmCfg.hyprland;
-  monitors = [ "HDMI-A-2" "HDMI-A-1" ];
-  workspacesCfg = import ./config/workspaces.nix { inherit monitors; };
+
+  workspacesCfg = import ./config/workspaces.nix { monitors = devicesCfg.monitorNames; };
+  windowsCfg = import ./config/windows.nix {};
+  devicesCfg = import ./config/devices.nix {};
 in
   with lib;
 {
@@ -44,31 +46,28 @@ in
         bind = [
           "$mod, SPACE, exec, $terminal"
           "$mod, M, exec, pkill wofi || wofi --show drun"
-          "$mod, Q, killactive"
+          "$mod, C, killactive"
           "$mod, F, fullscreen"
           "$mod SHIFT, F, togglefloating"
-          "$mod SUPER, E, exit"
+          "$mod SHIFT, F, centerwindow"
+          "$mod SUPER, E, exec, power-menu"
+          "$mod SUPER, U, submap, UI"
           "$mod SUPER, R, exec, hyprctl reload"
-         
-          # Move focus with mod + hjkl
-          "$mod, H, movefocus, l"
-          "$mod, J, movefocus, d"
-          "$mod, K, movefocus, u"
-          "$mod, L, movefocus, l"
+
         ] ++ workspacesCfg.bind;
 
-        # Mouse bindings
-        bindm = [
-          "$mod, mouse:272, movewindow"
-          "$mod, mouse:273, resizewindow"
-        ];
 
         # Workspaces
         workspace = workspacesCfg.workspaces;
 
+        bindm = devicesCfg.bindm;
         binds = {
           window_direction_monitor_fallback = "false";
         };
+
+        windowrule = [
+          "opacity 1.0 override 1.0 override,class:firefox,title:(.*)(YouTube|Youtube|youtube)(.*)"
+        ];
 
         general = {
           gaps_in = 4;
@@ -81,10 +80,14 @@ in
 
         animations = {
           enabled = true;
-          bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+          bezier = [
+            "bouncy, 0.07, 1.41, 0.12, -0.86"
+            "myBezier, 0.05, 0.9, 0.1, 1.05"
+          ];
+
           animation = [
             "windows, 1, 7, myBezier"
-            "windowsOut, 1, 7, default, popin 80%"
+            "windowsOut, 1, 10, default, popin 60%"
             "border, 1, 10, default"
             "borderangle, 1, 8, default"
             "fade, 1, 7, default"
@@ -96,10 +99,11 @@ in
           rounding = 7;
           blur = {
             enabled = true;
-            size = 2;
+            size = 3;
             passes = 1;
             new_optimizations = "on";
             ignore_opacity = true;
+            vibrancy = 0.86;
             xray = true;
           };
 
@@ -108,17 +112,63 @@ in
           fullscreen_opacity = 1.0;
         };
 
-        monitor = [
-          "${elemAt monitors 0}, 1920x1080@100, 0x0, 1"
-          "${elemAt monitors 1}, 2560x1440@74.93, -2560x0, 1"
-        ];
+        monitor = devicesCfg.monitor;
+        input = devicesCfg.input;
 
-        # misc = {
-        #   disable_hyprland_logo = true;
-        #   disable_splash_rendering = true;
-        # };
-        #
+        misc = {
+          disable_hyprland_logo = true;
+          disable_splash_rendering = true;
+        };
       };
+
+      extraConfig = ''
+        #========|Submap: UI|========
+        submap = UI
+        bind = , b, exec, pkill waybar || waybar
+        bind = , U, submap, UI"
+
+        bind = , escape, submap, reset
+        bind = , catchall, submap, reset
+        submap = reset
+        #========|Submap: UI|========
+
+
+        #========|Submap: MEDIA|========
+        bind = $mod CTRL, M, submap, MEDIA
+        submap = MEDIA
+        binde = , K, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+
+        binde = , J, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-
+        binde = , M, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+        binde = , SPACE, exec, playerctl play-pause
+        binde = , SPACE, submap, reset
+        binde = , L, exec, playerctl next
+        binde = , H, exec, playerctl previous
+        binde = , COMMA, exec, playerctl position 1-
+        binde = , PERIOD, exec, playerctl position 1+
+        binde = , SHIFT_COMMA, exec, playerctl position 10-
+        binde = , SHIFT_PERIOD, exec, playerctl position 10+
+
+        bind = , escape, submap, reset
+        bind = , catchall, submap, reset
+        submap = reset
+        #========|Submap: MEDIA|========
+
+
+        #========|Submap: GROUP|========
+        bind = $mod, TAB, submap, GROUP
+        submap = GROUP
+
+        bind = ,TAB, changegroupactive, f
+        bind = SHIFT, TAB, changegroupactive, b
+        bind = $mod SHIFT, H, moveintogroup, l"
+        bind = $mod SHIFT, J, moveintogroup, d"
+        bind = $mod SHIFT, K, moveintogroup, u"
+        bind = $mod SHIFT, L, moveintogroup, r"
+
+        bind = , escape, submap, reset
+        submap = reset
+        #========|Submap: GROUP|========
+        '';
     }; 
   };
 }
