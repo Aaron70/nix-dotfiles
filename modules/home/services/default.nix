@@ -5,5 +5,6 @@
 
   homeServices = {
     playerctl.enable = true;
+    dunst.enable = true;
   };
 }
