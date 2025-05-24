@@ -45,16 +45,16 @@ in
 
         bind = [
           "$mod, SPACE, exec, $terminal"
-          "$mod, M, exec, pkill wofi || wofi --show drun"
+          "$mod, RETURN, exec, pkill wofi || wofi --show drun"
           "$mod, C, killactive"
           "$mod, F, fullscreen"
           "$mod SHIFT, F, togglefloating"
           "$mod SHIFT, F, centerwindow"
           "$mod SUPER, E, exec, power-menu"
-          "$mod SUPER, U, submap, UI"
-          "$mod SUPER, R, exec, hyprctl reload"
+          "$mod CTRL, U, submap, UI"
 
-        ] ++ workspacesCfg.bind;
+        ] ++ workspacesCfg.bind
+          ++ windowsCfg.bind;
 
 
         # Workspaces
