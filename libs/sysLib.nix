@@ -6,6 +6,7 @@ let
   homeSpecialArgs = {inherit inputs myLib; };
   homeModules = [ 
     inputs.nvf.homeManagerModules.default
+    inputs.zen-browser.homeModules.beta
   ];
 in {
   mkSystemFor = host: let

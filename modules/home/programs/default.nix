@@ -20,5 +20,6 @@
     windowManagers.waybar.enable = true;
 
     browsers.firefox.enable = true;
+    browsers.zen.enable = true;
   };
 }
