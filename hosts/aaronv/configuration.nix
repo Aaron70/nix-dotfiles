@@ -7,6 +7,7 @@ in
   imports = [ 
     ./hardware-configuration.nix
     ../../modules/nixos/programs
+    ../../modules/nixos/services
     ../../modules/nixos/source-persisted-configs.nix
   ];
 
@@ -62,7 +63,7 @@ in
     "${user.username}" = {
       isNormalUser = true;
       description = user.description;
-      extraGroups = [ "networkmanager" "wheel" "audio" ];
+      extraGroups = [ "networkmanager" "wheel" "audio" "docker" ];
       packages = [];
     };
   };
