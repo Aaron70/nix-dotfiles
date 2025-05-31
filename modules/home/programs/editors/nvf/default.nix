@@ -33,12 +33,6 @@ in
         autocmds = import ./autocmds.nix { inherit lib; };
         keymaps = import ./keymaps.nix;
         languages = import ./languages;
-        lsp = {
-          enable = true;
-
-          formatOnSave = false;
-          nvim-docs-view.enable = true;
-        };
         
       } // import ./plugins { inherit lib; };
 

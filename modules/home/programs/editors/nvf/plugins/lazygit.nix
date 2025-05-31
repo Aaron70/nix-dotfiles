@@ -8,5 +8,9 @@
       enable = true;
       mappings.open = "<leader>lg";
     };
+
+    mappings = {
+      open = "";
+    };
   };
 }
