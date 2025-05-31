@@ -33,7 +33,7 @@
       # ====================|NixOS Configurations|====================
       nixosConfigurations = {
         aaronv = myLib.mkSystemFor "aaronv";
-        vm-aaronv = myLib.mkSystemFor "vm-aaronv";
+        wsl-aaronv = myLib.mkSystemFor "wsl-aaronv";
       };
       # ====================|NixOS Configurations|====================
 
@@ -41,7 +41,7 @@
       # ====================|Home Manager Configurations|====================
       homeConfigurations = {
         aaronv = myLib.mkHomeFor "aaronv" "x86_64-linux";
-        vm-aaronv = myLib.mkHomeFor "vm-aaronv" "x86_64-linux";
+        wsl-aaronv = myLib.mkHomeFor "wsl-aaronv" "x86_64-linux";
       };
       # ====================|Home Manager Configurations|====================
     };

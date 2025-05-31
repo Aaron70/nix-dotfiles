@@ -2,6 +2,11 @@
 
 let
   myLib = import ./myLib.nix;
+  commonImports = [
+    ../../modules/nixos/programs
+    ../../modules/nixos/services
+    ../../modules/nixos/source-persisted-configs.nix
+  ];
   nixosSpecialArgs = homeSpecialArgs;
   homeSpecialArgs = {inherit inputs myLib; };
   homeModules = [ 

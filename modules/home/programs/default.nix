@@ -15,11 +15,11 @@
 
     editors.neovim.nvf.enable = true;
 
-    windowManagers.hyprland.enable = true;
-    windowManagers.wofi.enable = true;
-    windowManagers.waybar.enable = true;
+    windowManagers.hyprland.enable = false;
+    windowManagers.wofi.enable = false;
+    windowManagers.waybar.enable = false;
 
-    browsers.firefox.enable = true;
-    browsers.zen.enable = true;
+    browsers.firefox.enable = false;
+    browsers.zen.enable = false;
   };
 }
