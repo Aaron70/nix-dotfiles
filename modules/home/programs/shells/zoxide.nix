@@ -15,6 +15,7 @@ in
     programs.zoxide = {
       enable = true;
       enableNushellIntegration = shellsCfg.nushell.enable;
+      enableZshIntegration = shellsCfg.zsh.enable;
       options = [ "--cmd" "cd" ];
     };
   };

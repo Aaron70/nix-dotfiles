@@ -8,6 +8,7 @@
     git.integrations = true;
 
     shells.nushell.enable = true;
+    shells.zsh.enable = true;
     shells.zoxide.enable = true;
     shells.zellij.enable = true;
 
