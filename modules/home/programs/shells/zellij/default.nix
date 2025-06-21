@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, values, ... }:
 
 let
   shellsCfg = config.homePrograms.shells; 
@@ -7,13 +7,13 @@ in
   with lib;
 { 
   options.homePrograms.shells.zellij = {
-    enable = mkEnableOption "Weather to enable Zellij";
+    enable = mkEnableOption "Whether to enable Zellij";
   };
 
   config = mkIf cfg.enable {
     programs.zellij = {
       enable = true;
     };
-    xdg.configFile."zellij/config.kdl".text = builtins.readFile ./config.kdl;
+    xdg.configFile."zellij/config.kdl".text = import ./config.nix {inherit values;};
   };
 }

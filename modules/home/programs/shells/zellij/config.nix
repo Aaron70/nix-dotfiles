@@ -1,3 +1,6 @@
+{ values, ... }:
+
+''
 // Use a simplified UI without special fonts (arrow glyphs)
 // Options:
 //   - true
@@ -18,7 +21,7 @@ default_mode "normal"
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 // 
-default_shell "nu"
+default_shell "${values.shells.default}"
  
 // Choose the path to override cwd that zellij will use for opening new panes
 // 
@@ -481,3 +484,4 @@ plugins {
 load_plugins {
     autolock
 }
+''

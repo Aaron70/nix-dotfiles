@@ -7,7 +7,7 @@ in
   with lib;
 {
   options.nixosPrograms.windowManagers.hyprland = {
-    enable = mkEnableOption "Weather to enable Hyprland Window Manager";
+    enable = mkEnableOption "Whether to enable Hyprland Window Manager";
   };
 
   config = mkIf cfg.enable {

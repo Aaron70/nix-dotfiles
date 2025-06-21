@@ -7,7 +7,7 @@ in
   with lib;
 {
   options.homePrograms.shells.nushell = {
-    enable = mkEnableOption "Weather to enable NuShell";
+    enable = mkEnableOption "Whether to enable NuShell";
   };
 
   config = mkIf cfg.enable {

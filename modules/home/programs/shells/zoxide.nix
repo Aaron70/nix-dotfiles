@@ -7,7 +7,7 @@ in
   with lib;
 {
   options.homePrograms.shells.zoxide = {
-    enable = mkEnableOption "Weather to enable Zoxide";
+    enable = mkEnableOption "Whether to enable Zoxide";
   };
 
 
@@ -15,6 +15,7 @@ in
     programs.zoxide = {
       enable = true;
       enableNushellIntegration = shellsCfg.nushell.enable;
+      enableZshIntegration = shellsCfg.zsh.enable;
       options = [ "--cmd" "cd" ];
     };
   };

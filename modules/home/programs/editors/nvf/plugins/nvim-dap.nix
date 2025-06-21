@@ -1,7 +1,7 @@
 { config, lib, ... } :
 
 let
-  plugin = "blink-cmp";
+  plugin = "nvim-dap";
   editorsCfg = config.homePrograms.editors; 
   cfg = editorsCfg.neovim.nvf.plugins.${plugin};
 in
@@ -13,14 +13,10 @@ in
 
   config = mkIf cfg.enable {
     programs.nvf.settings.vim = {
-      autocomplete.blink-cmp = {
+      debugger.nvim-dap = { 
         enable = true;
-        friendly-snippets.enable = true;
-        setupOpts = {
-          keymap = {
-            preset = "default";
-            "<CR>" = [ "accept" "fallback" ];
-          };
+        ui = {
+          enable = true;
         };
       };
     };

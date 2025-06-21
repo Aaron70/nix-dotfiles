@@ -6,7 +6,7 @@ in
   with lib;
 {
   options.homeServices.playerctl = {
-    enable = mkEnableOption "Weather to enable Playerctl";
+    enable = mkEnableOption "Whether to enable Playerctl";
   };
 
   config = mkIf cfg.enable {

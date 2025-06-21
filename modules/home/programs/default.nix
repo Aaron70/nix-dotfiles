@@ -8,6 +8,7 @@
     git.integrations = true;
 
     shells.nushell.enable = true;
+    shells.zsh.enable = true;
     shells.zoxide.enable = true;
     shells.zellij.enable = true;
 
@@ -21,5 +22,7 @@
 
     browsers.firefox.enable = true;
     browsers.zen.enable = true;
+
+    development.lazydocker.enable = true;
   };
 }

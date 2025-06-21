@@ -1,27 +1,41 @@
-{ ... }:
+{ config, lib, ... } :
 
+let
+  plugin = "lsp";
+  editorsCfg = config.homePrograms.editors; 
+  cfg = editorsCfg.neovim.nvf.plugins.${plugin};
+in
+  with lib;
 {
-  lsp = {
-    enable = true;
+  options.homePrograms.editors.neovim.nvf.plugins.${plugin} = {
+    enable = mkEnableOption "Whether to enable all the plugin ${plugin}";
+  };
 
-    formatOnSave = false;
-    nvim-docs-view.enable = true;
+  config = mkIf cfg.enable {
+    programs.nvf.settings.vim = {
+      lsp = {
+        enable = true;
 
-    mappings = {
-      codeAction = "<leader>la";
-      format = "<leader>lf";
-      goToDeclaration = "gD";
-      #goToDefinition = "gd";
-      #goToType = "<leader>gT";
+        formatOnSave = false;
+        nvim-docs-view.enable = true;
 
-      #listReferences = "gr";
-      # listImplementations = "gI";
+        mappings = {
+          codeAction = "<leader>la";
+          format = "<leader>lf";
+          goToDeclaration = "gD";
+          #goToDefinition = "gd";
+          #goToType = "<leader>gT";
 
-      previousDiagnostic = "<leader>gE";
-      nextDiagnostic = "<leader>ge";
+          #listReferences = "gr";
+          # listImplementations = "gI";
 
-      renameSymbol = "<leader>rn";
+          previousDiagnostic = "<leader>gE";
+          nextDiagnostic = "<leader>ge";
+
+          renameSymbol = "<leader>rn";
+        };
+
+      };
     };
-
   };
 }

@@ -1,14 +1,23 @@
-with builtins;
-  let 
-    files = filter (name: name != "default.nix") (attrNames (readDir ./.));
-    configsSet = map (file: import ./${file}) files;
-    config = {
-      enableFormat = false;
+{ config, lib, ... } :
+
+let
+  editorsCfg = config.homePrograms.editors; 
+  cfg = editorsCfg.neovim.nvf.languages;
+in
+  with lib;
+{
+  options.homePrograms.editors.neovim.nvf.languages = {
+    enable = mkEnableOption "Whether to enable the configurations for the supported languages";
+  };
+
+  config = mkIf cfg.enable {
+    programs.nvf.settings.vim.languages = {
+      enableFormat = true;
       enableTreesitter = true;
       enableDAP = true;
 
-      nix.enable = true;
-      go.enable = true;
+      nix = import ./nix.nix;
+      go = import ./go.nix;
       java.enable = true;
       lua.enable = true;
       python.enable = true;
@@ -19,5 +28,5 @@ with builtins;
       css.enable = true;
       markdown.enable = true;
     };
-  in
-    foldl' (acc: elem: acc // elem) config configsSet 
+  };
+}

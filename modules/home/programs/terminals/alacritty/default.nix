@@ -7,7 +7,7 @@ in
   with lib;
 {
   options.homePrograms.terminals.alacritty = {
-    enable = mkEnableOption "Weather to enable Alacritty";
+    enable = mkEnableOption "Whether to enable Alacritty";
   };
 
   config = mkIf cfg.enable {

@@ -6,7 +6,7 @@ in
   with lib;
 {
   options.homePrograms.windowManagers.wofi = {
-    enable = mkEnableOption "Weather to enable wofi";
+    enable = mkEnableOption "Whether to enable wofi";
   };
 
   config = mkIf cfg.enable {

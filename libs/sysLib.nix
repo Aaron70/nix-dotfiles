@@ -19,6 +19,7 @@ in {
         ../hosts/${host}/configuration.nix
         {
           home-manager = {
+            backupFileExtension = "bck";
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { inherit values; } // homeSpecialArgs;
