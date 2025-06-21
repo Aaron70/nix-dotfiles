@@ -21,5 +21,7 @@
 
     browsers.firefox.enable = true;
     browsers.zen.enable = true;
+
+    development.lazydocker.enable = true;
   };
 }
