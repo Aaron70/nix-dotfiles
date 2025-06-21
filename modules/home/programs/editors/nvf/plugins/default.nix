@@ -23,6 +23,7 @@ in
       telescope.enable = true;
       chatgpt.enable = true;
       nvim-dap.enable = true;
+      treesitter.context.enable = true;
     };
 
     programs.nvf.settings.vim = {
