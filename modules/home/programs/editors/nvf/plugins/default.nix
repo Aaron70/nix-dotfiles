@@ -22,6 +22,7 @@ in
       noice.enable = true;
       telescope.enable = true;
       chatgpt.enable = true;
+      nvim-dap.enable = true;
     };
 
     programs.nvf.settings.vim = {
