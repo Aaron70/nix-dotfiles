@@ -6,7 +6,7 @@ in
   with lib;
 {
   options.homeServices.dunst = {
-    enable = mkEnableOption "Weather to enable Dunst";
+    enable = mkEnableOption "Whether to enable Dunst";
   };
 
   config = mkIf cfg.enable {

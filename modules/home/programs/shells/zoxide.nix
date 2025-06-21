@@ -7,7 +7,7 @@ in
   with lib;
 {
   options.homePrograms.shells.zoxide = {
-    enable = mkEnableOption "Weather to enable Zoxide";
+    enable = mkEnableOption "Whether to enable Zoxide";
   };
 
 

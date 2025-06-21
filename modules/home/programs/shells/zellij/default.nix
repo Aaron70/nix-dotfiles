@@ -7,7 +7,7 @@ in
   with lib;
 { 
   options.homePrograms.shells.zellij = {
-    enable = mkEnableOption "Weather to enable Zellij";
+    enable = mkEnableOption "Whether to enable Zellij";
   };
 
   config = mkIf cfg.enable {

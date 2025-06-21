@@ -12,7 +12,7 @@ in
       # TODO: When add more supported shells, you must added here: 
       # Example: enable = shellsCfg.nushell.enable || shellsCfg.zsh.enable;
       default = shellsCfg.nushell.enable;
-      description= "Weather to enable OhMyPosh";
+      description= "Whether to enable OhMyPosh";
     };
   };
 
