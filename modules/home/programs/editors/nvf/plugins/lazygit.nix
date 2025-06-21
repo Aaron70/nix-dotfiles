@@ -15,15 +15,12 @@ in
     programs.nvf.settings.vim = {
       terminal.toggleterm = { 
         enable = true; 
+        mappings.open = null;
       
         lazygit = { 
           enable = true;
           mappings.open = "<leader>lg";
         };
-      
-        # mappings = {
-        #   open = "";
-        # };
       };
     };
   };
