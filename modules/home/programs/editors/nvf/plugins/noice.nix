@@ -15,6 +15,16 @@ in
     programs.nvf.settings.vim = {
       ui.noice = { 
         enable = true;
+        setupOpts = {
+          messages = {
+            enabled = true;
+            view = "notify";
+            view_error = "notify";
+            view_warn = "notify";
+            view_history = "messages"; # view for :messages
+            view_search = "virtualtext";
+          };
+        };
       };
     };
   };
