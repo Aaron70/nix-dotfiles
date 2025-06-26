@@ -17,6 +17,7 @@ in {
     bat
     cowsay
     ripgrep
+    tree
     wl-clipboard
     #Fonts 
     nerd-fonts.jetbrains-mono
