@@ -18,7 +18,7 @@ in
 
       nix = import ./nix.nix;
       go = import ./go.nix;
-      java.enable = true;
+      java = import ./java.nix;
       lua.enable = true;
       python.enable = true;
       ts.enable = true;
