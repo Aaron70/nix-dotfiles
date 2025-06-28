@@ -2,7 +2,7 @@
 
 with builtins; 
 rec {
-  monitorNames = [ "HDMI-A-2" "HDMI-A-1" ];
+  monitorNames = [ "HDMI-A-2" "HDMI-A-1" "eDP-1" ];
 
   bindm = [
     # Mouse bindings
@@ -13,6 +13,7 @@ rec {
   monitor = [
     "${elemAt monitorNames 0}, 1920x1080@100, 0x0, 1"
     "${elemAt monitorNames 1}, 2560x1440@74.93, -2560x0, 1"
+    "${elemAt monitorNames 2}, 1920x1080@100, 0x0, 1"
   ];
 
   input = {

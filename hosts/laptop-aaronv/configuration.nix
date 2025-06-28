@@ -26,7 +26,7 @@ in
     #   title = "Windows 11";
     #   sortKey = "0_windows";
     # };
-    # configurationLimit = 7;
+    configurationLimit = 7;
   };
   boot.loader.efi.canTouchEfiVariables = true;
   # ====================|Bootloader|====================
@@ -114,20 +114,20 @@ in
 
 
   # ====================|Hardware|====================
-  # services.xserver.videoDrivers = [ "nvidia" ];
-  # hardware = {
-  #   graphics.enable = true;
-  #   nvidia = {
-  #     # Enable modesetting for Wayland compositors (hyprland)
-  #     modesetting.enable = true;
-  #     # Use the open source version of the kernel module (for driver 515.43.04+)
-  #     open = true;
-  #     # Enable the Nvidia settings menu
-  #     nvidiaSettings = true;
-  #     # Select the appropriate driver version for your specific GPU
-  #     package = config.boot.kernelPackages.nvidiaPackages.stable;
-  #   };
-  # };
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware = {
+    graphics.enable = true;
+    nvidia = {
+      # Enable modesetting for Wayland compositors (hyprland)
+      modesetting.enable = true;
+      # Use the open source version of the kernel module (for driver 515.43.04+)
+      open = true;
+      # Enable the Nvidia settings menu
+      nvidiaSettings = true;
+      # Select the appropriate driver version for your specific GPU
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+  };
   # ====================|Hardware|====================
 
 
