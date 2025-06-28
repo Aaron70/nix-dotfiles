@@ -6,7 +6,7 @@ in
   with lib;
 {
   options.homePrograms.windowManagers.waybar = {
-    enable = mkEnableOption "Weather to enable waybar";
+    enable = mkEnableOption "Whether to enable waybar";
   };
 
   config = mkIf cfg.enable {

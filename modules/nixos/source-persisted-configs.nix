@@ -6,7 +6,7 @@ in
   with lib;
 {
   options.source-persisted-configs = {
-    enable = mkEnableOption "Weather to enable the activation script to persist some configurations";
+    enable = mkEnableOption "Whether to enable the activation script to persist some configurations";
   };
 
   config = mkIf cfg.enable {

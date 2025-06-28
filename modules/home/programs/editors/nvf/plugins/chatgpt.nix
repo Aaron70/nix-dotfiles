@@ -1,7 +1,7 @@
 { config, lib, ... } :
 
 let
-  plugin = "blink-cmp";
+  plugin = "chatgpt";
   editorsCfg = config.homePrograms.editors; 
   cfg = editorsCfg.neovim.nvf.plugins.${plugin};
 in
@@ -13,16 +13,9 @@ in
 
   config = mkIf cfg.enable {
     programs.nvf.settings.vim = {
-      autocomplete.blink-cmp = {
+      assistant.chatgpt = { 
         enable = true;
-        friendly-snippets.enable = true;
-        setupOpts = {
-          keymap = {
-            preset = "default";
-            "<CR>" = [ "accept" "fallback" ];
-          };
-        };
       };
     };
-  };
+};
 }

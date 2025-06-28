@@ -11,7 +11,7 @@ in
   with lib;
 {
   options.homePrograms.windowManagers.hyprland = {
-    enable = mkEnableOption "Weather to enable Hyprland Window Manager config";
+    enable = mkEnableOption "Whether to enable Hyprland Window Manager config";
   };
 
   config = mkIf cfg.enable {

@@ -6,8 +6,8 @@ in
   with lib;
 {
   options.homePrograms.git = {
-    enable = mkEnableOption "Weather to enable git";
-    integrations = mkEnableOption "Weather to enable git integrations. Like gh and lazygit.";
+    enable = mkEnableOption "Whether to enable git";
+    integrations = mkEnableOption "Whether to enable git integrations. Like gh and lazygit.";
     userName = mkOption {
       type = types.str;
       default = values.users.default.username;

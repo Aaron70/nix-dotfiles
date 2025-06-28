@@ -6,7 +6,7 @@ in
   with lib;
 {
   options.homePrograms.browsers.zen = {
-    enable = mkEnableOption "Weather to enable Zen Browser";
+    enable = mkEnableOption "Whether to enable Zen Browser";
   };
 
   config = mkIf cfg.enable {

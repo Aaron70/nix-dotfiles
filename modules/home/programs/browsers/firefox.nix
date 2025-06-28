@@ -6,7 +6,7 @@ in
   with lib;
 {
   options.homePrograms.browsers.firefox = {
-    enable = mkEnableOption "Weather to enable Firefox";
+    enable = mkEnableOption "Whether to enable Firefox";
   };
 
   config = mkIf cfg.enable {

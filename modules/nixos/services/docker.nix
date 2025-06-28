@@ -6,7 +6,7 @@ in
   with lib;
 {
   options.nixosServices.docker = {
-    enable = mkEnableOption "Weather to enable Docker";
+    enable = mkEnableOption "Whether to enable Docker";
   };
 
 
