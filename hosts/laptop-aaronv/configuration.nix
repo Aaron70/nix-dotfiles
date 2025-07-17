@@ -81,6 +81,7 @@ in
     home-manager
     git
     spotify
+    upower
   ];
   # ====================|Packages|====================
 

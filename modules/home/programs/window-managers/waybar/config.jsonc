@@ -13,14 +13,14 @@
         "clock"
     ],
     "modules-right": [
-        //"tray",
-        //"cpu",
-        //"memory",
-        //"battery",
         "hyprland/submap",
+        //"tray",
+        // "cpu",
+        // "memory",
+        "battery",
         "pulseaudio",
         "backlight",
-        "hyprland/language",
+        //"hyprland/language",
         "network",
         "custom/updates",
     ],
@@ -138,7 +138,7 @@
         "format": " {}%",
     },
     "battery": {
-        "bat": "hidpp_battery_0",
+        // "bat": "hidpp_battery_0",
         "interval": 60,
         "max-length": 25,
         "states": {
