@@ -11,4 +11,10 @@
   editors.default = "noevim";
   terminals.default = "alacritty";
   browsers.default = "zen";
+
+  hyprland = {
+    mouse = {
+      sensitivity = 0.5;
+    };
+  };
 }
