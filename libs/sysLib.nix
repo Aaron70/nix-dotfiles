@@ -1,12 +1,11 @@
-{ inputs, pkgs }:
+{ inputs }:
 
 let
   myLib = import ./myLib.nix;
 
   homeManager = { 
-    specialArgs = { inherit myLib;  };
+    specialArgs = { inherit myLib; };
     modules = [ 
-      # inputs.stylix.homeModules.stylix
       inputs.nvf.homeManagerModules.default
       inputs.zen-browser.homeModules.beta
     ]; 
@@ -15,6 +14,10 @@ in {
   mkSystemFor = host: inputs.nixpkgs.lib.nixosSystem {
       specialArgs = { inherit host inputs myLib homeManager; };
       modules =  [ 
+        {
+          nixpkgs.overlays = with inputs; [
+          ];
+        }
         inputs.stylix.nixosModules.stylix
         inputs.home-manager.nixosModules.home-manager 
         ../hosts/configuration.nix
@@ -22,9 +25,16 @@ in {
     };
 
   mkHomeFor = host: system: inputs.home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      extraSpecialArgs = homeManager.specialArgs // { inherit host; };
-      modules = [ ../hosts/home.nix ] ++ homeManager.modules;
+      pkgs = inputs.nixpkgs;
+      extraSpecialArgs = homeManager.specialArgs // { inherit host; pkgs = inputs.nixpkgs; };
+      modules = [ 
+        {
+          nixpkgs.overlays = with inputs; [
+          ];
+        }
+        ../hosts/home.nix 
+        inputs.stylix.homeModules.stylix 
+      ] ++ homeManager.modules;
     };
 }
 

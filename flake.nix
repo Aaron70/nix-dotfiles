@@ -2,7 +2,7 @@
   description = "Nix dotfiles configurations";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nvf.url = "github:notashelf/nvf";
 
     rose-pine-hyprcursor = {
@@ -34,15 +34,7 @@
 
   outputs = { nixpkgs, home-manager, ... }@inputs: 
     let 
-      pkgs = import nixpkgs {
-        system = "x86_64-linux";
-        overlays = with inputs; [
-          (final: prev: {
-            zjstatus = zjstatus.packages.${prev.system}.default;
-          })
-        ];
-      };
-      myLib = import ./libs/sysLib.nix { inherit inputs pkgs; };
+      myLib = import ./libs/sysLib.nix { inherit inputs; };
     in {  
       # ====================|NixOS Configurations|====================
       nixosConfigurations = {

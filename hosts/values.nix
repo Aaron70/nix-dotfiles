@@ -21,7 +21,7 @@ in
   options.values = {
     version = mkOption {
       type = types.str;
-      default = "25.05";
+      default = "24.11";
       description = "The Nix version of packages";
     };
 
