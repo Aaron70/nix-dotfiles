@@ -1,6 +1,6 @@
-{ myLib, lib, config, ... }:
+{ myLib, ... }:
 
-with lib; {
+{
   imports = myLib.importAll ./. "default.nix";
 
   options.homePrograms.shells = { }; 

@@ -1,4 +1,4 @@
-{ host, pkgs, config, lib, myLib, homeManager, ... }:
+{ host, pkgs, config, lib, homeManager, ... }:
 with lib;
 let
   values = config.values;

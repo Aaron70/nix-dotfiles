@@ -1,4 +1,4 @@
-{ lib, values, myLib, ... }:
+{ lib, myLib, ... }:
 
 with lib; {
   imports = myLib.importAll ./. "default.nix";

@@ -1,4 +1,4 @@
-{ myLib, pkgs, ... }:
+{ myLib, ... }:
 
 {
   imports = myLib.importAll ./. "default.nix";
