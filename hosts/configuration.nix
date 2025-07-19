@@ -101,8 +101,8 @@ in
 
     # ====================|Services, Display Managers and DE|====================
     services.xserver.enable = true;
-    #services.displayManager.sddm.enable = true;
-    services.xserver.displayManager.gdm.enable = true;
+    services.displayManager.sddm.enable = true;
+    services.xserver.displayManager.gdm.enable = false;
     services.xserver.desktopManager.gnome.enable = true;
 
     services.xserver.xkb = {
