@@ -28,8 +28,6 @@ in
       experimental-features = [ "nix-command" "flakes" ];
     };
 
-    #source-persisted-configs.enable = true; 
-
     # ====================|Bootloader|====================
     boot.loader.systemd-boot = {
       enable = true;
@@ -87,6 +85,7 @@ in
     # ====================|Packages|====================
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.allowBroken = true;
 
     # This env variable is commented because is causing 
     # spotify to freeze and crash Hyprland
@@ -104,7 +103,7 @@ in
     services.xserver.enable = true;
     #services.displayManager.sddm.enable = true;
     services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = false;
+    services.xserver.desktopManager.gnome.enable = true;
 
     services.xserver.xkb = {
       layout = "us";
@@ -115,6 +114,8 @@ in
 
     services.pulseaudio = { 
       enable = false;
+      support32Bit = true;
+      extraConfig = "load-module module-combine-sink";
     };
     security.rtkit.enable = true;
     services.pipewire = {

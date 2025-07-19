@@ -22,6 +22,7 @@ in
       ripgrep
       wl-clipboard
       #Fonts 
+      nerd-fonts
       nerd-fonts.jetbrains-mono
       openmoji-color
       # # You can also create simple shell scripts directly inside your
@@ -35,7 +36,7 @@ in
     home.file = { };
 
     home.sessionVariables = {
-      EDITOR = "neovim";
+      EDITOR = config.values.editors.default.name;
     };
 
     home.shellAliases = {
