@@ -22,7 +22,6 @@ in
       ripgrep
       wl-clipboard
       #Fonts 
-      nerd-fonts
       nerd-fonts.jetbrains-mono
       openmoji-color
       # # You can also create simple shell scripts directly inside your
