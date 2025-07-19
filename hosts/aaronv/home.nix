@@ -20,6 +20,7 @@ in {
     tree
     wl-clipboard
     #Fonts 
+    nerd-fonts
     nerd-fonts.jetbrains-mono
     openmoji-color
     # # You can also create simple shell scripts directly inside your
@@ -41,5 +42,5 @@ in {
   };
 
   programs.home-manager.enable = true;
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 }

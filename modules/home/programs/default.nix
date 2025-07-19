@@ -1,9 +1,10 @@
-{ myLib, ... }:
+{ myLib, pkgs, ... }:
 
 {
   imports = myLib.importAll ./. "default.nix";
 
   homePrograms = {
+
     git.enable = true;
     git.integrations = true;
 
@@ -11,6 +12,7 @@
     shells.zsh.enable = true;
     shells.zoxide.enable = true;
     shells.zellij.enable = true;
+    shells.tmux.enable = true;
 
     terminals.alacritty.enable = true;
 

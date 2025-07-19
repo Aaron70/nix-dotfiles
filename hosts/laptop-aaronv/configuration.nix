@@ -90,7 +90,7 @@ in
   services.xserver.enable = true;
   #services.displayManager.sddm.enable = true;
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.desktopManager.gnome.enable = false;
 
   services.xserver.xkb = {
     layout = "us";
@@ -132,5 +132,5 @@ in
   # ====================|Hardware|====================
 
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 }

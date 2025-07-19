@@ -94,5 +94,5 @@ in
   # ====================|Display and DE|====================
 
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 }

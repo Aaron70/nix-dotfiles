@@ -5,6 +5,7 @@ let
   nixosSpecialArgs = homeSpecialArgs;
   homeSpecialArgs = {inherit inputs myLib; };
   homeModules = [ 
+    # inputs.stylix.homeModules.stylix
     inputs.nvf.homeManagerModules.default
     inputs.zen-browser.homeModules.beta
   ];
@@ -15,6 +16,7 @@ in {
     in inputs.nixpkgs.lib.nixosSystem {
       specialArgs = { inherit values; } // nixosSpecialArgs;
       modules =  [ 
+        inputs.stylix.nixosModules.stylix
         inputs.home-manager.nixosModules.home-manager 
         ../hosts/${host}/configuration.nix
         {

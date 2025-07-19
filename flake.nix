@@ -16,6 +16,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zjstatus = {
+      url = "github:dj95/zjstatus";
+    };
+
+    stylix = {
+      url = "github:danth/stylix/release-25.05";
+      # url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +36,11 @@
     let 
       pkgs = import nixpkgs {
         system = "x86_64-linux";
-        overlays = [ ];
+        overlays = with inputs; [
+          (final: prev: {
+            zjstatus = zjstatus.packages.${prev.system}.default;
+          })
+        ];
       };
       myLib = import ./libs/sysLib.nix { inherit inputs pkgs; };
     in {  
