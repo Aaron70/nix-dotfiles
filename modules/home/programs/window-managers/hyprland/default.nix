@@ -28,8 +28,8 @@ in
       settings = {
         "debug:disable_logs" = false;
         "$mod" = "ALT";
-        "$terminal" = config.homePrograms.terminals.default;
-        "$browser" = config.homePrograms.browsers.default;
+        "$terminal" = config.values.terminals.default.name;
+        "$browser" = config.values.browsers.default.name;
 
         env = {
           env = "HYPRCURSOR_THEME,rose-pine-hyprcursor";

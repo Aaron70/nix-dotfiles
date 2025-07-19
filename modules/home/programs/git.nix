@@ -1,4 +1,4 @@
-{ lib, config, values,... }:
+{ lib, config, ... }:
 
 let
   cfg = config.homePrograms.git;
@@ -10,12 +10,12 @@ in
     integrations = mkEnableOption "Whether to enable git integrations. Like gh and lazygit.";
     userName = mkOption {
       type = types.str;
-      default = values.users.default.username;
+      default = config.values.user.username;
       description = "The username of the git user. Name that will be shown on commits.";
     };
     userEmail = mkOption {
       type = types.str;
-      default = values.users.default.email;
+      default = config.values.user.email;
       description = "The username of the git user. Name that will be shown on commits.";
     };
   };

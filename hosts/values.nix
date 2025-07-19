@@ -40,6 +40,30 @@ in
         };
       };
     };
+
+    browsers = mkOption {
+      type = types.submodule {
+        options = {
+          default = mkOption { type = packageModule; };
+        };
+      };
+    };
+
+    terminals = mkOption {
+      type = types.submodule {
+        options = {
+          default = mkOption { type = packageModule; };
+        };
+      };
+    };
+
+    shells = mkOption {
+      type = types.submodule {
+        options = {
+          default = mkOption { type = packageModule; };
+        };
+      };
+    };
   };
 
   config = {
@@ -51,9 +75,10 @@ in
         }
       ];
 
-      editors.default = {
-        name = "nvim";
-      };
+      editors.default.name = "nvim";
+      browsers.default.name = "zen";
+      terminals.default.name = "alacritty";
+      shells.default.name = "nu";
     };
   };
 }

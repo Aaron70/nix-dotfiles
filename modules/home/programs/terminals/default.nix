@@ -1,15 +1,9 @@
-{ lib, values, myLib, ... }:
+{ lib, config, myLib, ... }:
 
 with lib; {
   imports = myLib.importAll ./. "default.nix";
 
-  options.homePrograms.terminals = {
-    default = mkOption {
-      type = types.str;
-      default = values.terminals.default;
-      description= "The default terminal.";
-    };
-  }; 
+  options.homePrograms.terminals = { }; 
 
   config = {
     # TODO: Remove or add a module for Kitty

@@ -1,4 +1,4 @@
-{ config, lib, values, ... }:
+{ config, lib,  ... }@inputs:
 
 let
   shellsCfg = config.homePrograms.shells; 
@@ -14,7 +14,7 @@ in
     programs.zellij = {
       enable = true;
     };
-    xdg.configFile."zellij/config.kdl".text = import ./config.nix {inherit values;};
+    xdg.configFile."zellij/config.kdl".text = import ./config.nix inputs; 
     # xdg.configFile."zellij/layouts/default.kdl".text = import ./layout.nix;
   };
 }

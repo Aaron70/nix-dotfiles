@@ -1,4 +1,4 @@
-{ lib, config, values, ... }:
+{ lib, config, ... }:
 
 let
   cfg = config.source-persisted-configs;
@@ -12,7 +12,7 @@ in
   config = mkIf cfg.enable {
     system.activationScripts.sourcePersistedConfigs = {
       text = ''
-        HOME_PATH="/home/${values.users.default.username}"
+        HOME_PATH="/home/${config.values.user.username}"
         PERSIST_PATH="$HOME_PATH/.persist"
 
         if [ ! -d "$PERSIST_PATH" ]; then

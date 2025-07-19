@@ -1,4 +1,4 @@
-{ host, pkgs, config, lib, ... }:
+{ host, pkgs, config, lib, myLib, homeManager, ... }:
 with lib;
 let
   values = config.values;
@@ -14,6 +14,16 @@ in
     ];
 
   config = {
+    home-manager = {
+      backupFileExtension = "bck";
+      useGlobalPkgs = true;
+      useUserPackages = true;
+      extraSpecialArgs = homeManager.specialArgs // { inherit host; };
+      users."${user.username}" = {...}: {
+        imports = [ ./home.nix ] ++ homeManager.modules;
+      };
+    };
+
     nix.settings = {
       experimental-features = [ "nix-command" "flakes" ];
     };

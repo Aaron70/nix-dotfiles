@@ -1,4 +1,4 @@
-{ values, ... }:
+{ config, ... }:
 
 ''
 // Path to the default editor to use to edit pane scrollbuffer
@@ -10,7 +10,7 @@
 simplified_ui true
 theme "tokyo-night"
 default_mode "normal"
-default_shell "${values.shells.default}"
+default_shell "${config.values.shells.default.name}"
 default_layout "compact"
 mouse_mode true
 pane_frames false

@@ -1,4 +1,4 @@
-{ config, lib, values, pkgs, ... }:
+{ config, lib,  pkgs, ... }:
 
 let
   shellsCfg = config.homePrograms.shells; 

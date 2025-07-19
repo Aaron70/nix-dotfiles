@@ -2,43 +2,29 @@
 
 let
   myLib = import ./myLib.nix;
-  nixosSpecialArgs = homeSpecialArgs;
-  homeSpecialArgs = {inherit inputs myLib; };
-  homeModules = [ 
-    # inputs.stylix.homeModules.stylix
-    inputs.nvf.homeManagerModules.default
-    inputs.zen-browser.homeModules.beta
-  ];
+
+  homeManager = { 
+    specialArgs = { inherit myLib;  };
+    modules = [ 
+      # inputs.stylix.homeModules.stylix
+      inputs.nvf.homeManagerModules.default
+      inputs.zen-browser.homeModules.beta
+    ]; 
+  };
 in {
-  mkSystemFor = host: let
-      values = import ../hosts/${host}/values.nix;
-      username = values.users.default.username;
-    in inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit host values; } // nixosSpecialArgs;
+  mkSystemFor = host: inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit host inputs myLib homeManager; };
       modules =  [ 
         inputs.stylix.nixosModules.stylix
         inputs.home-manager.nixosModules.home-manager 
         ../hosts/configuration.nix
-        {
-          home-manager = {
-            backupFileExtension = "bck";
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = { inherit host values; } // homeSpecialArgs;
-            users."${username}" = {...}: {
-              imports = [ ../hosts/home.nix ] ++ homeModules;
-            };
-          };
-        }
       ];
     };
 
-  mkHomeFor = host: system:  let
-      values = import ../hosts/${host}/values.nix;
-    in inputs.home-manager.lib.homeManagerConfiguration {
+  mkHomeFor = host: system: inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      extraSpecialArgs = { inherit values;  } // homeSpecialArgs;
-      modules = [ ../hosts/${host}/home.nix ] ++ homeModules;
+      extraSpecialArgs = homeManager.specialArgs // { inherit host; };
+      modules = [ ../hosts/home.nix ] ++ homeManager.modules;
     };
 }
 

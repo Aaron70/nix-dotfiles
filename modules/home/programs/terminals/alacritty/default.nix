@@ -111,7 +111,7 @@ in
       
         terminal = {
           shell = {
-            program = config.homePrograms.shells.default;
+            program = config.values.shells.default.name;
           };
         };
       
