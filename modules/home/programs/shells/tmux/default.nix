@@ -47,9 +47,9 @@ in
     };
     home.packages = [
       (pkgs.writeShellScriptBin "tmux-sessionizer" (lib.readFile ./tmux-sessionizer.sh))
-      # (pkgs.writeShellScriptBin "tmux-sessionizer" ''
-      #   echo ${config.configurations.test}
-      # '')
+      (pkgs.writeShellScriptBin "test" ''
+        echo ${config.values.editors.default.name}
+      '')
     ];
     xdg.configFile."tmux-sessionizer/tmux-sessionizer.conf".text = (lib.readFile ./tmux-sessionizer.conf);
   };

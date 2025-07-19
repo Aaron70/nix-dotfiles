@@ -7,7 +7,7 @@ in
 {
   imports = [ 
     ./values.nix
-    # ./${host}/home.nix
+    ./${host}/home.nix
     ../modules/home/programs 
     ../modules/home/services 
   ];

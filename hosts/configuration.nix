@@ -6,7 +6,7 @@ let
 in
 {
   imports = [ 
-      # ./${host}/configuration.nix
+      ./${host}/configuration.nix
       ./values.nix
       ../modules/nixos/programs
       ../modules/nixos/services

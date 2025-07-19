@@ -14,19 +14,19 @@ in {
       values = import ../hosts/${host}/values.nix;
       username = values.users.default.username;
     in inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit values; } // nixosSpecialArgs;
+      specialArgs = { inherit host values; } // nixosSpecialArgs;
       modules =  [ 
         inputs.stylix.nixosModules.stylix
         inputs.home-manager.nixosModules.home-manager 
-        ../hosts/${host}/configuration.nix
+        ../hosts/configuration.nix
         {
           home-manager = {
             backupFileExtension = "bck";
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = { inherit values; } // homeSpecialArgs;
+            extraSpecialArgs = { inherit host values; } // homeSpecialArgs;
             users."${username}" = {...}: {
-              imports = [ ../hosts/${host}/home.nix ] ++ homeModules;
+              imports = [ ../hosts/home.nix ] ++ homeModules;
             };
           };
         }
