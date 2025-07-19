@@ -4,6 +4,7 @@ with lib;
 let 
   userModule = types.submodule {
     options = {
+      fullname = mkOption { type = types.str; };
       username = mkOption { type = types.str; };
       email = mkOption { type = types.str; };
     };
@@ -70,6 +71,7 @@ in
     values = {
       users = [
         {
+          fullname = "Aaron Vargas";
           username = "aaronv";
           email = "aarongeovanny70@gmail.com";
         }

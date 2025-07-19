@@ -76,7 +76,7 @@ in
       # TODO: Make that it registers all the users from config.values.users 
       "${user.username}" = {
         isNormalUser = true;
-        description = "The default user";
+        description = user.fullname;
         extraGroups = [ "networkmanager" "wheel" "audio" "docker" ];
         packages = [];
       };
