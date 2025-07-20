@@ -4,7 +4,7 @@
   imports = myLib.importAll ./. "default.nix";
 
   homePrograms = {
-
+  
     git.enable = true;
     git.integrations = true;
 

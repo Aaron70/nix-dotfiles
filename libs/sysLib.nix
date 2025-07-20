@@ -15,8 +15,7 @@ in {
       specialArgs = { inherit host inputs myLib homeManager; };
       modules =  [ 
         {
-          nixpkgs.overlays = with inputs; [
-          ];
+          nixpkgs.overlays = with inputs; [ ];
         }
         inputs.stylix.nixosModules.stylix
         inputs.home-manager.nixosModules.home-manager 
@@ -29,8 +28,7 @@ in {
       extraSpecialArgs = homeManager.specialArgs // { inherit host; pkgs = inputs.nixpkgs; };
       modules = [ 
         {
-          nixpkgs.overlays = with inputs; [
-          ];
+          nixpkgs.overlays = with inputs; [ ];
         }
         ../hosts/home.nix 
         inputs.stylix.homeModules.stylix 

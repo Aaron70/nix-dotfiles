@@ -12,7 +12,13 @@ in
 
   config = mkIf cfg.enable {
     programs.nvf.settings.vim = {
-      theme = { enable = true; name = "tokyonight"; style = "moon"; };
+      # Managed by stylix
+      # theme = { 
+      #   enable = false; 
+        # Commented because of conflict with Stylix: 
+        # name = "tokyonight"; 
+        # style = "moon"; 
+      # };
 
       augroups = [ { name = "highlight-yank"; clear = true; } ];
       autocmds = [
