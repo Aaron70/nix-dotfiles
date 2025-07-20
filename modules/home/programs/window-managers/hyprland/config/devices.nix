@@ -12,8 +12,8 @@ rec {
 
   monitor = [
     # "${elemAt monitorNames 0}, 1920x1080@100, 0x0, 1"
-    ", 1920x1080@100, 0x0, 1"
-    "${elemAt monitorNames 1}, 2560x1440@74.93, -2560x0, 1"
+    ", 1920x1080@100, -1920x0, 1"
+    "${elemAt monitorNames 1}, 2560x1440@74.93, 0x0, 1"
   ];
 
   input = {

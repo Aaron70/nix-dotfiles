@@ -2,8 +2,8 @@
 
 with builtins; 
 let
-  mainMonitor = elemAt monitors 0;
-  secondMonitor = elemAt monitors 1;
+  mainMonitor = elemAt monitors 1;
+  secondMonitor = elemAt monitors 0;
   codingWS = "1";
   webWS = "2";
   mediaWS = "3";
