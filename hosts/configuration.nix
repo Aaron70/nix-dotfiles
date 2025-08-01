@@ -1,4 +1,4 @@
-{ host, pkgs, config, lib, homeManager, ... }:
+{host, pkgs, config, lib, homeManager, ... }:
 with lib;
 let
   values = config.values;
@@ -101,8 +101,8 @@ in
 
     # ====================|Services, Display Managers and DE|====================
     services.xserver.enable = true;
-    services.displayManager.sddm.enable = true;
-    services.xserver.displayManager.gdm.enable = false;
+    services.displayManager.sddm.enable = false;
+    services.xserver.displayManager.gdm.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
 
     services.xserver.xkb = {
