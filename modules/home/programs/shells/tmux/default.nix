@@ -50,6 +50,6 @@ in
     home.packages = [
       (pkgs.writeShellScriptBin "tmux-sessionizer" (lib.readFile ./tmux-sessionizer.sh))
     ];
-    xdg.configFile."tmux-sessionizer/tmux-sessionizer.conf".text = (lib.readFile ./tmux-sessionizer.conf);
+    xdg.configFile."tmux-sessionizer/tmux-sessionizer.conf".text = import ./tmux-sessionizer.nix { inherit config; };
   };
 }

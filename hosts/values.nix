@@ -32,9 +32,10 @@ in
       browsers.default.name = "zen";
       terminals.default.name = "ghostty";
       shells.default.name = "nu";
+
+      tmux.extraSearchPaths = "~/personal/dev:3";
     };
   };
-
 
   options.values = {
     version = mkOption {
@@ -84,7 +85,6 @@ in
       };
     };
 
-
     devices = mkOption {
       type = types.submodule {
         options = {
@@ -95,6 +95,18 @@ in
               };
             };
             default = {};
+          };
+        };
+      };
+      default = {};
+    };
+
+    tmux = mkOption {
+      type = types.submodule {
+        options = {
+          extraSearchPaths = mkOption {
+            type = types.str;
+            default = "";
           };
         };
       };
