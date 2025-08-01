@@ -15,6 +15,8 @@
     shells.tmux.enable = true;
 
     terminals.alacritty.enable = true;
+    terminals.kitty.enable = true;
+    terminals.ghostty.enable = true;
 
     editors.neovim.nvf.enable = true;
 

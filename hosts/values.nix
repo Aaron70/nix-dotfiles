@@ -18,6 +18,24 @@ let
   };
 in
 {
+  config = {
+    values = {
+      users = [
+        {
+          fullname = "Aaron Vargas";
+          username = "aaronv";
+          email = "aarongeovanny70@gmail.com";
+        }
+      ];
+
+      editors.default.name = "nvim";
+      browsers.default.name = "zen";
+      terminals.default.name = "ghostty";
+      shells.default.name = "nu";
+    };
+  };
+
+
   options.values = {
     version = mkOption {
       type = types.str;
@@ -81,23 +99,6 @@ in
         };
       };
       default = {};
-    };
-  };
-
-  config = {
-    values = {
-      users = [
-        {
-          fullname = "Aaron Vargas";
-          username = "aaronv";
-          email = "aarongeovanny70@gmail.com";
-        }
-      ];
-
-      editors.default.name = "nvim";
-      browsers.default.name = "zen";
-      terminals.default.name = "alacritty";
-      shells.default.name = "nu";
     };
   };
 }
