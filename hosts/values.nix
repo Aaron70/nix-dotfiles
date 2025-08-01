@@ -32,8 +32,6 @@ in
       browsers.default.name = "zen";
       terminals.default.name = "ghostty";
       shells.default.name = "nu";
-
-      tmux.extraSearchPaths = "~/personal/dev:3";
     };
   };
 
@@ -106,7 +104,7 @@ in
         options = {
           extraSearchPaths = mkOption {
             type = types.str;
-            default = "";
+            default = "~/personal/dev:3";
           };
         };
       };
