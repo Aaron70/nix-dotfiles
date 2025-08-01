@@ -4,9 +4,26 @@ with lib; {
     ./hardware-configuration.nix
   ];
 
+  # ====================|Bootloader|====================
+  boot.loader.systemd-boot = {
+    enable = true;
+    # Custom entry for windows in the boot menu
+    # windows."Windows" = {
+    #   efiDeviceHandle = "FS0";
+    #   title = "Windows 11";
+    #   sortKey = "0_windows";
+    # };
+    configurationLimit = 7;
+  };
+  boot.loader.efi.canTouchEfiVariables = true;
+  # ====================|Bootloader|====================
+
+
 
   services.displayManager.sddm.enable = mkForce false;
   services.xserver.displayManager.gdm.enable = mkForce true;
+
+
 
   environment.systemPackages = with pkgs; [
       upower

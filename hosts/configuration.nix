@@ -28,21 +28,7 @@ in
       experimental-features = [ "nix-command" "flakes" ];
     };
 
-    # ====================|Bootloader|====================
-    boot.loader.systemd-boot = {
-      enable = true;
-      # Custom entry for windows in the boot menu
-      # windows."Windows" = {
-      #   efiDeviceHandle = "FS0";
-      #   title = "Windows 11";
-      #   sortKey = "0_windows";
-      # };
-      configurationLimit = 7;
-    };
-    boot.loader.efi.canTouchEfiVariables = true;
-    # ====================|Bootloader|====================
-
-
+    
     # ====================|Network Configuration|====================
     networking.hostName = user.username;
     networking.networkmanager.enable = true;
