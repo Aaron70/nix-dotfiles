@@ -65,6 +65,23 @@ in
         };
       };
     };
+
+
+    devices = mkOption {
+      type = types.submodule {
+        options = {
+          mouse = mkOption {
+            type = types.submodule {
+              options = {
+                sensitivity = mkOption { type = types.float; default = 0.2; };
+              };
+            };
+            default = {};
+          };
+        };
+      };
+      default = {};
+    };
   };
 
   config = {

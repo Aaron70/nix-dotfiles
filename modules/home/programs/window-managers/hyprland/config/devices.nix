@@ -1,4 +1,4 @@
-{}:
+{ config }:
 
 with builtins; 
 rec {
@@ -21,6 +21,6 @@ rec {
       natural_scroll = true;
       scroll_factor = 0.5;
     };
-    sensitivity = 0.2;
+    sensitivity = config.values.devices.mouse.sensitivity;
   };
 }

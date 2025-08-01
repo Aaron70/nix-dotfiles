@@ -5,8 +5,8 @@ let
   cfg = wmCfg.hyprland;
 
   workspacesCfg = import ./config/workspaces.nix { monitors = devicesCfg.monitorNames; };
-  windowsCfg = import ./config/windows.nix {};
-  devicesCfg = import ./config/devices.nix {};
+  windowsCfg = import ./config/windows.nix {}; 
+  devicesCfg = import ./config/devices.nix { inherit config; };
 in
   with lib;
 {
