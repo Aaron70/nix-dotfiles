@@ -10,6 +10,7 @@ in
     ./${host}/home.nix
     ../modules/home/programs 
     ../modules/home/services 
+    ../modules/home/scripts
   ];
 
   config = {
@@ -18,6 +19,9 @@ in
 
     home.packages = with pkgs; [
       bat
+      file
+      imgcat
+      chafa
       cowsay
       ripgrep
       wl-clipboard
@@ -36,6 +40,7 @@ in
 
     home.sessionVariables = {
       EDITOR = config.values.editors.default.name;
+      SHELL = config.values.shells.default.name;
     };
 
     home.shellAliases = {

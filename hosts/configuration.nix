@@ -76,6 +76,10 @@ in
     # This env variable is commented because is causing 
     # spotify to freeze and crash Hyprland
     # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+    environment.sessionVariables = {
+      EDITOR = config.values.editors.default.name;
+      SHELL = config.values.shells.default.name;
+    };
     environment.systemPackages = with pkgs; [
       home-manager
       git

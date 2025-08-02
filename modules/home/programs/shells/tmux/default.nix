@@ -15,7 +15,7 @@ in
       enable = true;
       mouse = true;
       baseIndex = 1;
-      shell = "${pkgs.nushell}/bin/nu"; 
+      shell = config.values.shells.default.path; 
       keyMode = "vi";
       prefix = "C-space";
       plugins = [

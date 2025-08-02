@@ -13,6 +13,7 @@ in
   config = mkIf cfg.enable {
     programs.ghostty = {
       enable = true;
+      enableZshIntegration = true;
     };
   };
 }

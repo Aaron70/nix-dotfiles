@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
 with lib;
 let 
@@ -13,7 +13,7 @@ let
   packageModule = types.submodule {
     options = {
       name = mkOption { type = types.str; };
-      package = mkOption { type = types.package; };
+      path = mkOption { type = types.str; };
     };
   };
 in
@@ -31,7 +31,8 @@ in
       editors.default.name = "nvim";
       browsers.default.name = "zen";
       terminals.default.name = "ghostty";
-      shells.default.name = "nu";
+      shells.default.name = "zsh";
+      shells.default.path = "${pkgs.zsh}/bin/zsh";
     };
   };
 
