@@ -10,24 +10,24 @@
 #   fi
 # }
 #
-change_dir() {
-  builtin cd "$@"
-}
 
 
 if [ $# -eq 0 ]; then
-  path=$(select-fzf-path)
+  selected_path=$(select-fzf-path)
 elif [[ $# -eq 1 && "$1" == "-f" ]]; then
-  path=$(select-fzf-path -f)
+  selected_path=$(dirname "$(select-fzf-path -f)")
+elif [[ $# -eq 1 && ("$1" == "-" || "$1" == "." || "$1" == "..") ]]; then
+  selected_path="$*"
 else
   if output=$( zoxide query "$@" 2>/dev/null); then
-    path="$output"
+    selected_path="$output"
   else
-     builtin cd "$@" 
+    selected_path="$*"
   fi
 fi
 
-builtin cd "$path" 
+builtin cd "$selected_path" 
+# echo "cd $selected_path"
 
 
 

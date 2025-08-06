@@ -7,4 +7,8 @@
     (pkgs.writeShellScriptBin "custom-fzf-preview" (lib.readFile ./custom-fzf-preview.sh))
     (pkgs.writeShellScriptBin "cdfzf" (lib.readFile ./cdfzf.sh))
   ];
+
+  home.shellAliases = {
+    cd = ". cdfzf";
+  };
 }
