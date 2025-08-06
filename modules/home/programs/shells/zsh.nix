@@ -1,8 +1,9 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   shellsCfg = config.homePrograms.shells; 
   cfg = shellsCfg.zsh;
+  inherit (config.lib.stylix) colors;
 in
   with lib;
 {
@@ -15,7 +16,24 @@ in
       enable = true;
       enableCompletion = true;
       autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
+
+      syntaxHighlighting = {
+        enable = true;
+
+        highlighters = [ "main" ];
+        styles = {
+          unknown-token="fg=#F26A6A";
+        };
+      };
+
+      initContent = ''
+        # auto-suggestions
+        bindkey '^Y' autosuggest-accept
+      '';
+
+      oh-my-zsh = {
+        enable = true;
+      };
     };
   };
 }
