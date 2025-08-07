@@ -12,7 +12,7 @@ selection=$(echo -e "$options" | wofi --insensitive --dmenu --prompt "Select an 
 # Run corresponding action
 case "$selection" in
     "$YOUTUBE")
-        firefox --new-window https://youtube.com &
+        zen --new-window https://youtube.com &
         ;;
     "$SPOTIFY")
         spotify &
