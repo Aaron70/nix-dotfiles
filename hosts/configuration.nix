@@ -102,11 +102,6 @@ in
 
     services.printing.enable = true;
 
-    services.pulseaudio = { 
-      enable = false;
-      support32Bit = true;
-      extraConfig = "load-module module-combine-sink";
-    };
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;

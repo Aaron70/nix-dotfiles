@@ -2,6 +2,7 @@
 with lib; {
   imports = [ 
     ./hardware-configuration.nix
+    ../bluetooth.nix
   ];
 
   # ====================|Bootloader|====================
