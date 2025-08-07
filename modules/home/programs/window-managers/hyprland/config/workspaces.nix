@@ -24,8 +24,8 @@ in {
     # Switch to favorite workspaces
     "$mod, U, workspace, ${codingWS}"
     "$mod, I, workspace, ${webWS}"
-    "$mod, O, workspace, ${mediaWS}"
-    "$mod, P, workspace, ${extraWS}"
+    "$mod, O, workspace, ${extraWS}"
+    "$mod, P, workspace, ${mediaWS}"
 
     # Switch to numerical workspaces
     "$mod, 1, workspace, 1"
