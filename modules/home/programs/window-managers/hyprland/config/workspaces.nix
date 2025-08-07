@@ -2,12 +2,12 @@
 
 with builtins; 
 let
-  mainMonitor = elemAt monitors 1;
-  secondMonitor = elemAt monitors 0;
+  mainMonitor = elemAt monitors 0;
+  secondMonitor = elemAt monitors 1;
   codingWS = "1";
   webWS = "2";
-  mediaWS = "3";
-  extraWS = "4";
+  extraWS = "3";
+  mediaWS = "4";
 in {
 
   variables = { };
@@ -17,7 +17,7 @@ in {
     "${extraWS}, monitor:${mainMonitor}"
   
     "${webWS}, monitor:${secondMonitor}, default:true, on-created-empty:$browser"
-    "${mediaWS}, monitor:${secondMonitor}, on-created-empty:multimedia-menu.sh"
+    "${mediaWS}, monitor:${secondMonitor}, on-created-empty:multimedia-menu"
   ];
 
   bind = [
