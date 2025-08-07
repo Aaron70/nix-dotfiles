@@ -52,8 +52,8 @@ in
           "$mod SHIFT, F, centerwindow"
           "$mod SUPER, E, exec, power-menu"
           "$mod CTRL, U, submap, UI"
-          ",XF86AudioPause, exec, playerctl pause"
-          ",XF86AudioPlay, exec, playerctl play"
+          ",XF86AudioPause, exec, playerctl play-pause"
+          ",XF86AudioPlay, exec, playerctl play-pause"
           ",XF86AudioNext, exec, playerctl next"
           ",XF86AudioPrev, exec, playerctl previous"
 
