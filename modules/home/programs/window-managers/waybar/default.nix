@@ -2,6 +2,7 @@
 
 let
   cfg = config.homePrograms.windowManagers.waybar;
+  colors = config.lib.stylix.colors;
 in
   with lib;
 {
@@ -10,8 +11,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    xdg.configFile."waybar/config.jsonc".text = readFile ./config.jsonc; 
-    xdg.configFile."waybar/style.css".text = readFile ./style.css;
+    xdg.configFile."waybar/config.jsonc".text = import ./config.nix { inherit colors; }; 
+    xdg.configFile."waybar/style.css".text = import ./style.nix { inherit colors; };
     programs.waybar = {
       enable = true;
     };

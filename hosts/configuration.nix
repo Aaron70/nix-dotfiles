@@ -85,6 +85,7 @@ in
       git
       spotify
       upower
+      htop
     ];
     # ====================|Packages|====================
 
