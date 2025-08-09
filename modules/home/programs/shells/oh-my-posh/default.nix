@@ -3,6 +3,7 @@
 let
   shellsCfg = config.homePrograms.shells; 
   cfg = shellsCfg.oh-my-posh;
+  colors = config.lib.stylix.colors;
 in
   with lib;
 {
@@ -21,7 +22,7 @@ in
     programs.oh-my-posh = {
       enable = true;
 
-      settings = with builtins; fromJSON (unsafeDiscardStringContext (readFile ./config.json));
+      settings = with builtins; fromJSON (unsafeDiscardStringContext (import ./config.nix { inherit colors; }));
 
       # TODO: Enable this when you add the other shells 
       enableBashIntegration = false;
