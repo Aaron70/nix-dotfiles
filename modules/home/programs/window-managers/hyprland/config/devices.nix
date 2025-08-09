@@ -13,6 +13,7 @@ rec {
   monitor = [
     "${elemAt monitorNames 0}, 2560x1440@74.93, 0x0, 1"
     "${elemAt monitorNames 1}, 1920x1080, -1920x0, 1"
+    "eDP-1, 1920x1080, 0x0, 1"
   ];
 
   input = {
