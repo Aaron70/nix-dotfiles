@@ -29,6 +29,8 @@ in
       initContent = ''
         # auto-suggestions
         bindkey '^Y' autosuggest-accept
+
+        start-session
       '';
 
       oh-my-zsh = {
