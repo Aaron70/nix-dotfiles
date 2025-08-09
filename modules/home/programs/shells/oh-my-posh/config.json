@@ -12,7 +12,7 @@
           "style": "plain",
           "background": "transparent",
           "foreground": "yellow",
-          "template": "[ <cyan>{{ .UserName }}</> | {{ .Path }} ]",
+          "template": "[ {{ .Path }} ]",
           "properties": {
             "style": "full"
           }
@@ -27,31 +27,6 @@
             "branch_icon": "",
             "commit_icon": "@",
             "fetch_status": true
-          }
-        }
-      ]
-    },
-    {
-      "type": "prompt",
-      "overflow": "hidden",
-      "alignment": "right",
-      "segments": [
-        {
-          "type": "executiontime",
-          "style": "plain",
-          "foreground": "yellow",
-          "background": "transparent",
-          "template": "{{ .FormattedMs }}",
-          "properties": {
-            "threshold": 5000
-          }
-        },
-        {
-          "type": "time",
-          "style": "plain",
-          "foreground": "blue",
-          "properties": {
-            "time_format": "Mon, 02 Jan - 02:04 PM"
           }
         }
       ]
