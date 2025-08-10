@@ -18,8 +18,10 @@ in
     services.hyprpaper = {
       enable = true;
       settings = {
-        preload = "${./config/wallpapers/wallhaven.jpg}";
-        wallpaper = ",${./config/wallpapers/wallhaven.jpg}";
+        # preload = "${./config/wallpapers/wallhaven.jpg}";
+        # wallpaper = ",${./config/wallpapers/wallhaven.jpg}";
+        preload = "${./config/wallpapers/tokyo.jpg}";
+        wallpaper = ",${./config/wallpapers/tokyo.jpg}";
       };
     };
 
