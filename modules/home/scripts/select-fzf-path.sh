@@ -8,7 +8,7 @@ while getopts fd flags; do
   esac
 done
 
-CD_FZF_PATHS=("$HOME/" "$HOME/.config" "$(pwd):10")
+CD_FZF_PATHS=("$HOME/" "$HOME/.config" "$(pwd):5" )
 
 if [ -n "$CD_FZF_EXTRA_PATHS" ]; then
   read -ra _extra_paths <<< "$CD_FZF_EXTRA_PATHS"
@@ -26,7 +26,7 @@ find_paths() {
       path="$entry"
     fi
   
-    [[ -e "$path" ]] && find "$path" -maxdepth "${depth:-1}" -path '*/.git' -prune -o -type "$type" -print
+    [[ -e "$path" ]] && find "$path" -maxdepth "${depth:-1}" -path '*/.git' -prune -o -type "$type" -print 2>/dev/null
   done
 }
 

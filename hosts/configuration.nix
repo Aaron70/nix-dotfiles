@@ -28,7 +28,7 @@ in
       experimental-features = [ "nix-command" "flakes" ];
     };
 
-    
+
     # ====================|Network Configuration|====================
     networking.hostName = user.username;
     networking.networkmanager.enable = true;
@@ -79,6 +79,7 @@ in
     environment.sessionVariables = {
       EDITOR = config.values.editors.default.name;
       SHELL = config.values.shells.default.name;
+      CD_FZF_EXTRA_PATHS="$HOME/personal:2";
     };
     environment.systemPackages = with pkgs; [
       home-manager
