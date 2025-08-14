@@ -45,6 +45,8 @@ in
 
     home.shellAliases = {
       cat = "bat";
+      nswitch = "sudo nixos-rebuild switch";
+      ntest = "sudo nixos-rebuild test";
     };
 
     programs.home-manager.enable = true;
