@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, ... }:
+{ nixpkgs, home-manager, stylix, ... }:
 
 let
   myLib = import ./mylib.nix;
@@ -8,6 +8,7 @@ in
     specialArgs = { inherit myLib; };
     modules =  [ 
       home-manager.nixosModules.home-manager
+      stylix.nixosModules.stylix 
       { nixpkgs.overlays = [ ]; }
       ({ config, ... }: {
         config = {

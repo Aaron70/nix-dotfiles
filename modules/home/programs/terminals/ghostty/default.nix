@@ -4,7 +4,6 @@ with lib;
 let
   profile = config.profile;
   cfg = config.programs.home.ghostty;
-  hasZsh = (config.programs.home ? zhs && config.programs.home.zsh.enable) || profile.shell.name == "zsh";
 in
 {
   options.programs.home.ghostty = {
@@ -14,7 +13,7 @@ in
   config = mkIf (profile.withGUI && (cfg.enable || profile.terminal.name == "ghostty")) {
     programs.ghostty = {
       enable = true;
-      enableZshIntegration = hasZsh;
+      enableZshIntegration = config.programs.zsh.enable;
 
       settings = {
         command = config.profile.shell.name;

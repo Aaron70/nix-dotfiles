@@ -19,7 +19,8 @@ in
     programs.home.ghostty.enable = true;
 
     # Shells
-    # programs.home.zsh.enable = true;
+    programs.home.zsh.enable = true;
+    programs.home.oh-my-posh.enable = true;
 
     # Editors
   };
