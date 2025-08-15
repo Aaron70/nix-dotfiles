@@ -37,19 +37,19 @@
     in {  
       # ====================|NixOS Configurations|====================
       nixosConfigurations = {
-        aaronv = myLib.mkSystemFor "aaronv";
+        # aaronv = myLib.mkSystemFor "aaronv";
         laptop-aaronv = myLib.mkSystemFor "laptop-aaronv";
-        wsl-aaronv = myLib.mkSystemFor "wsl-aaronv";
+        # wsl-aaronv = myLib.mkSystemFor "wsl-aaronv";
       };
       # ====================|NixOS Configurations|====================
 
 
       # ====================|Home Manager Configurations|====================
-      homeConfigurations = {
-        aaronv = myLib.mkHomeFor "aaronv" "x86_64-linux";
-        laptop-aaronv = myLib.mkHomeFor "laptop-aaronv" "x86_64-linux";
-        wsl-aaronv = myLib.mkHomeFor "wsl-aaronv" "x86_64-linux";
-      };
+      # homeConfigurations = {
+      #   aaronv = myLib.mkHomeFor "aaronv" "x86_64-linux";
+      #   laptop-aaronv = myLib.mkHomeFor "laptop-aaronv" "x86_64-linux";
+      #   wsl-aaronv = myLib.mkHomeFor "wsl-aaronv" "x86_64-linux";
+      # };
       # ====================|Home Manager Configurations|====================
     };
 }
