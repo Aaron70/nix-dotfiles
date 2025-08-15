@@ -9,24 +9,26 @@ in
     modules =  [ 
       home-manager.nixosModules.home-manager
       { nixpkgs.overlays = [ ]; }
-
-      ../features/nixos
       ({ config, ... }: {
         config = {
           home-manager = {
             backupFileExtension = "bck";
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = { };
+            extraSpecialArgs = { inherit myLib; };
             users."${config.profile.user.username}" = {...}: {
               imports = [ 
                 ../profiles/${profile}/home.nix
                 ../hosts/${host}/home.nix 
+
+                ../modules/home/programs
               ];
             };
           };
         };
       })
+
+      ../features/nixos
 
       ../hosts/${host}/configuration.nix
       ../hosts/${host}/hardware-configuration.nix
