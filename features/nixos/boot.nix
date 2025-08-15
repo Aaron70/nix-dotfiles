@@ -1,8 +1,11 @@
 { lib, config, ... }:
 
 with lib;
+let 
+  cfg = config.features.nixos.boot;
+in
 {
-  options.features.boot = {
+  options.features.nixos.boot = {
     enable = mkEnableOption "Whether to enable boot configurations.";
     configurationLimit = mkOption {
       type = types.int;
@@ -11,10 +14,10 @@ with lib;
     };
   };
 
-  config = mkIf config.features.boot.enable {
+  config = mkIf cfg.enable {
     boot.loader.systemd-boot = {
       enable = true;
-      configurationLimit = 7;
+      configurationLimit = cfg.configurationLimit;
     };
     boot.loader.efi.canTouchEfiVariables = true;  
   };

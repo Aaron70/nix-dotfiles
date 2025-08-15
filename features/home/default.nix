@@ -3,5 +3,5 @@
 {
   imports = myLib.importAll ./. "default.nix";
 
-  options.features.home = {};
+  options.features.nixos = {};
 }

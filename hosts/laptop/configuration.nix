@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  features.boot.enable = true;
+  imports = [ ../nixos.nix ];
 }
