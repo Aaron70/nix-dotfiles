@@ -22,7 +22,6 @@ in
                                                                                                 
   config = mkIf cfg.enable { 
    home.shellAliases = {
-     g = "git";
      lg = "lazygit";
    };
 

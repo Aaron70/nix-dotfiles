@@ -21,7 +21,8 @@ in
                 ../profiles/${profile}/home.nix
                 ../hosts/${host}/home.nix 
 
-                ../modules/home/programs
+                ../features/home
+                ../modules/home
               ];
             };
           };
@@ -29,6 +30,7 @@ in
       })
 
       ../features/nixos
+      ../modules/nixos
 
       ../hosts/${host}/configuration.nix
       ../hosts/${host}/hardware-configuration.nix
