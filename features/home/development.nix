@@ -19,6 +19,7 @@ in
     programs.home.ghostty.enable = true;
 
     # Shells
+    # programs.home.zsh.enable = true;
 
     # Editors
   };

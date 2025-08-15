@@ -6,7 +6,8 @@
   profile.enable = true;
   profile.user.email = "aarongeovanny70@gmail.com";
 
-  profile.withGUI = false;
+  profile.withGUI = true;
 
   profile.terminal.name = "ghostty";
+  profile.shell.name = "zsh";
 }

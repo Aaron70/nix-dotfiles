@@ -8,6 +8,11 @@ with lib; with config;
       experimental-features = [ "nix-command" "flakes" ];
     };
 
+    environment.sessionVariables = {
+      # EDITOR = config.profile.editor.name;
+      SHELL = config.profile.shell.name;
+    };
+
     # ====================|Users|====================
     users.users = {
       "${profile.user.username}" = {

@@ -3,7 +3,6 @@
 with lib;
 let
   packageType = types.submodule {
-    description = "Holds the information of a package like the name, path and command to run it";
     options = {
       display = mkOption { 
         description = "The display name of the package. Not necessarily the name of the command. E.g: Neovim.";
@@ -54,5 +53,10 @@ in
       description = "The default terminal.";
       type = packageType;
     }; 
+
+    shell = mkOption { 
+      description = "The default shell.";
+      type = packageType;
+    };
   }; 
 }
