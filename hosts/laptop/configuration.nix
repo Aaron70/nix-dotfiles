@@ -1,0 +1,5 @@
+{ ... }:
+
+{
+  features.boot.enable = true;
+}

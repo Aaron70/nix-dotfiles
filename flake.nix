@@ -1,55 +1,19 @@
 {
-  description = "Nix dotfiles configurations";
+  description = "Nix dotfiles configuration.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nvf.url = "github:notashelf/nvf";
-
-    rose-pine-hyprcursor = {
-      url = "github:ndom91/rose-pine-hyprcursor";
-      inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.hyprlang.follows = "hyprland/hyprlang";
-    };
-
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    zjstatus = {
-      url = "github:dj95/zjstatus";
-    };
-
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: 
-    let 
-      myLib = import ./libs/sysLib.nix { inherit inputs; };
-    in {  
-      # ====================|NixOS Configurations|====================
-      nixosConfigurations = {
-        aaronv = myLib.mkSystemFor "aaronv";
-        laptop-aaronv = myLib.mkSystemFor "laptop-aaronv";
-        wsl-aaronv = myLib.mkSystemFor "wsl-aaronv";
-      };
-      # ====================|NixOS Configurations|====================
+  outputs = { self, nixpkgs }@inputs: 
+  let 
+    sysLib = import ./libs/syslib.nix inputs;
+  in
+  {
 
-
-      # ====================|Home Manager Configurations|====================
-      homeConfigurations = {
-        aaronv = myLib.mkHomeFor "aaronv" "x86_64-linux";
-        laptop-aaronv = myLib.mkHomeFor "laptop-aaronv" "x86_64-linux";
-        wsl-aaronv = myLib.mkHomeFor "wsl-aaronv" "x86_64-linux";
-      };
-      # ====================|Home Manager Configurations|====================
+    nixosConfigurations = {
+      laptop-aaronv = sysLib.mkNixosFor "laptop";
     };
+
+  };
 }
