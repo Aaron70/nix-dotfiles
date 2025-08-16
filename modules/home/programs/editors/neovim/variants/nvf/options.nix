@@ -1,12 +1,11 @@
 { config, lib, ... } :
 
 let
-  editorsCfg = config.homePrograms.editors; 
-  cfg = editorsCfg.neovim.nvf.options;
+  cfg = config.programs.home.neovim.nvf.options;
 in
   with lib;
 {
-  options.homePrograms.editors.neovim.nvf.options = {
+  options.programs.home.neovim.nvf.options = {
     enable = mkEnableOption "Whether to enable the custom options";
   };
 

@@ -1,12 +1,12 @@
 { config, lib, ... } :
 
 let
-  editorsCfg = config.homePrograms.editors; 
-  cfg = editorsCfg.neovim.nvf.languages;
+  cfg = config.programs.home.neovim.nvf.languages;
 in
   with lib;
 {
-  options.homePrograms.editors.neovim.nvf.languages = {
+
+  options.programs.home.neovim.nvf.languages = {
     enable = mkEnableOption "Whether to enable the configurations for the supported languages";
   };
 

@@ -1,12 +1,11 @@
 { config, lib, ... } :
 
 let
-  editorsCfg = config.homePrograms.editors; 
-  cfg = editorsCfg.neovim.nvf.keymaps;
+  cfg = config.programs.home.neovim.nvf.keymaps;
 in
   with lib;
 {
-  options.homePrograms.editors.neovim.nvf.keymaps = {
+  options.programs.home.neovim.nvf.keymaps = {
     enable = mkEnableOption "Whether to enable the custom Keymaps";
   };
 

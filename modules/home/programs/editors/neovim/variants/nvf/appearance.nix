@@ -1,12 +1,11 @@
 { config, lib, ... } :
 
 let
-  editorsCfg = config.homePrograms.editors; 
-  cfg = editorsCfg.neovim.nvf.appearance;
+  cfg = config.programs.home.neovim.nvf.appearance;
 in
   with lib;
 {
-  options.homePrograms.editors.neovim.nvf.appearance = {
+  options.programs.home.neovim.nvf.appearance = {
     enable = mkEnableOption "Whether to enable the configurations to change the appearance and visual behaviors";
   };
 

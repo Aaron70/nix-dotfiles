@@ -25,5 +25,9 @@ in
 
     # Editors
     programs.home.neovim.enable = mkDefault true;
+
+    # Languages
+    programs.home.go.enable = true;
+    programs.home.java.enable = true;
   };
 }

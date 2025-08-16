@@ -9,12 +9,12 @@ in
 
   config = mkIf (cfg.enable && cfg.variant == "nvf") {
     programs.nvf.enable = true;
-    homePrograms.editors.neovim.nvf = {
+    homePrograms.editors.neovim.nvf.plugins.enable = true; #TODO: Refactor to remove this options
+    programs.home.neovim.nvf = {
       keymaps.enable = true;
       options.enable = true;
       appearance.enable = true;
       languages.enable = true;
-      plugins.enable = true;
     };
   };
 }
