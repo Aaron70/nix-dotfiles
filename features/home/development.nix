@@ -21,6 +21,7 @@ in
     # Shells
     programs.home.zsh.enable = true;
     programs.home.oh-my-posh.enable = true;
+    programs.home.tmux.enable = true;
 
     # Editors
   };

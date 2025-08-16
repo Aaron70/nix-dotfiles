@@ -29,7 +29,7 @@ in
         # auto-suggestions
         bindkey '^Y' autosuggest-accept
 
-        start-session
+        ${if config.programs.tmux.enable then "start-session" else ""}
       '';
 
       oh-my-zsh = {
