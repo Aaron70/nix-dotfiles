@@ -12,17 +12,18 @@ in
 
   config = mkIf cfg.enable {
     # Git, Gh, Lazygit
-    programs.home.git.enable = true;
-    programs.home.git.integrations = true;
+    programs.home.git.enable = mkDefault true;
+    programs.home.git.integrations = mkDefault true;
 
     # Terminals
-    programs.home.ghostty.enable = true;
+    programs.home.ghostty.enable = mkDefault true;
 
     # Shells
-    programs.home.zsh.enable = true;
-    programs.home.oh-my-posh.enable = true;
-    programs.home.tmux.enable = true;
+    programs.home.zsh.enable = mkDefault true;
+    programs.home.oh-my-posh.enable = mkDefault true;
+    programs.home.tmux.enable = mkDefault true;
 
     # Editors
+    programs.home.neovim.enable = mkDefault true;
   };
 }

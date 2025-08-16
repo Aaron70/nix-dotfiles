@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, stylix, ... }:
+{ nixpkgs, home-manager, stylix, nvf, ... }:
 
 let
   myLib = import ./mylib.nix;
@@ -19,6 +19,7 @@ in
             extraSpecialArgs = { inherit myLib; };
             users."${config.profile.user.username}" = {...}: {
               imports = [ 
+                nvf.homeManagerModules.default
                 ../profiles/${profile}/home.nix
                 ../hosts/${host}/home.nix 
 
