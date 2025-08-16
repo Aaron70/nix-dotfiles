@@ -25,7 +25,11 @@ in
     profile.user.fullname = mkDefault "Aaron Vargas";
     profile.user.username = mkDefault "aaronv";
 
-    profile.version = "24.11";
+    profile.devices.mouse.sensitivity = 0.0;
+    profile.devices.touchpad.scrollFactor = 0.5;
+    profile.devices.touchpad.naturalScroll = true;
+
+    profile.version = mkDefault "24.11";
   };
 
   options.profile = {
@@ -33,10 +37,13 @@ in
 
     withGUI = mkEnableOption "Whether to enable programs, services or configurations that required GUI.";
 
-    version = mkOption {
-      description = "The version of the Nix channels.";
-      type = types.str;
-    };
+    version = mkOption { description = "The version of the Nix channels."; type = types.str; };
+
+    terminal = mkOption { description = "The default terminal."; type = packageType; }; 
+
+    shell = mkOption { description = "The default shell."; type = packageType; };
+
+    browser = mkOption { description = "The default browser."; type = packageType; };
 
     user = mkOption {
       description = "The main user of the profile.";
@@ -49,14 +56,14 @@ in
       };
     };
 
-    terminal = mkOption { 
-      description = "The default terminal.";
-      type = packageType;
-    }; 
-
-    shell = mkOption { 
-      description = "The default shell.";
-      type = packageType;
+    devices = mkOption {
+      type = types.submodule {
+        options = {
+          mouse.sensitivity = mkOption { type = types.float; description = "The sensitivity applied to the mouse."; };
+          touchpad.scrollFactor = mkOption { type = types.float; description = "The multiplier applied to the amount of scroll movement"; };
+          touchpad.naturalScroll = mkOption { type = types.bool; description = "Whether to enable natural scroll."; };
+        };
+      };
     };
   }; 
 }

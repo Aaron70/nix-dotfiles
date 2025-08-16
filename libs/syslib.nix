@@ -5,7 +5,7 @@ let
 in
 {
   mkNixosFor = profile: host: system: nixpkgs.lib.nixosSystem {
-    specialArgs = { inherit myLib; };
+    specialArgs = { inherit myLib inputs; };
     modules =  [ 
       inputs.home-manager.nixosModules.home-manager
       inputs.stylix.nixosModules.stylix 

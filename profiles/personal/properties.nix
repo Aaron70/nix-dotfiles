@@ -11,4 +11,6 @@
   profile.terminal.name = "ghostty";
   profile.shell.name = "zsh";
   profile.shell.path = "${pkgs.zsh}/bin/zsh";
+
+  profile.browser.name = "zen";
 }
