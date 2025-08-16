@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, stylix, nvf, ... }:
+{ nixpkgs, ... }@inputs:
 
 let
   myLib = import ./mylib.nix;
@@ -7,8 +7,8 @@ in
   mkNixosFor = profile: host: system: nixpkgs.lib.nixosSystem {
     specialArgs = { inherit myLib; };
     modules =  [ 
-      home-manager.nixosModules.home-manager
-      stylix.nixosModules.stylix 
+      inputs.home-manager.nixosModules.home-manager
+      inputs.stylix.nixosModules.stylix 
       { nixpkgs.overlays = [ ]; }
       ({ config, ... }: {
         config = {
@@ -19,7 +19,8 @@ in
             extraSpecialArgs = { inherit myLib; };
             users."${config.profile.user.username}" = {...}: {
               imports = [ 
-                nvf.homeManagerModules.default
+                inputs.zen-browser.homeModules.beta
+                inputs.nvf.homeManagerModules.default
                 ../profiles/${profile}/home.nix
                 ../hosts/${host}/home.nix 
 
