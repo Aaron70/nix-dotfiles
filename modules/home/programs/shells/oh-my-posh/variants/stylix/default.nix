@@ -9,12 +9,12 @@ in
 
   config = mkIf (cfg.enable && cfg.variant == "stylix") {
 
-    assertions = [
-      {
-        assertion = config.services.home ? stylix && config.services.home.stylix.enable;
-        message = "This oh-my-posh variant requires stylix to be enabled.";
-      }
-    ];
+    # assertions = [
+    #   {
+    #     assertion = config.services.home ? stylix && config.services.home.stylix.enable;
+    #     message = "This oh-my-posh variant requires stylix to be enabled.";
+    #   }
+    # ];
 
     programs.oh-my-posh = {
       enable = true;

@@ -31,6 +31,9 @@ in
       ntest = "sudo nixos-rebuild test";
     };
 
+    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.allowBroken = true;
+
     programs.home-manager.enable = true;
     home.stateVersion = profile.version;
   };

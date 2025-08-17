@@ -30,7 +30,14 @@
     nixosConfigurations = {
       aaronv = sysLib.mkNixosFor "personal" "pc";
       laptop-aaronv = sysLib.mkNixosFor "personal" "laptop";
+      wsl-aaronv = sysLib.mkNixosFor "personal" "wsl";
     };
     # ====================|NixOS Configurations|====================
+
+    # ====================|Home Manager Configurations|====================
+    homeConfigurations = {
+      aaronv = sysLib.mkHomeFor "personal" "wsl" "x86_64-linux";
+    };
+    # ====================|Home Manager Configurations|====================
   };
 }

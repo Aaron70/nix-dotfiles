@@ -2,9 +2,24 @@
 
 let
   myLib = import ./mylib.nix;
+  homeManagerFor =  profile: host: {
+    modules = [ 
+      inputs.zen-browser.homeModules.beta
+      inputs.nvf.homeManagerModules.default
+      ../profiles/${profile}/home.nix
+      ../hosts/${host}/home.nix 
+
+      ../features/home
+      ../modules/home
+    ];
+  };
 in
 {
-  mkNixosFor = profile: host: nixpkgs.lib.nixosSystem {
+  mkNixosFor = profile: host: 
+  let 
+    homeManager = homeManagerFor profile host;
+  in 
+  nixpkgs.lib.nixosSystem {
     specialArgs = { inherit myLib inputs; };
     modules =  [ 
       inputs.home-manager.nixosModules.home-manager
@@ -18,16 +33,7 @@ in
             useUserPackages = true;
             extraSpecialArgs = { inherit myLib; };
             users."${config.profile.user.username}" = {...}: {
-              imports = [ 
-                # inputs.stylix.homeModules.stylix 
-                inputs.zen-browser.homeModules.beta
-                inputs.nvf.homeManagerModules.default
-                ../profiles/${profile}/home.nix
-                ../hosts/${host}/home.nix 
-
-                ../features/home
-                ../modules/home
-              ];
+              imports = homeManager.modules;
             };
           };
         };
@@ -42,4 +48,17 @@ in
       ../profiles/${profile}/nixos.nix
     ];
   };
+
+  mkHomeFor = profile: host: system: 
+    let 
+      homeManager = homeManagerFor profile host;
+    in
+    inputs.home-manager.lib.homeManagerConfiguration {
+      pkgs = import inputs.nixpkgs { inherit system; };
+      extraSpecialArgs = { inherit myLib; };
+      modules = [ 
+        { nixpkgs.overlays = [ ]; }
+        inputs.stylix.homeModules.stylix 
+      ] ++ homeManager.modules;
+    };
 }
