@@ -2,7 +2,7 @@
 
 let
   myLib = import ./mylib.nix;
-  homeManagerFor =  profile: host: {
+  homeManagerFor =  profile: host: rec {
     modules = [ 
       inputs.zen-browser.homeModules.beta
       inputs.nvf.homeManagerModules.default
@@ -12,42 +12,44 @@ let
       ../features/home
       ../modules/home
     ];
+
+    configModule = ({ config, ... }: {
+      config = {
+        home-manager = {
+          backupFileExtension = "bck";
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = { inherit myLib; };
+          users."${config.profile.user.username}" = {...}: {
+            imports = modules;
+          };
+        };
+      };
+    });
   };
 in
 {
   mkNixosFor = profile: host: 
-  let 
-    homeManager = homeManagerFor profile host;
-  in 
-  nixpkgs.lib.nixosSystem {
-    specialArgs = { inherit myLib inputs; };
-    modules =  [ 
-      inputs.home-manager.nixosModules.home-manager
-      inputs.stylix.nixosModules.stylix 
-      { nixpkgs.overlays = [ ]; }
-      ({ config, ... }: {
-        config = {
-          home-manager = {
-            backupFileExtension = "bck";
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = { inherit myLib; };
-            users."${config.profile.user.username}" = {...}: {
-              imports = homeManager.modules;
-            };
-          };
-        };
-      })
+    let 
+      homeManager = homeManagerFor profile host;
+    in 
+    nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit myLib inputs; };
+      modules =  [ 
+        inputs.home-manager.nixosModules.home-manager
+        inputs.stylix.nixosModules.stylix 
+        { nixpkgs.overlays = [ ]; }
+        homeManager.configModule
 
-      ../features/nixos
-      ../modules/nixos
+        ../features/nixos
+        ../modules/nixos
 
-      ../hosts/${host}/configuration.nix
-      ../hosts/${host}/hardware-configuration.nix
+        ../hosts/${host}/configuration.nix
+        ../hosts/${host}/hardware-configuration.nix
 
-      ../profiles/${profile}/nixos.nix
-    ];
-  };
+        ../profiles/${profile}/nixos.nix
+      ];
+    };
 
   mkHomeFor = profile: host: system: 
     let 
@@ -60,5 +62,22 @@ in
         { nixpkgs.overlays = [ ]; }
         inputs.stylix.homeModules.stylix 
       ] ++ homeManager.modules;
+    };
+
+  mkDarwinFor = profile: host: system: 
+    let 
+      homeManager = homeManagerFor profile host;
+    in 
+    inputs.nix-darwin.lib.darwinSystem {
+      system = system;
+      specialArgs = { inherit myLib inputs; };
+      modules = [ 
+        inputs.home-manager.darwinModules.home-manager
+        inputs.stylix.darwinModules.stylix
+        homeManager.configModule
+
+        ../hosts/${host}/configuration.nix
+        ../profiles/${profile}/darwin.nix
+      ];
     };
 }

@@ -27,10 +27,10 @@ in
     programs.home.neovim.enable = mkDefault true;
 
     # Languages
-    programs.home.go.enable = true;
-    programs.home.java.enable = true;
+    programs.home.go.enable = mkDefault true;
+    programs.home.java.enable = mkDefault true;
 
     # Tools
-    programs.home.lazydocker.enable = true;
+    programs.home.lazydocker.enable = mkDefault true;
   };
 }

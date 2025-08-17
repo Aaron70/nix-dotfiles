@@ -19,6 +19,11 @@ in
       type = types.str;
       default = "";
     };
+    prefix = mkOption {
+      description = "The name of the variant to use its configuration.";
+      type = types.str;
+      default = "C-space";
+    };
   };
 
   config = mkIf cfg.enable  {

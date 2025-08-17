@@ -10,7 +10,7 @@ in
     enable = mkEnableOption "Whether to enable the Zsh terminal.";
   };
 
-  config = mkIf (cfg.enable || profile.shell.name == "zsh") {
+  config = mkIf cfg.enable {
     programs.zsh =  {
       enable = true;
       enableCompletion = true;

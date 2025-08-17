@@ -15,7 +15,7 @@ in
       baseIndex = 1;
       shell = config.profile.shell.path; 
       keyMode = "vi";
-      prefix = "C-space";
+      prefix = cfg.prefix;
       plugins = [
         # pkgs.tmuxPlugins.tmux-floax
         pkgs.tmuxPlugins.sensible

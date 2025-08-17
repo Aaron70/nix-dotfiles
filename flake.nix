@@ -2,10 +2,13 @@
   description = "Nix dotfiles configuration.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     home-manager.url = "github:nix-community/home-manager"; 
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nvf.url = "github:NotAShelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
@@ -21,7 +24,7 @@
     # rose-pine-hyprcursor.inputs.hyprlang.follows = "hyprland/hyprlang"; # BUG: wrong flake, looks like it doesn't exists
   };
 
-  outputs = { ... }@inputs: 
+  outputs = { self, ... }@inputs: 
   let 
     sysLib = import ./libs/syslib.nix inputs;
   in
@@ -34,10 +37,16 @@
     };
     # ====================|NixOS Configurations|====================
 
-    # ====================|Home Manager Configurations|====================
+    # ================|Home Manager Configurations|=================
     homeConfigurations = {
       aaronv = sysLib.mkHomeFor "personal" "wsl" "x86_64-linux";
     };
-    # ====================|Home Manager Configurations|====================
+    # ================|Home Manager Configurations|=================
+
+    # ====================|Darwin Configurations|===================
+    darwinConfigurations = {
+      aaronv-work = sysLib.mkDarwinFor "work" "macPro" "aarch64-darwin";
+    };
+    # ====================|Darwin Configurations|===================
   };
 }

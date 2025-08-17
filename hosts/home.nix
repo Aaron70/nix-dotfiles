@@ -16,10 +16,7 @@ in
 
     home.packages = with pkgs; [
       spotify
-      upower
-      htop
       bat
-      wl-clipboard
       #Fonts 
       nerd-fonts.jetbrains-mono
       openmoji-color

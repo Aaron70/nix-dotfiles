@@ -13,7 +13,7 @@ in
       baseIndex = 1;
       shell = config.profile.shell.path; 
       keyMode = "vi";
-      prefix = "C-space";
+      prefix = cfg.prefix;
       plugins = [
         # pkgs.tmuxPlugins.tmux-floax
         pkgs.tmuxPlugins.sensible
@@ -41,6 +41,9 @@ in
 
         # tmux-floax
         set -g @floax-change-path 'true'
+
+        
+        set-option -g default-command "${config.profile.shell.path}" # Fix tmux opening sh on MacOS
       '';
     };
   };

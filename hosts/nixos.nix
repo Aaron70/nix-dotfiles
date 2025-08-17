@@ -26,7 +26,7 @@ with lib; with config;
 
     # ====================|Packages|====================
     nixpkgs.config.allowUnfree = true;
-    nixpkgs.config.allowBroken = true;
+    nixpkgs.config.allowBroken = false;
     # ====================|Packages|====================
 
     # ====================|Services, Display Managers and DE|====================

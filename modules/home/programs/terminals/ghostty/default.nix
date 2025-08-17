@@ -10,7 +10,7 @@ in
     enable = mkEnableOption "Whether to enable the Ghostty terminal.";
   };
 
-  config = mkIf (profile.withGUI && (cfg.enable || profile.terminal.name == "ghostty")) {
+  config = mkIf (profile.withGUI && cfg.enable) {
     programs.ghostty = {
       enable = true;
       enableZshIntegration = config.programs.zsh.enable;
