@@ -25,7 +25,7 @@ in
     profile.user.fullname = mkDefault "Aaron Vargas";
     profile.user.username = mkDefault "aaronv";
 
-    profile.devices.mouse.sensitivity = 0.0;
+    profile.devices.mouse.sensitivity = 0.3;
     profile.devices.touchpad.scrollFactor = 0.5;
     profile.devices.touchpad.naturalScroll = true;
 
