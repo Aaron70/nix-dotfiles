@@ -1,9 +1,12 @@
-{ ... }:
+{ config, ... }:
 
+let
+  profile = config.profile;
+in
 {
   imports = [ ./properties.nix ];
 
-  features.home.development.enable = true;
+  features.home.development.enable = profile.variables.development;
 
   programs.home.zen.enable = true;
 

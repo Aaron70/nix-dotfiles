@@ -45,6 +45,8 @@ in
 
     browser = mkOption { description = "The default browser."; type = packageType; };
 
+    variables = mkOption { description = "A map with variables to share between the home profile and nixos profile.";  type = types.attrs; default = {}; };
+
     user = mkOption {
       description = "The main user of the profile.";
       type = types.submodule {

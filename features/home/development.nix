@@ -29,5 +29,8 @@ in
     # Languages
     programs.home.go.enable = true;
     programs.home.java.enable = true;
+
+    # Tools
+    programs.home.lazydocker.enable = true;
   };
 }

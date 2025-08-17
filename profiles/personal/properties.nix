@@ -13,4 +13,9 @@
   profile.shell.path = "${pkgs.zsh}/bin/zsh";
 
   profile.browser.name = "zen";
+
+
+  profile.variables = {
+    development = true;
+  };
 }
