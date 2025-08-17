@@ -9,11 +9,15 @@ in
     home.homeDirectory = "/home/${profile.user.username}";
 
     home.sessionVariables = {
-      # EDITOR = config.profile.editor.name;
+      EDITOR = config.profile.editor.name;
       SHELL = config.profile.shell.name;
+      CD_FZF_EXTRA_PATHS="$HOME/personal:2";
     };
 
     home.packages = with pkgs; [
+      spotify
+      upower
+      htop
       bat
       wl-clipboard
       #Fonts 

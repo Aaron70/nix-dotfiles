@@ -12,6 +12,8 @@
   profile.shell.name = "zsh";
   profile.shell.path = "${pkgs.zsh}/bin/zsh";
 
+  profile.editor.name = "nvim";
+
   profile.browser.name = "zen";
 
 
