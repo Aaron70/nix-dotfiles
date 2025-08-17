@@ -3,5 +3,5 @@
 {
   imports = [ ../nixos.nix ];
 
-  # source-persisted-configs.enable = true; 
+  source-persisted-configs.enable = true; 
 }

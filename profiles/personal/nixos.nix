@@ -8,6 +8,7 @@ in
 
   features.nixos.development.enable = profile.variables.development;
 
+  features.nixos.bluetooth.enable = true;
   features.nixos.boot.enable = true;
   features.nixos.boot.configurationLimit = 7;
 
