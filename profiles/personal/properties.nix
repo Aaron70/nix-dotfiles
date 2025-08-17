@@ -17,5 +17,6 @@
 
   profile.variables = {
     development = true;
+    stylix = true;
   };
 }

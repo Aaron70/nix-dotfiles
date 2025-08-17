@@ -19,6 +19,7 @@ in
             extraSpecialArgs = { inherit myLib; };
             users."${config.profile.user.username}" = {...}: {
               imports = [ 
+                # inputs.stylix.homeModules.stylix 
                 inputs.zen-browser.homeModules.beta
                 inputs.nvf.homeManagerModules.default
                 ../profiles/${profile}/home.nix
