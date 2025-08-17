@@ -26,10 +26,11 @@
     sysLib = import ./libs/syslib.nix inputs;
   in
   {
-
+    # ====================|NixOS Configurations|====================
     nixosConfigurations = {
-      laptop-aaronv = sysLib.mkNixosFor "personal" "laptop" "TODO: Change this for the actual system";
+      aaronv = sysLib.mkNixosFor "personal" "pc";
+      laptop-aaronv = sysLib.mkNixosFor "personal" "laptop";
     };
-
+    # ====================|NixOS Configurations|====================
   };
 }

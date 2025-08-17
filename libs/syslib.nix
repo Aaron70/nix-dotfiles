@@ -4,7 +4,7 @@ let
   myLib = import ./mylib.nix;
 in
 {
-  mkNixosFor = profile: host: system: nixpkgs.lib.nixosSystem {
+  mkNixosFor = profile: host: nixpkgs.lib.nixosSystem {
     specialArgs = { inherit myLib inputs; };
     modules =  [ 
       inputs.home-manager.nixosModules.home-manager
