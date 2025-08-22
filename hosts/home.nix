@@ -11,7 +11,6 @@ in
     home.sessionVariables = {
       EDITOR = config.profile.editor.name;
       SHELL = config.profile.shell.name;
-      CD_FZF_EXTRA_PATHS="$HOME/personal:2";
     };
 
     home.packages = with pkgs; [
@@ -24,8 +23,6 @@ in
 
     home.shellAliases = {
       cat = "bat";
-      nswitch = "sudo nixos-rebuild switch";
-      ntest = "sudo nixos-rebuild test";
     };
 
     nixpkgs.config.allowUnfree = true;

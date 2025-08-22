@@ -7,4 +7,9 @@
     htop
     wl-clipboard
   ];
+
+  home.shellAliases = {
+    nswitch = "sudo nixos-rebuild switch --flake ~/nix-dotfiles#laptop-aaronv";
+    ntest = "sudo nixos-rebuild test --flake ~/nix-dotfiles#laptop-aaronv";
+  };
 }

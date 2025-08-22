@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
 with lib; with config;
 {
@@ -11,7 +11,10 @@ with lib; with config;
     environment.sessionVariables = {
       # EDITOR = config.profile.editor.name;
       SHELL = config.profile.shell.name;
+
     };
+
+    environment.shellAliases = {};
 
     # ====================|Users|====================
     users.users = {
