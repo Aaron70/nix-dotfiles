@@ -77,7 +77,7 @@ with lib; with config;
     # ====================|Time & Location|====================
 
     # ====================|Hardware|====================
-    services.xserver.videoDrivers = [ "nvidia" ];
+    services.xserver.videoDrivers = [ "nvidia" ]; # TODO: Probably we should refactor this if you get an amd: driver -> "amdgpu"
     hardware = {
       graphics.enable = true;
       nvidia = {

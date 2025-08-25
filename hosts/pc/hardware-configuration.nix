@@ -18,6 +18,12 @@
       fsType = "ext4";
     };
 
+  # Mount for windows partition
+  fileSystems."/home/aaronv/windows" =
+    { device = "/dev/disk/by-uuid/66B0958CB09562FB";
+      fsType = "ntfs";
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/F494-F2B3";
       fsType = "vfat";

@@ -4,7 +4,7 @@
   config = {
     wayland.windowManager.hyprland.settings = {
 
-      "$monitor1" = "HDMI-A-2";
+      "$monitor1" = "DP-5";
       "$monitor2" = "HDMI-A-1";
       "$monitor3" = "eDP-1";
 
