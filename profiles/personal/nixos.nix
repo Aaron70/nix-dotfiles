@@ -6,6 +6,8 @@ in
 {
   imports = [ ./properties.nix ];
 
+  features.nixos.gaming.enable = true;
+
   features.nixos.development.enable = profile.variables.development;
 
   features.nixos.bluetooth.enable = true;
