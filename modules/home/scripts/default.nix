@@ -7,6 +7,7 @@
     imgcat
     chafa
     ripgrep
+    fd
     (writeShellScriptBin "select-fzf" (lib.readFile ./select-fzf.sh))
     (writeShellScriptBin "select-fzf-path" (lib.readFile ./select-fzf-path.sh))
     (writeShellScriptBin "custom-fzf-preview" (lib.readFile ./custom-fzf-preview.sh))

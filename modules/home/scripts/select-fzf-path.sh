@@ -25,7 +25,7 @@ find_paths() {
       path="$entry"
     fi
   
-    [[ -e "$path" ]] && find "$path" -maxdepth "${depth:-1}" -path '*/.git' -prune -o -type "$type" -print 2>/dev/null
+    [[ -e "$path" ]] && fd . "$path" --max-depth "${depth:-1}" --type "$type" #2>/dev/null
   done
 }
 
