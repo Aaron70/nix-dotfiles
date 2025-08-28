@@ -7,6 +7,7 @@ in
   imports = [ ./properties.nix ];
 
   features.home.development.enable = profile.variables.development;
+  programs.home.ags.enable = true;
 
   programs.home.zen.enable = true;
 

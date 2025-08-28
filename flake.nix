@@ -22,6 +22,9 @@
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     rose-pine-hyprcursor.inputs.nixpkgs.follows = "nixpkgs";
     # rose-pine-hyprcursor.inputs.hyprlang.follows = "hyprland/hyprlang"; # BUG: wrong flake, looks like it doesn't exists
+
+    astal.url = "github:aylur/astal";
+    ags.url = "github:aylur/ags";
   };
 
   outputs = { self, ... }@inputs: 

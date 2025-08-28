@@ -3,9 +3,14 @@
 let
   myLib = import ./mylib.nix;
   homeManagerFor =  profile: host: rec {
+
+    specialArgs = { inherit myLib inputs; };
+
     modules = [ 
       inputs.zen-browser.homeModules.beta
       inputs.nvf.homeManagerModules.default
+      inputs.ags.homeManagerModules.default
+
       ../profiles/${profile}/home.nix
       ../hosts/${host}/home.nix 
 
@@ -13,13 +18,13 @@ let
       ../modules/home
     ];
 
-    configModule = ({ config, ... }: {
+    configModule = ({ config, inputs, ... }: {
       config = {
         home-manager = {
           backupFileExtension = "bck";
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = { inherit myLib; };
+          extraSpecialArgs = specialArgs;
           users."${config.profile.user.username}" = {...}: {
             imports = modules;
           };
@@ -57,7 +62,7 @@ in
     in
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = import inputs.nixpkgs { inherit system; };
-      extraSpecialArgs = { inherit myLib; };
+      extraSpecialArgs = homeManager.specialArgs;
       modules = [ 
         { nixpkgs.overlays = [ ]; }
         inputs.stylix.homeModules.stylix 
