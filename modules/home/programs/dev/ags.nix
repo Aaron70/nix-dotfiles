@@ -10,7 +10,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = [inputs.astal.packages.${system}.default];
+    home.packages = [inputs.astal.packages.${pkgs.system}.default];
     programs.ags = {
       enable = true;
 
