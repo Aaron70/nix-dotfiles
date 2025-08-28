@@ -29,6 +29,7 @@ in
     # Languages
     programs.home.go.enable = mkDefault true;
     programs.home.java.enable = mkDefault true;
+    programs.home.javascript.enable = mkDefault true;
 
     # Tools
     programs.home.lazydocker.enable = mkDefault true;
