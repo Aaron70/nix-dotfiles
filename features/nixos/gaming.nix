@@ -13,5 +13,6 @@ in
   config = mkIf cfg.enable {
     services.nixos.opengl.enable = true;
     programs.nixos.steam.enable = true;
+    programs.nixos.discord.enable = true;
   };
 }
