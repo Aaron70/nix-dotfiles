@@ -18,7 +18,7 @@ in
   services.home.stylix.enable = profile.variables.stylix;
   programs.home.oh-my-posh.variant = "stylix";
   programs.home.tmux.variant = "stylix";
-  programs.home.tmux.extraSearchPaths = "~/personal/dev:3";
+  programs.home.tmux.extraSearchPaths = "~/personal/dev:3 ~/personal/repos";
 
   home.sessionVariables = {
     CD_FZF_EXTRA_PATHS="${config.home.homeDirectory}/personal:5";

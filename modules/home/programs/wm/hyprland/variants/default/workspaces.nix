@@ -43,8 +43,8 @@ in {
         # Move active window to favorite workspaces
         "$mod SHIFT, U, movetoworkspace, ${codingWS}"
         "$mod SHIFT, I, movetoworkspace, ${webWS}"
-        "$mod SHIFT, O, movetoworkspace, ${mediaWS}"
-        "$mod SHIFT, P, movetoworkspace, ${extraWS}"
+        "$mod SHIFT, O, movetoworkspace, ${extraWS}"
+        "$mod SHIFT, P, movetoworkspace, ${mediaWS}"
 
         # Move active window to numerical workspaces
         "$mod, 1, movetoworkspace, 1"
