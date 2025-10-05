@@ -12,6 +12,7 @@
     (writeShellScriptBin "select-fzf-path" (lib.readFile ./select-fzf-path.sh))
     (writeShellScriptBin "custom-fzf-preview" (lib.readFile ./custom-fzf-preview.sh))
     (writeShellScriptBin "cdfzf" (lib.readFile ./cdfzf.sh))
+    (writeShellScriptBin "nvim-focus" (lib.readFile ./nvim-focus.sh))
   ];
 
   home.shellAliases = {

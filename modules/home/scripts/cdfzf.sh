@@ -5,7 +5,7 @@ elif [[ $# -eq 1 && "$1" == "-f" ]]; then
 elif [[ $# -eq 1 && ("$1" == "-" || "$1" == "." || "$1" == "..") ]]; then
   selected_path="$*"
 else
-  if output=$( zoxide query "$@" 2>/dev/null); then
+  if [ ! -e "$*" ] && output=$( zoxide query "$@" 2>/dev/null); then
     selected_path="$output"
   else
     selected_path="$*"
