@@ -20,5 +20,6 @@
   profile.variables = {
     development = true;
     stylix = true;
+    spotify = true;
   };
 }

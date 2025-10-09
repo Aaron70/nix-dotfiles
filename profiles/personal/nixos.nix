@@ -18,5 +18,7 @@ in
 
   programs.nixos.hyprland.enable = true;
 
+  services.nixos.spotify.enable = profile.variables.spotify;
+
   services.nixos.stylix.enable = profile.variables.stylix;
 }

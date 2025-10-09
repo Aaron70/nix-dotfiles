@@ -26,7 +26,7 @@ in
     profile.user.username = mkDefault "aaronv";
 
     profile.devices.mouse.sensitivity = -0.7;
-    profile.devices.touchpad.scrollFactor = 0.1;
+    profile.devices.touchpad.scrollFactor = 0.3;
     profile.devices.touchpad.naturalScroll = true;
 
     profile.version = mkDefault "24.11";

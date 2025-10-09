@@ -21,6 +21,8 @@ in
   programs.home.tmux.variant = "stylix";
   programs.home.tmux.extraSearchPaths = "~/personal/dev:3 ~/personal/repos";
 
+  programs.home.spotify.enable = profile.variables.spotify;
+
   home.sessionVariables = {
     CD_FZF_EXTRA_PATHS="${config.home.homeDirectory}/personal:5";
   };
