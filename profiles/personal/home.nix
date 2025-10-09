@@ -14,6 +14,7 @@ in
   programs.home.hyprland.enable = true;
   programs.home.waybar.enable = true;
   programs.home.wofi.enable = true;
+  programs.home.neovim.variant = "neovim";
 
   services.home.stylix.enable = profile.variables.stylix;
   programs.home.oh-my-posh.variant = "stylix";
