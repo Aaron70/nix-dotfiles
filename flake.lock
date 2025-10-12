@@ -331,6 +331,21 @@
         "type": "github"
       }
     },
+    "nixCats": {
+      "locked": {
+        "lastModified": 1759730516,
+        "narHash": "sha256-AzHKcP3v/CXnjXWqC18zB9uJ33Qe9gZBFFLXkNvK3WY=",
+        "owner": "BirdeeHub",
+        "repo": "nixCats-nvim",
+        "rev": "c7be94d69a52b3b11e76e1ef82db88a2222144c6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BirdeeHub",
+        "repo": "nixCats-nvim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1754214453,
@@ -380,6 +395,22 @@
       }
     },
     "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1759632233,
+        "narHash": "sha256-krgZxGAIIIKFJS+UB0l8do3sYUDWJc75M72tepmVMzE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d7f52a7a640bc54c7bb414cca603835bf8dd4b10",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1752480373,
         "narHash": "sha256-JHQbm+OcGp32wAsXTE/FLYGNpb+4GLi5oTvCxwSoBOA=",
@@ -444,6 +475,25 @@
         "type": "github"
       }
     },
+    "nvim": {
+      "inputs": {
+        "nixCats": "nixCats",
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1760216790,
+        "narHash": "sha256-67TITrxDjJLVFBnWzHzxYB/l7kP9TaRadaayiJw4ZEY=",
+        "owner": "aaron70",
+        "repo": "nvim",
+        "rev": "d7721e868aeba50c42100f2ed1af3e4075ffe405",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aaron70",
+        "repo": "nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "ags": "ags",
@@ -452,6 +502,7 @@
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_3",
         "nvf": "nvf",
+        "nvim": "nvim",
         "rose-pine-hyprcursor": "rose-pine-hyprcursor",
         "stylix": "stylix",
         "zen-browser": "zen-browser"
@@ -675,7 +726,7 @@
     "zen-browser": {
       "inputs": {
         "home-manager": "home-manager_2",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1755401178,

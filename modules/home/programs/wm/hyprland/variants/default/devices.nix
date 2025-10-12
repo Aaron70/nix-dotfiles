@@ -21,6 +21,7 @@
       ];
 
       input = {
+        follow_mouse = 2;
         touchpad = {
           natural_scroll = config.profile.devices.touchpad.naturalScroll;
           scroll_factor = config.profile.devices.touchpad.scrollFactor;
