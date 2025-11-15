@@ -11,5 +11,13 @@ in
 
   config = mkIf cfg.enable {
     programs.go.enable = true;
+
+    home.packages = [
+      pkgs.goperf
+    ];
+
+    home.sessionVariables = {
+      PATH = "~/go/bin:$PATH";
+    };
   };
 }
