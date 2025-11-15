@@ -11,7 +11,6 @@ in
     home.sessionVariables = {
       EDITOR = config.profile.editor.name;
       SHELL = config.profile.shell.name;
-      CGO_ENABLED = 1;
     };
 
     home.packages = with pkgs; [

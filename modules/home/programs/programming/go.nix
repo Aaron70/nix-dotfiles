@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
 with lib;
 let 
@@ -18,6 +18,7 @@ in
 
     home.sessionVariables = {
       PATH = "~/go/bin:$PATH";
+      CGO_ENABLED = 1;
     };
   };
 }
