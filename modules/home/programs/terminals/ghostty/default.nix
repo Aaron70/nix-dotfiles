@@ -14,6 +14,7 @@ in
     programs.ghostty = {
       enable = true;
       enableZshIntegration = config.programs.zsh.enable;
+      installVimSyntax = true;
 
       settings = {
         command = config.profile.shell.name;

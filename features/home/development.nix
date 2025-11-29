@@ -33,5 +33,8 @@ in
 
     # Tools
     programs.home.lazydocker.enable = mkDefault true;
+
+    # Cloud
+    programs.home.gcp.enable = mkDefault true;
   };
 }
