@@ -26,10 +26,10 @@ with lib;
         scroller_proportion_preset=0.5,0.8,1.0
         bind=ALT,b,switch_proportion_preset,
 
-        # ------------------------------------------|Montiro Rules|------------------------------------------
-        # Monitor Rules
-        monitorrule=DP-4,0.55,1,scroller,0,1,0,0,1920,1080,143.98
-        monitorrule=HDMI-A-2,0.55,1,scroller,0,1,-2560,0,2560,1440,74.93
+        # ------------------------------------------|Monitor Rules|------------------------------------------
+        windowrule=isfullscreen:1,title:.*Zen.*
+        windowrule=isfullscreen:1,title:firefox
+        # windowrule=isfloating:1,appid:ghostty
 
         # ------------------------------------------|Key Bindings|------------------------------------------
         # reload config
@@ -69,10 +69,10 @@ with lib;
         bind=${mod}+shift,9,tag,9
 
         # Tags (Workspaces)
-        bind=${mod},u,view,1,1
+        bind=${mod},u,spawn_on_empty,ghostty,1
         bind=${mod},i,spawn_on_empty,zen,2
         bind=${mod},o,view,3,1
-        bind=${mod},p,view,4,1
+        bind=${mod},p,spawn_on_empty,spotify,4
         bind=${mod},1,view,1
         bind=${mod},2,view,2
         bind=${mod},3,view,3
