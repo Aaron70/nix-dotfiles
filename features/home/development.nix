@@ -35,6 +35,7 @@ in
     programs.home.lazydocker.enable = mkDefault true;
 
     # Cloud
+    programs.home.terraform.enable = mkDefault true;
     programs.home.gcp.enable = mkDefault true;
   };
 }
