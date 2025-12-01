@@ -27,6 +27,9 @@
 
     astal.url = "github:aylur/astal";
     ags.url = "github:aylur/ags";
+
+    mango.url = "github:DreamMaoMao/mango";
+    mango.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, ... }@inputs: 

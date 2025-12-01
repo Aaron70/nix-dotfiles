@@ -17,6 +17,7 @@ in
   programs.nixos.godot.enable = true;
 
   programs.nixos.hyprland.enable = true;
+  programs.nixos.mango.enable = true;
 
   services.nixos.spotify.enable = profile.variables.spotify;
 

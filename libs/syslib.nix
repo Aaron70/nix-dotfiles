@@ -10,6 +10,7 @@ let
       inputs.zen-browser.homeModules.beta
       inputs.nvf.homeManagerModules.default
       inputs.ags.homeManagerModules.default
+      inputs.mango.hmModules.mango
 
       ../profiles/${profile}/home.nix
       ../hosts/${host}/home.nix 
@@ -42,6 +43,7 @@ in
       specialArgs = { inherit myLib inputs; };
       modules =  [ 
         inputs.home-manager.nixosModules.home-manager
+        inputs.mango.nixosModules.mango
         inputs.stylix.nixosModules.stylix 
         { nixpkgs.overlays = [ ]; }
         homeManager.configModule

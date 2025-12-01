@@ -12,6 +12,7 @@ in
   programs.home.zen.enable = true;
 
   programs.home.hyprland.enable = true;
+  programs.home.mango.enable = true;
   programs.home.waybar.enable = true;
   programs.home.wofi.enable = true;
   programs.home.neovim.variant = "personal";
