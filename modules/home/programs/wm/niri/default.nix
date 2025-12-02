@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
 let
   cfg = config.programs.home.niri;
@@ -11,5 +11,8 @@ in
 
   config = mkIf cfg.enable { 
    xdg.configFile."niri/config.kdl".text = lib.readFile ./config.kdl;
+   home.packages = [
+    pkgs.fuzzel
+   ];
   };
 }

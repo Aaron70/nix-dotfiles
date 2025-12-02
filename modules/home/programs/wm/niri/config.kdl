@@ -90,6 +90,7 @@ binds {
   Mod+Shift+Slash { show-hotkey-overlay; }
   Mod+Space repeat=false hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
   Mod+X repeat=false hotkey-overlay-title="Closes the focused window" { close-window; }
+  Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
 
   Mod+Left  { focus-column-left; }
   Mod+Down  { focus-window-down; }
