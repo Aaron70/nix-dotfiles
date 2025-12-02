@@ -37,7 +37,7 @@ with lib;
 
         # menu and terminal
         bind=${mod},space,spawn,ghostty
-        bind=${mod},return,spawn,pkill wofi || wofi --show drun
+        bind=${mod},return,spawn,wofi --show drun
         bind=${mod},x,killclient,
 
 
@@ -83,6 +83,11 @@ with lib;
         bind=${mod},8,view,8
         bind=${mod},9,view,9
 
+        # Focus Monitor
+        bind=${mod},comma,focusmon,left
+        bind=${mod},period,focusmon,right
+        bind=${mod}+shift,comma,focusmon,up
+        bind=${mod}+shift,period,focusmon,down
 
 
 
