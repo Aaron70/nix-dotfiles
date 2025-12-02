@@ -10,6 +10,7 @@ let
       inputs.zen-browser.homeModules.beta
       inputs.nvf.homeManagerModules.default
       inputs.ags.homeManagerModules.default
+      inputs.niri.homeModules.niri
 
       ../profiles/${profile}/home.nix
       ../hosts/${host}/home.nix 

@@ -27,6 +27,8 @@
 
     astal.url = "github:aylur/astal";
     ags.url = "github:aylur/ags";
+
+    niri.url = "github:sodiboo/niri-flake";
   };
 
   outputs = { self, ... }@inputs: 

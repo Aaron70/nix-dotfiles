@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config,pkgs, ... }:
 
 let
   profile = config.profile;
@@ -12,6 +12,7 @@ in
   programs.home.zen.enable = true;
 
   programs.home.hyprland.enable = true;
+  programs.home.niri.enable = true;
   programs.home.waybar.enable = true;
   programs.home.wofi.enable = true;
   programs.home.neovim.variant = "personal";
@@ -22,6 +23,10 @@ in
   programs.home.tmux.extraSearchPaths = "~/personal/dev:3 ~/personal/repos";
 
   programs.home.spotify.enable = profile.variables.spotify;
+
+  home.packages = [
+    pkgs.alacritty
+  ];
 
   home.sessionVariables = {
     CD_FZF_EXTRA_PATHS="${config.home.homeDirectory}/personal:5";
