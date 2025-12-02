@@ -1,5 +1,6 @@
 prefer-no-csd
 spawn-at-startup "waybar"
+spawn-at-startup "xwayland-satellite" // Forces xwayland-satellite to run on display :3, so if :0 (default) is used, the env variable get out of sync
 screenshot-path "~/Pictures/Screenshots/Screenshot_%Y-%m-%d_%H-%M-%S.png"
 
 hotkey-overlay {
@@ -7,7 +8,9 @@ hotkey-overlay {
 }
 
 environment {
-  HYPRCURSOR_THEME rose-pine-hyprcursor
+  DISPLAY ":0"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
+  HYPRCURSOR_THEME "rose-pine-hyprcursor"
 }
 
 input {
