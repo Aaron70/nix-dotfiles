@@ -15,12 +15,13 @@
   let 
     extraNixosModules = [];
     extraHomeModules = [];
-    mylib = import ./lib/mylib.nix inputs // { inherit extraNixosModules extraHomeModules; } ;
+    syslib = import ./libs/syslib.nix ({ inherit extraNixosModules extraHomeModules; } // inputs) ;
   in
   {
     # ====================|NixOS Configurations|====================
     nixosConfigurations = {
-      laptop-aaronv = mylib.mkNixosFor "laptop-msi";
+      aaronv = syslib.mkNixosFor "pc" "personal";
+      laptop-aaronv = syslib.mkNixosFor "laptop-msi" "personal";
     };
     # ====================|NixOS Configurations|====================
 
