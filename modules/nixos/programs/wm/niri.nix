@@ -13,5 +13,10 @@ in
     programs.niri = {
       enable = true;
     };
+
+    environment.systemPackages = [
+      inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+      pkgs.xwayland-satellite
+    ];
   };
 }

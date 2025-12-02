@@ -6,15 +6,10 @@ in
   with lib;
 {
   options.programs.home.niri = {
-    enable = mkEnableOption "Whether to enable Niri";
+    enable = mkEnableOption "Whether to enable Niri Window Manager";
   };
-                                                                                                
+
   config = mkIf cfg.enable { 
-   programs = {
-      niri = {
-        enable = true;
-        config = lib.readFile ./config2.kdl;
-      };
-    };
+   xdg.configFile."niri/config.kdl".text = lib.readFile ./config.kdl;
   };
 }

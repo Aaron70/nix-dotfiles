@@ -29,7 +29,7 @@ in
     profile.devices.touchpad.scrollFactor = 0.3;
     profile.devices.touchpad.naturalScroll = true;
 
-    profile.version = mkDefault "24.11";
+    profile.version = mkDefault "25.11";
   };
 
   options.profile = {
