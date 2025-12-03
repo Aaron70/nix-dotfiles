@@ -10,6 +10,9 @@ let
       # image = ../../home/programs/window-managers/hyprland/config/wallpapers/wallhaven.jpg;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
       # targets = { waybar.enable = false; };
+      targets = {
+        zen-browser.profileNames = [ "aaronv" ];
+      };
     };
   };
   nixosConfig = commonConfig;

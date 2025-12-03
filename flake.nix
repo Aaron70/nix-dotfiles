@@ -14,7 +14,6 @@
     # to avoid setting options multiple times 
     stylix.url = "github:nix-community/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
-    stylix.inputs.home-manager.follows = "home-manager";
  
     nvim.url = "github:aaron70/nvim";
 
