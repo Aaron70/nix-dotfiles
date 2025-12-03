@@ -6,6 +6,7 @@ let
     specialArgs = { inherit mylib inputs; flakeName = flake; isNixos = false; isHomeManager = true; };
     modules =  [ 
       { nixpkgs.overlays = [ ]; }
+      ../features
       ../modules
       ../hosts/${host}/home.nix
       ../profiles/${profile}.nix
@@ -38,6 +39,7 @@ in
           };
         })
 
+        ../features
         ../modules
 
         ../hosts/${host}/nixos.nix

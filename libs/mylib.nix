@@ -37,12 +37,13 @@ with inputs.nixpkgs.lib; rec {
       modulePath = path ++ [ name ];
       cfg = getPath modulePath inputs.config.dotfiles;
       dotfilesCfg = inputs.config.dotfiles;
+      moduleOptions = if builtins.isFunction options then (options (inputs // { inherit cfg dotfilesCfg; })) else options;
       nixosConfiguration = if builtins.isFunction nixosConfig then (nixosConfig (inputs // { inherit cfg dotfilesCfg; })) else nixosConfig;
       homeConfiguration = if builtins.isFunction homeConfig then (homeConfig (inputs // { inherit cfg dotfilesCfg; })) else homeConfig;
     in {
       options.dotfiles = setPath modulePath ({
         enable = mkBoolOption "Whether to enable the ${name} module." enable;
-      } // options);
+      } // moduleOptions);
 
       imports =
         lib.optionals inputs.isNixos [

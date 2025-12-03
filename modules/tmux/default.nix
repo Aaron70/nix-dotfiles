@@ -1,7 +1,7 @@
-{ mylib, lib, config, ... }: 
+{ mylib, lib, config, pkgs, ... }: 
 with mylib; with lib;
 let
-  colors = config.lib.stylix.colors;
+  colors = if (config.lib ? stylix) then config.lib.stylix.colors else { base00 = "FFFFFF"; };
   options = {
     extraSearchPaths = mkOption {
       description = "The list of paths to add to the tmux-sessionizer script";

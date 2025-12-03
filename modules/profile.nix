@@ -2,12 +2,12 @@
 
 with mylib; with lib;
 let
-  packageOption = types.submodule {
+  packageOption = types.submodule ({ config, ... }: {
     options = rec {
       display = mkOption { 
         description = "The display name of the package. Not necessarily the name of the command. E.g: Neovim.";
         type = types.str; 
-        default = name;
+        default = config.name;
       };
       name = mkOption { 
         description = "The name of the command used to execute the package. E.g: nvim.";
@@ -16,9 +16,10 @@ let
       path = mkOption { 
         description = "The nix path to where the package is stored.";
         type = types.str;
+        default = config.name;
       };
     };
-  };
+  });
   userOption = mkOption {
       description = "The information of the user";
       type = types.submodule {
@@ -33,6 +34,7 @@ let
   envVariables = cfg: {
     SHELL = cfg.shell.name;
     EDITOR = cfg.editor.name;
+    BROWSER = cfg.browser.name;
   };
 in
 {
@@ -46,6 +48,7 @@ in
         shell = mkOption { description = "The default shell"; type = packageOption; };
         terminal = mkOption { description = "The default terminal emulator"; type = packageOption; };
         editor = mkOption { description = "The default editor"; type = packageOption; };
+        browser = mkOption { description = "The default browser"; type = packageOption; };
       };
       homeConfig = { cfg, ... }: {
         home.sessionVariables = envVariables cfg;

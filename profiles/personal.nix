@@ -7,7 +7,5 @@
     email = "aarongeovanny70@gmail.com";
   };
 
-  dotfiles.profile.shell.name = "zsh";
-  dotfiles.profile.terminal.name = "ghostty";
-  dotfiles.profile.editor.name = "nvim";
+  dotfiles.features.development.enable = true;
 }

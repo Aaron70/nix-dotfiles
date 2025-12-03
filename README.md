@@ -17,6 +17,13 @@ These files, will set the configurations for each host, and you can configure yo
 
 The following modules are available to enable and apply common configurations to the hosts to avoid repeated configuration blocks;
 * `dotfiles.nixos.common`
+* `dotfiles.home.common`
+
+# Modules
+
+The modules folder contains all programs, configs and modules of the dotfiles. Each module should configure just one thing, lets say the module is `tmux` then the module should only configure tmux related things.
+
+The modules should be aware of profile configurations, for example, the profile module defines some `shell`, `terminal`, `browser`, among others variables, so every module of shells, terminals or even browsers, must validate if the given variable is of the name of the module to enable it by default. Otherwise, it must be enabled manually.
 
 ## Features
 

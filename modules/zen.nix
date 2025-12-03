@@ -1,4 +1,4 @@
-{ mylib, lib, ... }: 
+{ mylib, lib, config, ... }: 
 with mylib; with lib;
 let
   options = {};
@@ -13,4 +13,4 @@ let
     };
   };
 in
-{ imports = [(mkModule { path = [ "modules" ]; name = "zen"; inherit nixosConfig homeConfig options; })]; }
+{ imports = [(mkModule { enable = config.dotfiles.profile.browser.name == "zen"; path = [ "modules" ]; name = "zen"; inherit nixosConfig homeConfig options; })]; }

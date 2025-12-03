@@ -2,15 +2,16 @@
 with mylib; with lib;
 let
   options = {};
-  homeConfig = { ... }: {
-    dotfiles.modules.zsh.enable = true;
-    dotfiles.modules.ghostty.enable = true;
-    dotfiles.modules.neovim.enable = true;
-    dotfiles.modules.git.enable = true;
-    dotfiles.modules.tmux.enable = true;
+  commonConfig = {
+    dotfiles.profile.shell.name = mkDefault "zsh";
+    dotfiles.profile.terminal.name = mkDefault "ghostty";
+    dotfiles.profile.editor.name = mkDefault "nvim";
+    dotfiles.profile.browser.name = mkDefault "zen";
 
-    dotfiles.modules.zen.enable = true;
+    dotfiles.modules.git.enable = mkDefault true;
+    dotfiles.modules.tmux.enable = mkDefault true;
   };
-  nixosConfig = { ... }: {};
+  homeConfig = commonConfig;
+  nixosConfig = commonConfig;
 in
 { imports = [(mkModule { path = [ "features" ]; name = "development"; inherit nixosConfig homeConfig options; })]; }
