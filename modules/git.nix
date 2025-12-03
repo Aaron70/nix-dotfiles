@@ -28,8 +28,10 @@ let
       lazygit.enable = cfg.integrations;
       git = {
         enable = cfg.enable;
-        userName = cfg.userName;
-        userEmail = cfg.userEmail;
+        settings.user = {
+          name = cfg.userName;
+          email = cfg.userEmail;
+        };
       };
     };
   };
