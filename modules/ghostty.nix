@@ -8,9 +8,11 @@ let
       enable = true;
       enableZshIntegration = config.programs.zsh.enable;
       installVimSyntax = true;
+      systemd.enable = true;
 
       settings = {
         command = config.dotfiles.profile.shell.name;
+        confirm-close-surface = false;
       };
     };
   };

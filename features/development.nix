@@ -3,13 +3,7 @@ with mylib; with lib;
 let
   options = {};
   commonConfig = {
-    dotfiles.profile.shell.name = mkDefault "zsh";
-    dotfiles.profile.terminal.name = mkDefault "ghostty";
-    dotfiles.profile.editor.name = mkDefault "nvim";
-    dotfiles.profile.browser.name = mkDefault "zen";
-
-    dotfiles.modules.git.enable = mkDefault true;
-    dotfiles.modules.tmux.enable = mkDefault true;
+    dotfiles.features.terminal-environment.enable = true;
   };
   homeConfig = commonConfig;
   nixosConfig = commonConfig;

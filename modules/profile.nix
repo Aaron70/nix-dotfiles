@@ -3,7 +3,7 @@
 with mylib; with lib;
 let
   packageOption = types.submodule ({ config, ... }: {
-    options = rec {
+    options = {
       display = mkOption { 
         description = "The display name of the package. Not necessarily the name of the command. E.g: Neovim.";
         type = types.str; 

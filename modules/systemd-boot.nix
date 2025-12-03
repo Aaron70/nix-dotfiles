@@ -1,4 +1,4 @@
-{ mylib, lib, config, ... }: 
+{ mylib, lib, ... }: 
 with mylib; with lib;
 let
   options = {
