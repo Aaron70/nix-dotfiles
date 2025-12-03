@@ -1,4 +1,4 @@
-{ mylib, lib, config, ... }: 
+{ mylib, lib, config, flakeName, ... }: 
 
 with mylib; with lib;
 {
@@ -55,6 +55,11 @@ with mylib; with lib;
           LC_PAPER = "es_CR.UTF-8";
           LC_TELEPHONE = "es_CR.UTF-8";
           LC_TIME = "es_CR.UTF-8";
+        };
+
+        environment.shellAliases = {
+          nswitch = "sudo nixos-rebuild switch --flake $HOME/nix-dotfiles#${flakeName}";
+          ntest = "sudo nixos-rebuild test --flake $HOME/nix-dotfiles#${flakeName}";
         };
 
         system.stateVersion = config.dotfiles.profile.version;

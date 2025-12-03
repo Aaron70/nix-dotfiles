@@ -2,6 +2,7 @@
 with mylib; with lib;
 let
   options = {};
-  config = { ... }: {};
+  homeConfig = { ... }: {};
+  nixosConfig = { ... }: {};
 in
-{ imports = [(mkModule { path = [ "features" ]; name = "terminal-environment"; inherit config options; })]; }
+{ imports = [(mkModule { path = [ "features" ]; name = "terminal-environment"; inherit nixosConfig homeConfig options; })]; }

@@ -11,6 +11,10 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
  
     nvim.url = "github:aaron70/nvim";
+
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+    zen-browser.inputs.home-manager.follows = "home-manager";
   };
 
   outputs = { ... }@inputs: 
@@ -18,14 +22,15 @@
     extraNixosModules = [];
     extraHomeModules = [
       inputs.nvim.homeModule
+      inputs.zen-browser.homeModules.beta
     ];
     syslib = import ./libs/syslib.nix ({ inherit extraNixosModules extraHomeModules; } // inputs) ;
   in
   {
     # ====================|NixOS Configurations|====================
     nixosConfigurations = {
-      aaronv = syslib.mkNixosFor "pc" "personal";
-      laptop-aaronv = syslib.mkNixosFor "laptop-msi" "personal";
+      aaronv = syslib.mkNixosFor "aaronv" "pc" "personal";
+      laptop-aaronv = syslib.mkNixosFor "laptop-aaronv" "laptop-msi" "personal";
     };
     # ====================|NixOS Configurations|====================
 

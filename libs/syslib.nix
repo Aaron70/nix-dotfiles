@@ -2,8 +2,8 @@
 
 let 
   mylib = import ./mylib.nix inputs;
-  homeManagerFor = host: profile: {
-    specialArgs = { inherit mylib inputs; isNixos = false; isHomeManager = true; };
+  homeManagerFor = flake: host: profile: {
+    specialArgs = { inherit mylib inputs; flakeName = flake; isNixos = false; isHomeManager = true; };
     modules =  [ 
       { nixpkgs.overlays = [ ]; }
       ../modules
@@ -14,12 +14,12 @@ let
 
 in
 {
-  mkNixosFor = host: profile:
+  mkNixosFor = flake: host: profile:
     let
-      homeManager = homeManagerFor host profile;
+      homeManager = homeManagerFor flake host profile;
     in
     nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit mylib inputs; isNixos = true; isHomeManager = false; };
+      specialArgs = { inherit mylib inputs; flakeName = flake; isNixos = true; isHomeManager = false; };
       modules =  [ 
         { nixpkgs.overlays = [ ]; }
         inputs.home-manager.nixosModules.home-manager
@@ -48,9 +48,9 @@ in
       ] ++ extraNixosModules;
     };
 
-  mkHomeManagerFor = host: profile: system:
+  mkHomeManagerFor = flake: host: profile: system:
     let
-      homeManager = homeManagerFor host profile;
+      homeManager = homeManagerFor flake host profile;
     in
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = import inputs.nixpkgs { inherit system; };
