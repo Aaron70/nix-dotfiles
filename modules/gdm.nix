@@ -3,8 +3,7 @@ with mylib; with lib;
 let
   options = {};
   nixosConfig = { ... }: {
-    services.xserver.enable = true;
-    services.xserver.displayManager.gdm.enable = true;
+    services.displayManager.gdm.enable = true;
   };
   homeConfig = { ... }: {};
 in

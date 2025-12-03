@@ -20,3 +20,4 @@ else
     tmux attach -t "$selected"
   fi
 fi
+

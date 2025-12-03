@@ -343,3 +343,4 @@ if ! has_session "$selected_name"; then
 fi
 
 switch_to "$selected_name"
+

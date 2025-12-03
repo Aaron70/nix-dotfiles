@@ -57,8 +57,7 @@ let
         # tmux-floax
         set -g @floax-change-path 'true'
 
-        
-        set-option -g default-command "${config.dotfiles.profile.shell.path}" # Fix tmux opening sh on MacOS
+        # set-option -g default-command "${config.dotfiles.profile.shell.path}" # Fix tmux opening sh on MacOS
       '';
     };
   };

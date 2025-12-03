@@ -1,4 +1,4 @@
-{ mylib, lib, ... }: 
+{ mylib, lib, config, ... }: 
 with mylib; with lib;
 let
   colors = if (config.lib ? stylix) then config.lib.stylix.colors else {

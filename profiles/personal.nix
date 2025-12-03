@@ -7,5 +7,6 @@
     email = "aarongeovanny70@gmail.com";
   };
 
+  dotfiles.features.desktop-environment.enable = true;
   dotfiles.features.development.enable = true;
 }
