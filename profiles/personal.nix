@@ -9,4 +9,10 @@
 
   dotfiles.features.desktop-environment.enable = true;
   dotfiles.features.development.enable = true;
+  dotfiles.features.gaming.enable = true;
+
+  dotfiles.modules.godot.enable = false;
+
+  dotfiles.modules.spotify.enable = true;
+  dotfiles.modules.discord.enable = true;
 }

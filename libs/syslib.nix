@@ -57,6 +57,8 @@ in
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = import inputs.nixpkgs { stdenv.hostPlatform.system = system; };
       specialArgs = homeManager.specialArgs;
-      modules =  homeManager.modules;
+      modules =  [
+        inputs.stylix.homeModules.stylix
+      ] ++ homeManager.modules;
     };
 }

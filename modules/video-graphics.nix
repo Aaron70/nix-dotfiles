@@ -13,7 +13,10 @@ let
     hardware = {
     # TODO: Uncomment this and check if the everything is working as expected
     # hardware = mkIf (builtins.elem "nvidia" config.services.xserver.videoDrivers) {
-      graphics.enable = true;
+      graphics = {
+        enable = true;
+        enable32Bit = true;
+      };
       nvidia = {
         # Enable modesetting for Wayland compositors (hyprland)
         modesetting.enable = true;

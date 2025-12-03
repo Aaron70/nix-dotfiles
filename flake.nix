@@ -9,6 +9,12 @@
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    # NOTE: The home-manager modules for stylix are directly imported on the syslib
+    # to avoid setting options multiple times 
+    stylix.url = "github:nix-community/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.inputs.home-manager.follows = "home-manager";
  
     nvim.url = "github:aaron70/nvim";
 
@@ -19,7 +25,9 @@
 
   outputs = { ... }@inputs: 
   let 
-    extraNixosModules = [];
+    extraNixosModules = [
+      inputs.stylix.nixosModules.stylix 
+    ];
     extraHomeModules = [
       inputs.nvim.homeModule
       inputs.zen-browser.homeModules.beta

@@ -1,18 +1,29 @@
 { mylib, lib, config, flakeName, ... }: 
 
 with mylib; with lib;
+let
+  nixAliases = {
+    nswitch = "sudo nixos-rebuild switch --flake $HOME/nix-dotfiles#${flakeName}";
+    ntest = "sudo nixos-rebuild test --flake $HOME/nix-dotfiles#${flakeName}";
+  };
+in
 {
   imports = [ 
     (mkModule {
       name = "common";
       path = [ "nixos" ];
       options = {};
+      homeConfig = {...}: {
+        home.shellAliases = nixAliases;
+      };
       nixosConfig = { ... }: {
         nix.settings = {
           experimental-features = [ "nix-command" "flakes" ];
         };
         nixpkgs.config.allowUnfree = true;
         nixpkgs.config.allowBroken = false;
+
+        environment.shellAliases = nixAliases;
 
         dotfiles.modules.systemd-boot.enable = mkDefault true;
         dotfiles.modules.video-graphics.enable = mkDefault true;
@@ -55,11 +66,6 @@ with mylib; with lib;
           LC_PAPER = "es_CR.UTF-8";
           LC_TELEPHONE = "es_CR.UTF-8";
           LC_TIME = "es_CR.UTF-8";
-        };
-
-        environment.shellAliases = {
-          nswitch = "sudo nixos-rebuild switch --flake $HOME/nix-dotfiles#${flakeName}";
-          ntest = "sudo nixos-rebuild test --flake $HOME/nix-dotfiles#${flakeName}";
         };
 
         system.stateVersion = config.dotfiles.profile.version;
