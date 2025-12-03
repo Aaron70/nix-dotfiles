@@ -9,12 +9,16 @@
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+ 
+    nvim.url = "github:aaron70/nvim";
   };
 
   outputs = { ... }@inputs: 
   let 
     extraNixosModules = [];
-    extraHomeModules = [];
+    extraHomeModules = [
+      inputs.nvim.homeModule
+    ];
     syslib = import ./libs/syslib.nix ({ inherit extraNixosModules extraHomeModules; } // inputs) ;
   in
   {

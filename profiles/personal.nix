@@ -8,5 +8,6 @@
   };
 
   dotfiles.profile.shell.name = "zsh";
-  dotfiles.modules.ghostty.enable = true;
+  dotfiles.profile.terminal.name = "ghostty";
+  dotfiles.profile.editor.name = "nvim";
 }

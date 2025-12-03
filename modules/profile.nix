@@ -1,4 +1,4 @@
-{ mylib, lib, config, ... }: 
+{ mylib, lib, ... }: 
 
 with mylib; with lib;
 let
@@ -32,6 +32,7 @@ let
 
   envVariables = cfg: {
     SHELL = cfg.shell.name;
+    EDITOR = cfg.editor.name;
   };
 in
 {
@@ -43,6 +44,8 @@ in
         user = userOption;
         version = mkOption { description = "The version of the Nix channels"; type = types.str; };
         shell = mkOption { description = "The default shell"; type = packageOption; };
+        terminal = mkOption { description = "The default terminal emulator"; type = packageOption; };
+        editor = mkOption { description = "The default editor"; type = packageOption; };
       };
       homeConfig = { cfg, ... }: {
         home.sessionVariables = envVariables cfg;

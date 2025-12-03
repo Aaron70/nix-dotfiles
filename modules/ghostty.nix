@@ -2,6 +2,7 @@
 with mylib; with lib;
 let
   options = {};
+  nixosConfig = { ... }: {};
   homeConfig = { config, ... }: {
     programs.ghostty = {
       enable = true;
@@ -14,4 +15,4 @@ let
     };
   };
 in
-{ imports = [(mkModule { enable = true; path = [ "modules" ]; name = "ghostty"; inherit homeConfig options; })]; }
+{ imports = [(mkModule { enable = config.dotfiles.profile.terminal.name == "ghostty"; path = [ "modules" ]; name = "ghostty"; inherit nixosConfig homeConfig options; })]; }
