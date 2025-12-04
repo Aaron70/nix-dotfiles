@@ -1,4 +1,4 @@
-{ mylib, lib, ... }: 
+{ mylib, lib, pkgs, ... }: 
 with mylib; with lib;
 let
   options = {};
@@ -7,6 +7,11 @@ let
     dotfiles.modules.niri.enable = true;
   };
   homeConfig = commonConfig;
-  nixosConfig = commonConfig;
+  nixosConfig = commonConfig // {
+    environment.systemPackages = with pkgs; [
+      mako # Notification daemon
+      wl-clipboard
+    ];
+  };
 in
 { imports = [(mkModule { path = [ "features" ]; name = "desktop-environment"; inherit nixosConfig homeConfig options; })]; }

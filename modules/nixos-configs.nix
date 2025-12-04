@@ -27,6 +27,7 @@ in
 
         dotfiles.modules.systemd-boot.enable = mkDefault true;
         dotfiles.modules.video-graphics.enable = mkDefault true;
+        dotfiles.modules.bluetooth.enable = mkDefault true;
 
         users.users = {
           ${config.dotfiles.profile.user.username} = {
