@@ -47,9 +47,7 @@ let
 
         # Theme: status (windows)
         set -g window-status-format "●"
-        set -g window-status-current-format "#"
-        set -g window-status-current-style "#{fg=green,nobold}"
-        # set -g window-status-current-style "#{?window_zoomed_flag,fg=yellow,fg=green,nobold}"
+        set -g window-status-current-format "●#{?window_zoomed_flag,fg=yellow,fg=green,nobold}"
         set -g window-status-bell-style "fg=red,nobold"
 
         # Tmux Sessionizer
