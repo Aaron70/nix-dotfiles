@@ -228,7 +228,7 @@ let
           avatarImage = "";
           boxRadiusRatio = 1;
           compactLockScreen = true;
-          dimmerOpacity = 0.6;
+          dimmerOpacity = 0;
           enableShadows = true;
           forceBlackScreenCorners = false;
           iRadiusRatio = 1;
