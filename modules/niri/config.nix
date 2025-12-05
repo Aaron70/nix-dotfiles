@@ -60,7 +60,14 @@ in
       proportion 0.66667
       proportion 1.0
     }
-  
+
+    preset-window-heights {
+      proportion 0.33333
+      proportion 0.5
+      proportion 0.66667
+      proportion 1.0
+    } 
+
     focus-ring {
       off
       width 2
@@ -71,7 +78,7 @@ in
     border {
       // off
       width 4
-      active-color "#ffc87f"
+      active-color "#7aa2f7"
       inactive-color "#505050"
       urgent-color "#9b0000"
     }
