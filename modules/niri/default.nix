@@ -8,8 +8,8 @@ let
       pkgs.xwayland-satellite
     ];
   };
-  homeConfig = { ... }: { 
-    xdg.configFile."niri/config.kdl".text = lib.readFile ./config.kdl;
+  homeConfig = { ... }@inputs: { 
+    xdg.configFile."niri/config.kdl".text = import ./config.nix inputs;
     home.packages = [
      pkgs.fuzzel # Default program to search for applications. Similar to wofi.
     ];

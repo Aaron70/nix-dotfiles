@@ -1,5 +1,5 @@
 { ... }: 
 
 {
-  dotfiles.nixos.common.enable = true;
+  imports = [ ./common.nix ];
 }

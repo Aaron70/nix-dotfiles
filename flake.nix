@@ -20,6 +20,9 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.inputs.home-manager.follows = "home-manager";
+
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { ... }@inputs: 
@@ -30,6 +33,7 @@
     extraHomeModules = [
       inputs.nvim.homeModule
       inputs.zen-browser.homeModules.beta
+      inputs.noctalia.homeModules.default
     ];
     syslib = import ./libs/syslib.nix ({ inherit extraNixosModules extraHomeModules; } // inputs) ;
   in
