@@ -285,7 +285,10 @@ let
           enabled = true;
           location = "top_right";
           lowUrgencyDuration = 2;
-          monitors = [ ];
+          monitors = [
+            "eDP-1"
+            "HDMI-A-2"
+          ];
           normalUrgencyDuration = 4;
           overlayLayer = true;
           respectExpireTimeout = false;
