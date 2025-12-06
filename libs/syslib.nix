@@ -6,10 +6,12 @@ let
     specialArgs = { inherit mylib inputs; flakeName = flake; isNixos = false; isHomeManager = true; };
     modules =  [ 
       { nixpkgs.overlays = [ ]; }
+      ../profiles/${profile}.nix
+
       ../features
       ../modules
-      ../hosts/${host}/home.nix
-      ../profiles/${profile}.nix
+
+      ../hosts/${host}/configuration.nix
     ] ++ extraHomeModules;
   };
 
@@ -38,15 +40,13 @@ in
             };
           };
         })
+        ../profiles/${profile}.nix
 
         ../features
         ../modules
 
-        ../hosts/${host}/nixos.nix
+        ../hosts/${host}/configuration.nix
         ../hosts/${host}/hardware-configuration.nix
-
-        ../profiles/${profile}.nix
-
       ] ++ extraNixosModules;
     };
 

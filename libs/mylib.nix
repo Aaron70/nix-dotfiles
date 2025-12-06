@@ -27,6 +27,7 @@ with inputs.nixpkgs.lib; rec {
     enable ? false,
     name,
     path ? [],
+    commonConfig ? {},
     nixosConfig ? {},
     homeConfig ? {},
     options ? {},
@@ -38,6 +39,7 @@ with inputs.nixpkgs.lib; rec {
       cfg = getPath modulePath inputs.config.dotfiles;
       dotfilesCfg = inputs.config.dotfiles;
       moduleOptions = if builtins.isFunction options then (options (inputs // { inherit cfg dotfilesCfg; })) else options;
+      commonConfiguration = if builtins.isFunction commonConfig then (commonConfig (inputs // { inherit cfg dotfilesCfg; })) else commonConfig;
       nixosConfiguration = if builtins.isFunction nixosConfig then (nixosConfig (inputs // { inherit cfg dotfilesCfg; })) else nixosConfig;
       homeConfiguration = if builtins.isFunction homeConfig then (homeConfig (inputs // { inherit cfg dotfilesCfg; })) else homeConfig;
     in {
@@ -47,10 +49,10 @@ with inputs.nixpkgs.lib; rec {
 
       imports =
         lib.optionals inputs.isNixos [
-          ({ ... }: { config = mkIf cfg.enable nixosConfiguration; })
+          ({ ... }: { config = mkIf cfg.enable (attrsets.recursiveUpdate commonConfiguration nixosConfiguration); })
         ]
         ++ lib.optionals inputs.isHomeManager [
-          ({ ... }: { config = mkIf cfg.enable homeConfiguration; })
+          ({ ... }: { config = mkIf cfg.enable (attrsets.recursiveUpdate  commonConfiguration homeConfiguration ); })
         ];
     });
 }

@@ -1,4 +1,4 @@
-{ mylib, lib, ... }@inputs: 
+{ mylib, lib, config, ... }@inputs: 
 with mylib; with lib;
 let
   options = {};
@@ -84,23 +84,29 @@ let
                 displayMode = "onhover";
                 id = "WiFi";
               }
-              {
-                displayMode = "onhover";
-                id = "Bluetooth";
-              }
+              (mkIf config.dotfiles.host.bluetooth 
+                {
+                  displayMode = "onhover";
+                  id = "Bluetooth";
+                }
+              )
               {
                 displayMode = "onhover";
                 id = "Volume";
               }
-              {
-                displayMode = "onhover";
-                id = "Brightness";
-              }
-              {
-                displayMode = "alwaysShow";
-                id = "Battery";
-                warningThreshold = 30;
-              }
+              (mkIf config.dotfiles.host.brightness
+                {
+                  displayMode = "onhover";
+                  id = "Brightness";
+                }
+              )
+              (mkIf config.dotfiles.host.battery
+                {
+                  displayMode = "alwaysShow";
+                  id = "Battery";
+                  warningThreshold = 30;
+                }
+              )
               {
                 customFont = "";
                 formatHorizontal = "HH:mm ddd, MMM dd";
