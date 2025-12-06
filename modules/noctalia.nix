@@ -125,7 +125,7 @@ let
         };
         brightness = {
           brightnessStep = 5;
-          enableDdcSupport = false;
+          enableDdcSupport = true;
           enforceMinimum = true;
         };
         calendar = {
@@ -270,11 +270,11 @@ let
           wifiEnabled = true;
         };
         nightLight = {
-          autoSchedule = true;
+          autoSchedule = false;
           dayTemp = "6500";
-          enabled = false;
+          enabled = true;
           forced = false;
-          manualSunrise = "06:30";
+          manualSunrise = "08:00";
           manualSunset = "18:30";
           nightTemp = "4000";
         };
