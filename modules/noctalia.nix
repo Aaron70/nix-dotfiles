@@ -1,4 +1,4 @@
-{ mylib, lib, config, ... }@inputs: 
+{ mylib, lib, config, ... }: 
 with mylib; with lib;
 let
   options = {};
@@ -410,7 +410,7 @@ let
           tooltipsEnabled = true;
         };
         wallpaper = {
-          directory = ./sources;
+          directory = ./resources/wallpapers;
           enableMultiMonitorDirectories = false;
           enabled = true;
           fillColor = "#000000";
