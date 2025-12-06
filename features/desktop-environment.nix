@@ -17,10 +17,7 @@ let
     services.gnome.gnome-keyring.enable = true; # secret service
 
     environment.systemPackages = with pkgs; [
-      # mako # Notification daemon
       wl-clipboard
-      swaylock 
-      swayidle
     ];
   };
 in

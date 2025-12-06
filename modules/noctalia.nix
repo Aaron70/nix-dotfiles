@@ -443,4 +443,4 @@ let
     };
   };
 in
-{ imports = [(mkModule { enable = true; path = [ "modules" ]; name = "noctalia"; inherit nixosConfig homeConfig options; })]; }
+{ imports = [(mkModule { path = [ "modules" ]; name = "noctalia"; inherit nixosConfig homeConfig options; })]; }
