@@ -147,6 +147,21 @@ in
     clip-to-geometry true
   }
 
+  output "eDP-1" {
+    // off
+    mode "1920x1080@59.977"
+    variable-refresh-rate on-demand=true
+    focus-at-startup
+
+    hot-corners {
+        // off
+        // top-left
+        // top-right
+        // bottom-left
+        bottom-right
+    }
+  }
+
   output "DP-4" {
     // off
     mode "1920x1080@143.981"
