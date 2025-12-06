@@ -5,9 +5,7 @@ let
   browser = config.dotfiles.profile.browser.name;
 in
 ''
-  // spawn-at-startup "noctalia-shell"
   spawn-at-startup "xwayland-satellite"
-
 
   screenshot-path "~/Pictures/Screenshots/Screenshot_%Y-%m-%d_%H-%M-%S.png"
   prefer-no-csd
@@ -18,12 +16,11 @@ in
   environment {
     DISPLAY ":0"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
-    HYPRCURSOR_THEME "rose-pine-hyprcursor"
   }
 
   cursor {
-    xcursor-theme "breeze_cursors"
-    xcursor-size 25 
+    xcursor-theme "${config.home.pointerCursor.name}"
+    xcursor-size ${toString config.home.pointerCursor.size}
 
     hide-when-typing
     hide-after-inactive-ms 1000
@@ -36,29 +33,36 @@ in
     focus-follows-mouse max-scroll-amount="5%"
   
     keyboard { 
-      xkb {} 
+      xkb {
+        layout "us"
+        variant "altgr-intl"
+      } 
       numlock
     }
   
     touchpad {
       tap
       natural-scroll
+      accel-speed 0.2
+      scroll-factor 0.9
     }
   
-    mouse {}
-    trackpoint{}
+    mouse {
+      accel-speed 0.2
+    }
   }
   
   layout {
     gaps 10
-    center-focused-column "always"
+    center-focused-column "on-overflow"
+    always-center-single-column
     default-column-width { proportion 1.0; }
   
     preset-column-widths {
-      proportion 0.33333
+      proportion 1.0
       proportion 0.5
       proportion 0.66667
-      proportion 1.0
+      proportion 0.33333
     }
 
     preset-window-heights {
@@ -210,8 +214,13 @@ in
     Mod+Shift+P { move-column-to-workspace "multimedia"; }
     Mod+Shift+G { move-column-to-workspace "gaming"; }
     Mod+Shift+T { move-column-to-workspace "temporal"; }
+
+    Mod+Period { move-window-to-monitor-previous; }
+    Mod+Comma { move-window-to-monitor-next; }
   
     Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+S { switch-preset-column-width; }
   
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
   

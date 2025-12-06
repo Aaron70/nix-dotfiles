@@ -204,9 +204,9 @@ let
               {
                 id = "Notifications";
               }
-              {
-                id = "PowerProfile";
-              }
+              # {
+              #   id = "PowerProfile";
+              # }
               {
                 id = "KeepAwake";
               }
@@ -373,7 +373,7 @@ let
           networkPollingInterval = 3000;
           tempCriticalThreshold = 90;
           tempPollingInterval = 3000;
-          tempWarningThreshold = 80;
+          tempWarningThreshold = 75;
           useCustomColors = false;
           warningColor = "";
         };

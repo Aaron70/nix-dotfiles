@@ -69,14 +69,12 @@ in
           LC_TIME = "es_CR.UTF-8";
         };
 
-        system.stateVersion = config.dotfiles.profile.version;
+        services.xserver.xkb = {
+          layout = "us";
+          variant = "altgr-intl";
+        };
 
-    # TODO: Remove this
-    # services.xserver.desktopManager.gnome.enable = true;
-    # services.xserver.xkb = {
-    #   layout = "us";
-    #   variant = "";
-    # };
+        system.stateVersion = config.dotfiles.profile.version;
      };
     })
   ];

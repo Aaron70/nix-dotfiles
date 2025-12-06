@@ -8,6 +8,7 @@ let
     dotfiles.modules.noctalia.enable = true;
     dotfiles.modules.xdg-portal.enable = true;
     dotfiles.modules.thermald.enable = true;
+    dotfiles.modules.cursor-theme.enable = true;
   };
   homeConfig = commonConfig;
   nixosConfig = commonConfig // {
