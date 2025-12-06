@@ -5,7 +5,8 @@ with inputs.nixpkgs.lib; rec {
     with builtins;
       map
         (name: "${path}/${name}")
-        (filter (name: name != exclude) (attrNames (readDir path)));
+        # (filter (name: name != (elemAt exclude 0)) (attrNames (readDir path)));
+        (filter (name: !(elem name exclude)) (attrNames (readDir path)));
 
   mkBoolOption = description: default: mkOption {
       type = types.bool;

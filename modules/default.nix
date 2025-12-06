@@ -1,4 +1,4 @@
 { mylib, ... }:
 { 
-  imports = mylib.importAll ./. "default.nix"; 
+  imports = mylib.importAll ./. [ "default.nix" "resources"]; 
 }

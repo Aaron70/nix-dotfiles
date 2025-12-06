@@ -410,7 +410,7 @@ let
           tooltipsEnabled = true;
         };
         wallpaper = {
-          directory = "${./.}/../sources/wallpapers";
+          directory = ./sources;
           enableMultiMonitorDirectories = false;
           enabled = true;
           fillColor = "#000000";
