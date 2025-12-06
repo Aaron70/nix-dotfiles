@@ -146,7 +146,38 @@ in
     // Clips window contents to the rounded corner boundaries.
     clip-to-geometry true
   }
-  
+
+  output "DP-4" {
+    // off
+    mode "1920x1080@143.981"
+    variable-refresh-rate on-demand=true
+    focus-at-startup
+
+    hot-corners {
+        // off
+        // top-left
+        // top-right
+        // bottom-left
+        bottom-right
+    }
+  }
+ 
+  output "HDMI-A-2" {
+    // off
+    mode "2560x1440@74.932"
+    position x=-2560 y=0
+    variable-refresh-rate on-demand=true
+    focus-at-startup
+
+    hot-corners {
+        // off
+        // top-left
+        // top-right
+        bottom-left
+        // bottom-right
+    }
+  } 
+
   debug {
     // Allows notification actions and window activation from Noctalia.
     honor-xdg-activation-with-invalid-serial
@@ -215,8 +246,8 @@ in
     Mod+Shift+G { move-column-to-workspace "gaming"; }
     Mod+Shift+T { move-column-to-workspace "temporal"; }
 
-    Mod+Period { move-window-to-monitor-previous; }
-    Mod+Comma { move-window-to-monitor-next; }
+    Mod+Period { move-workspace-to-monitor-previous; }
+    Mod+Comma { move-workspace-to-monitor-next; }
   
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
