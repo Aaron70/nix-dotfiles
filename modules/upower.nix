@@ -1,12 +1,19 @@
-{ mylib, lib, pkgs, ... }: 
+{ mylib, lib, ... }: 
 with mylib; with lib;
-let
-  options = {};
-  nixosConfig = { ... }: {
-    services.upower = {
-      enable = true;
-    };
-  };
-  homeConfig = { ... }: {}; 
-in
-{ imports = [(mkModule { enable = true; path = [ "modules" ]; name = "upower"; inherit nixosConfig homeConfig options; })]; }
+{ 
+  imports = [
+    (mkModule {
+      enable = true; 
+      path = [ "modules" ]; 
+      name = "upower"; 
+      options = {};
+      commonConfig = {};
+      nixosConfig = {
+        services.upower = {
+          enable = true;
+        };
+      };
+      homeConfig = {}; 
+    })
+  ];
+}

@@ -28,10 +28,10 @@ with inputs.nixpkgs.lib; rec {
     enable ? false,
     name,
     path ? [],
-    commonConfig ? {},
-    nixosConfig ? {},
-    homeConfig ? {},
-    options ? {},
+    commonConfig,
+    nixosConfig,
+    homeConfig,
+    options,
   }: 
   ({ lib, ... }@inputs: 
     with lib;

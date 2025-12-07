@@ -7,7 +7,7 @@ with mylib; with lib;
       enable = true;
       name = "garbage-collector";
       options = {};
-      commonConfig = { ... }: {
+      commonConfig = {
         nix.gc = {
           automatic = true;
           dates = "weekly";
@@ -16,8 +16,8 @@ with mylib; with lib;
         };
         nix.settings.auto-optimise-store = true;
       };
-      homeConfig = { ... }: { };
-      nixosConfig = { ... }: { };
+      homeConfig = {};
+      nixosConfig = {};
     })
   ];
 }
