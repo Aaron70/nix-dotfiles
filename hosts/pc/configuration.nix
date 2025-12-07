@@ -1,7 +1,6 @@
-{ ... }:
+{ ... }: 
 
 {
-  imports = [ ../nixos.nix ];
-
-  source-persisted-configs.enable = true; 
+  dotfiles.host.name = "PC";
+  dotfiles.host.bluetooth = true;
 }

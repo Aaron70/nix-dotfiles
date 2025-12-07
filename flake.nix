@@ -10,47 +10,48 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    nvf.url = "github:NotAShelf/nvf";
-    nvf.inputs.nixpkgs.follows = "nixpkgs";
-
-    nvim.url = "github:aaron70/nvim";
-
+    # NOTE: The home-manager modules for stylix are directly imported on the syslib
+    # to avoid setting options multiple times 
     stylix.url = "github:nix-community/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
+ 
+    nvim.url = "github:aaron70/nvim";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    # zen-browser.inputs.nixpkgs.follows = "nixpkgs"; # BUG: Check why adding this generates problems 
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+    zen-browser.inputs.home-manager.follows = "home-manager";
 
-    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
-    rose-pine-hyprcursor.inputs.nixpkgs.follows = "nixpkgs";
-    # rose-pine-hyprcursor.inputs.hyprlang.follows = "hyprland/hyprlang"; # BUG: wrong flake, looks like it doesn't exists
-
-    astal.url = "github:aylur/astal";
-    ags.url = "github:aylur/ags";
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, ... }@inputs: 
+  outputs = { ... }@inputs: 
   let 
-    sysLib = import ./libs/syslib.nix inputs;
+    extraNixosModules = [
+      inputs.stylix.nixosModules.stylix 
+    ];
+    extraHomeModules = [
+      inputs.nvim.homeModule
+      inputs.zen-browser.homeModules.beta
+      inputs.noctalia.homeModules.default
+    ];
+    syslib = import ./libs/syslib.nix ({ inherit extraNixosModules extraHomeModules; } // inputs) ;
   in
   {
     # ====================|NixOS Configurations|====================
     nixosConfigurations = {
-      aaronv = sysLib.mkNixosFor "personal" "pc";
-      laptop-aaronv = sysLib.mkNixosFor "personal" "laptop";
-      wsl-aaronv = sysLib.mkNixosFor "personal" "wsl";
+      aaronv = syslib.mkNixosFor "aaronv" "pc" "personal";
+      laptop-aaronv = syslib.mkNixosFor "laptop-aaronv" "laptop-msi" "personal";
     };
     # ====================|NixOS Configurations|====================
 
     # ================|Home Manager Configurations|=================
     homeConfigurations = {
-      aaronv = sysLib.mkHomeFor "personal" "wsl" "x86_64-linux";
     };
     # ================|Home Manager Configurations|=================
 
     # ====================|Darwin Configurations|===================
     darwinConfigurations = {
-      aaronv-work = sysLib.mkDarwinFor "work" "macPro" "aarch64-darwin";
     };
     # ====================|Darwin Configurations|===================
   };

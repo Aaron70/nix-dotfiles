@@ -1,88 +1,64 @@
-{ nixpkgs, ... }@inputs:
+{ nixpkgs, extraNixosModules, extraHomeModules, ... }@inputs:
 
-let
-  myLib = import ./mylib.nix;
-  homeManagerFor =  profile: host: rec {
+let 
+  mylib = import ./mylib.nix inputs;
+  homeManagerFor = flake: host: profile: {
+    specialArgs = { inherit mylib inputs; flakeName = flake; isNixos = false; isHomeManager = true; };
+    modules =  [ 
+      { nixpkgs.overlays = [ ]; }
+      ../profiles/${profile}.nix
 
-    specialArgs = { inherit myLib inputs; };
+      ../features
+      ../modules
 
-    modules = [ 
-      inputs.zen-browser.homeModules.beta
-      inputs.nvf.homeManagerModules.default
-      inputs.ags.homeManagerModules.default
-
-      ../profiles/${profile}/home.nix
-      ../hosts/${host}/home.nix 
-
-      ../features/home
-      ../modules/home
-    ];
-
-    configModule = ({ config, inputs, ... }: {
-      config = {
-        home-manager = {
-          backupFileExtension = "bck";
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = specialArgs;
-          users."${config.profile.user.username}" = {...}: {
-            imports = modules;
-          };
-        };
-      };
-    });
+      ../hosts/${host}/configuration.nix
+    ] ++ extraHomeModules;
   };
+
 in
 {
-  mkNixosFor = profile: host: 
-    let 
-      homeManager = homeManagerFor profile host;
-    in 
+  mkNixosFor = flake: host: profile:
+    let
+      homeManager = homeManagerFor flake host profile;
+    in
     nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit myLib inputs; };
+      specialArgs = { inherit mylib inputs; flakeName = flake; isNixos = true; isHomeManager = false; };
       modules =  [ 
-        inputs.home-manager.nixosModules.home-manager
-        inputs.stylix.nixosModules.stylix 
         { nixpkgs.overlays = [ ]; }
-        homeManager.configModule
+        inputs.home-manager.nixosModules.home-manager
 
-        ../features/nixos
-        ../modules/nixos
+        ({ config,  ... }: {
+          config = {
+            home-manager = {
+              backupFileExtension = "bck";
+              # useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = homeManager.specialArgs;
+              users."${config.dotfiles.profile.user.username}" = {...}: {
+                imports = homeManager.modules;
+              };
+            };
+          };
+        })
+        ../profiles/${profile}.nix
+
+        ../features
+        ../modules
 
         ../hosts/${host}/configuration.nix
         ../hosts/${host}/hardware-configuration.nix
-
-        ../profiles/${profile}/nixos.nix
-      ];
+      ] ++ extraNixosModules;
     };
 
-  mkHomeFor = profile: host: system: 
-    let 
-      homeManager = homeManagerFor profile host;
+  mkHomeManagerFor = flake: host: profile: system:
+    let
+      homeManager = homeManagerFor flake host profile;
     in
     inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = import inputs.nixpkgs { inherit system; };
-      extraSpecialArgs = homeManager.specialArgs;
-      modules = [ 
-        { nixpkgs.overlays = [ ]; }
-        inputs.stylix.homeModules.stylix 
+      pkgs = import inputs.nixpkgs { stdenv.hostPlatform.system = system; };
+      specialArgs = homeManager.specialArgs;
+      modules =  [
+        inputs.stylix.homeModules.stylix
       ] ++ homeManager.modules;
-    };
-
-  mkDarwinFor = profile: host: system: 
-    let 
-      homeManager = homeManagerFor profile host;
-    in 
-    inputs.nix-darwin.lib.darwinSystem {
-      system = system;
-      specialArgs = { inherit myLib inputs; };
-      modules = [ 
-        inputs.home-manager.darwinModules.home-manager
-        inputs.stylix.darwinModules.stylix
-        homeManager.configModule
-
-        ../hosts/${host}/configuration.nix
-        ../profiles/${profile}/darwin.nix
-      ];
     };
 }
