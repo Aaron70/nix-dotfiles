@@ -1,48 +1,51 @@
 # Nix Dotfiles
 
-## Hosts
+## How is structured?
 
-A host represents an instance of a device or OS running the configuration. Let's say a `laptop-a` or even a `vm` or `wsl` running on `laptop-a` or any other host.
-Each host have the following files (if necessary, respectively):
+This configuration intends to be very modular to be able to create different configurations for different use cases and even different devices.
 
-| File | Description | Required For |
-| ---- | ----------- | -------- |
-| `hardware-configuration.nix` | The hardware configuration of the host. (Usually auto generated and not modified). | NixOS |
-| `nixos.nix` | The NixOS configurations for the host. | NixOS |
-| `home.nix` | The Home Manager configurations for the host. | Home Manager |
-| `darwin.nix` | The Darwin configurations for the host. | Nix Darwin |
+The configuration is structured as follows:
 
-These files, will set the configurations for each host, and you can configure your profile or modules here.
+* `Hosts`: This is the higher level of configuration. They are meant to describe the device, or instance running the configuration. It could be physical device, a **VM**, **container**, or even **WSL** running Home-Manager. 
 
+* `Profiles`: This is the next level and is meant to describe who's using the configuration and it's intentions with it. Development, Gaming, Work? Useful to define "users" with their own set of programs and features.
 
-The following modules are available to enable and apply common configurations to the hosts to avoid repeated configuration blocks;
-* `dotfiles.nixos.common`
-* `dotfiles.home.common`
+* `Features`: The features are useful to group modules and/or configurations to activate a certain functionalities. For example, a `development` feature could enable some editors, coding environments and other development tools.
 
-# Modules
-
-The modules folder contains all programs, configs and modules of the dotfiles. Each module should configure just one thing, lets say the module is `tmux` then the module should only configure tmux related things.
-
-The modules should be aware of profile configurations, for example, the profile module defines some `shell`, `terminal`, `browser`, among others variables, so every module of shells, terminals or even browsers, must validate if the given variable is of the name of the module to enable it by default. Otherwise, it must be enabled manually.
-
-## Features
-
-A feature is a set of modules, configurations or other features that enable certain service, program or configuration.
-Features are useful to group, configure and activate options under the same category.
-
-For example a `gaming` feature could install and configure `steam`, set env variables or drivers to enable gaming on your host, but if you don't want to enable gaming it would be as easy to disable the `gaming` feature for a specific host.
-
-## Profiles
-
-Profiles are very similar than features, and their main objective is to group different configurations, however profiles are for a more general configuration.
-Let say you have a `personal` profile where you have features and modules like `gaming`, `development`, `discord`, but probably you don't need `gaming` for work, so you could have other profile `work` which have only the features and modules you need.  
-
-## Libs
-### mylib
-| Fuction | Description |
-| ------- | ----------- |
-| | | 
+* `Modules`: A module is group of configurations that aims activate one functionality or program. The idea is to be as atomic as possible to enable just one thing, as `features` are used to group multiple modules to activate bigger and complex configurations. 
 
 
+## How to add a new host?
 
+Just add a new directory within the `hosts` directory, the name of the directory will be the name of the host you're creating. 
+You must add a file named `configuration.nix`, by default the `host` module is enabled, so you could configure your host right away in this file. See the `host` module.
 
+See the following example:
+
+```nix
+# hosts/my-host/configuration.nix
+{ ... }: 
+
+{
+  imports = [ ./hardware-configuration.nix ];
+
+  dotfiles.host.name = "my-host"; # Optional name that could be used by some modules from the configuration.
+  dotfiles.host.isLaptop = true;
+}
+```
+
+Then go to the `flake.nix` file and create the respective configurations for your new host. 
+
+You can use `syslib.mkNixosFor <flakeName> <host> <profile>` to create a configuration for the newly created host.
+The `<flakeName>` is should match the name of the configuration (the key of the attr set key that holds the configuration).
+The `<host>` is the name of the host that you created, must match the name of the directory you made in the `hosts` directory.
+The `<profile>` the name of the profile to use in the configuration, must match with one of the file in the `profiles` directory.
+
+Then you can run the `sudo nixos-rebuild switch --flake .#<flakeName>` command to build and switch to your new configuration.
+If the `nixosCommonConfigurations` is enabled (is enabled by default) then you should see two shell aliases to build your configuration: `ntest` and `nswitch`.
+
+## How to add a new profile?
+
+## How to add a new feature?
+
+## How to add a new module?

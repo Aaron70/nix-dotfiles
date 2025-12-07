@@ -46,7 +46,6 @@ in
         ../modules
 
         ../hosts/${host}/configuration.nix
-        ../hosts/${host}/hardware-configuration.nix
       ] ++ extraNixosModules;
     };
 
