@@ -18,7 +18,9 @@ The configuration is structured as follows:
 ## How to add a new host?
 
 Just add a new directory within the `hosts` directory, the name of the directory will be the name of the host you're creating. 
-You must add a file named `configuration.nix`, by default the `host` module is enabled, so you could configure your host right away in this file. See the `host` module.
+You must add a file named `configuration.nix` and other one named `hardware-configuration.nix`. The both files must be nix modules. The `hardware-configuration` configuration must contain the hardware configuration for the host (if necessary, otherwise can be an empty module). While the `configuration` file must have the configuration for the host, can be enabling or disabling modules or features.
+
+By default the `host` module is enabled, so you could configure your host right away in this file. See the `host` module.
 
 See the following example:
 

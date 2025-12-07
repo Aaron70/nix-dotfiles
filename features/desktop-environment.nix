@@ -13,6 +13,7 @@ with mylib; with lib;
         dotfiles.modules.xdg-portal.enable = true;
         dotfiles.modules.thermald.enable = true;
         dotfiles.modules.cursor-theme.enable = true;
+        dotfiles.modules.playerctl.enable = true;
       };
       homeConfig = {};
       nixosConfig = {
