@@ -4,13 +4,12 @@ with mylib; with lib;
   imports = [
     (mkModule { 
       path = [ "modules" ];  
-      name = "javascript"; 
+      name = "playerctl"; 
       options = {};
       commonConfig = {};
       nixosConfig = {}; 
       homeConfig = {
-        home.packages = with pkgs; [ nodejs ];
-        programs.bun.enable = true;
+        home.packages = with pkgs; [ playerctl ];
       };
     })
   ];

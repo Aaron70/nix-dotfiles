@@ -22,7 +22,7 @@ with mylib; with lib;
       homeConfig = { cfg, ... }: {
         dotfiles.home.common.enable = mkDefault cfg.homeCommonConfigurations;
       };
-      nixosConfig = { ... }: { };
+      nixosConfig = {};
     })
   ];
 }

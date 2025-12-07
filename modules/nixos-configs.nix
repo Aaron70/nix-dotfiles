@@ -13,10 +13,11 @@ in
       name = "common";
       path = [ "nixos" ];
       options = {};
-      homeConfig = {...}: {
+      commonConfig = {};
+      homeConfig = {
         home.shellAliases = nixAliases;
       };
-      nixosConfig = { ... }: {
+      nixosConfig = {
         nix.settings = {
           experimental-features = [ "nix-command" "flakes" ];
         };

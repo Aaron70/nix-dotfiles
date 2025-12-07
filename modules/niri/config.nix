@@ -53,23 +53,21 @@ in
   }
   
   layout {
-    gaps 10
+    gaps 5 
     center-focused-column "on-overflow"
     always-center-single-column
-    default-column-width { proportion 1.0; }
+    default-column-width { proportion 0.5; }
   
     preset-column-widths {
-      proportion 1.0
+      proportion 0.33333
       proportion 0.5
       proportion 0.66667
-      proportion 0.33333
     }
 
     preset-window-heights {
       proportion 0.33333
       proportion 0.5
       proportion 0.66667
-      proportion 1.0
     } 
 
     focus-ring {
@@ -88,8 +86,8 @@ in
     }
   
     struts {
-      left 16
-      right 16
+      left 13
+      right 13
     }
   }
 
@@ -140,11 +138,18 @@ in
   workspace "temporal"
 
   window-rule {
+    // By default maximized 
+    open-maximized true
+    
     // Rounded corners for a modern look.
     geometry-corner-radius 3
   
     // Clips window contents to the rounded corner boundaries.
     clip-to-geometry true
+
+    draw-border-with-background false
+    opacity 0.95
+    variable-refresh-rate true
   }
 
   output "eDP-1" {
@@ -208,7 +213,21 @@ in
     Mod+Space repeat=false hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Mod+X repeat=false hotkey-overlay-title="Closes the focused window" { close-window; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-  
+
+    // "-l 1.0" limits the volume to 100%.
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }

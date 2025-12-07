@@ -50,6 +50,7 @@ in
         editor = mkOption { description = "The default editor"; type = packageOption; };
         browser = mkOption { description = "The default browser"; type = packageOption; };
       };
+      commonConfig = {};
       homeConfig = { cfg, ... }: {
         home.sessionVariables = envVariables cfg;
       };
