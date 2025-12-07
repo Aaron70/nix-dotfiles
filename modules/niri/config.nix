@@ -127,8 +127,6 @@ in
   window-rule {
       match at-startup=true app-id=r#"^steam$"#
       open-on-workspace "gaming"
-      layout {
-      }
   }
   
   workspace "chat"
