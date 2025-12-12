@@ -117,30 +117,35 @@ in
   window-rule {
       match at-startup=true app-id=r#"^${terminal}$"#
       open-on-workspace "terminal"
+      open-maximized true
   }
   
   workspace "browser"
   window-rule {
       match at-startup=true app-id=r#"^${browser}$"#
       open-on-workspace "browser"
+      open-maximized true
   }
 
   workspace "multimedia"
   window-rule {
       match at-startup=true app-id=r#"^spotify$"#
       open-on-workspace "multimedia"
+      open-maximized true
   }
 
   workspace "gaming"
   window-rule {
       match at-startup=true app-id=r#"^steam$"#
       open-on-workspace "gaming"
+      open-maximized true
   }
   
   workspace "chat"
   window-rule {
       match at-startup=true app-id=r#"^discord$"#
       open-on-workspace "chat"
+      open-maximized true
   }
 
   workspace "temporal"
@@ -305,7 +310,7 @@ in
     Mod+Shift+F { fullscreen-window; }
     Mod+S { switch-preset-column-width; }
     Mod+C { center-visible-columns; }
-    Mod+C { center-visible-columns; }
+    // Mod+C { center-visible-columns; }
   
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
   
