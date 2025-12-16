@@ -310,7 +310,6 @@ in
     Mod+Shift+F { fullscreen-window; }
     Mod+S { switch-preset-column-width; }
     Mod+C { center-visible-columns; }
-    // Mod+C { center-visible-columns; }
   
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
   
