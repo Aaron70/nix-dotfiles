@@ -1,4 +1,4 @@
-{ mylib, lib, ... }: 
+{ mylib, lib, pkgs, ... }: 
 with mylib; with lib;
 let
   in
@@ -13,7 +13,15 @@ let
         dotfiles.modules.steam.enable = true;
       };
       homeConfig = {};
-      nixosConfig = {};
+      nixosConfig = {
+        environment.systemPackages =  with pkgs; [
+          (heroic.override {
+            extraPkgs = pkgs: [
+              pkgs.gamescope
+            ];
+          })
+        ];
+      };
     })
   ];
 }
