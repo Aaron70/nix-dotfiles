@@ -1,4 +1,4 @@
-{ mylib, lib, ... }: 
+{ mylib, lib, pkgs, ... }: 
 with mylib; with lib;
 { 
   imports = [
@@ -11,6 +11,9 @@ with mylib; with lib;
       };
       homeConfig = {};
       nixosConfig = {
+        environment.systemPackages = with pkgs; [
+          brightnessctl
+        ];
         services.logind.settings.Login = {
           HandleLidSwitch = "suspend-then-hibernate";
           HandleLidSwitchExternalPower = "lock";
