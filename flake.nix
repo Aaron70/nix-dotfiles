@@ -42,6 +42,7 @@
     nixosConfigurations = {
       aaronv = syslib.mkNixosFor "aaronv" "pc" "personal";
       laptop-aaronv = syslib.mkNixosFor "laptop-aaronv" "laptop-msi" "personal";
+      gpd-aaronv = syslib.mkNixosFor "gpd-aaronv" "win-max-2" "personal";
     };
     # ====================|NixOS Configurations|====================
 
