@@ -51,3 +51,11 @@ If the `nixosCommonConfigurations` is enabled (is enabled by default) then you s
 ## How to add a new feature?
 
 ## How to add a new module?
+
+# Troubleshoot
+
+## Mounted partition as Read-Only
+
+This is probably cause by `Fast Boot` of windows (of course).
+Disable fast boot from windows and from  the boot menu.
+[Disable fast startup](https://www.windowscentral.com/software-apps/windows-11/how-to-enable-or-disable-fast-startup-on-windows-11)

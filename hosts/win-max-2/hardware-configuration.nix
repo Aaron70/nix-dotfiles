@@ -24,6 +24,14 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+
+  fileSystems."/home/aaronv/shared-home" =
+    { device = "/dev/disk/by-uuid/6AB20C7DB20C504D";
+      fsType = "ntfs";
+      options = [ "users" "nofail" "exec" "rw" "uid=1000" "gid=100" ];
+    };
+
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

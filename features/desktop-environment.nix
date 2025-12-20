@@ -23,6 +23,7 @@ with mylib; with lib;
 
         environment.systemPackages = with pkgs; [
           wl-clipboard
+          nautilus
         ];
       };
     })
