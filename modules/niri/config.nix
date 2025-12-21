@@ -28,7 +28,7 @@ in
   }
   
   input {
-    mod-key "Alt"
+    mod-key "Super"
     mod-key-nested "Super"
     warp-mouse-to-focus
     focus-follows-mouse max-scroll-amount="5%"
