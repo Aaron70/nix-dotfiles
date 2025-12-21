@@ -1,0 +1,5 @@
+{ ... }: 
+
+''
+  simplified_ui true
+''

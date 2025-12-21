@@ -15,6 +15,7 @@
 
   dotfiles.modules.spotify.enable = true;
   dotfiles.modules.discord.enable = true;
+  dotfiles.modules.zellij.enable = true;
 
   dotfiles.modules.tmux.extraSearchPaths = "~/personal/dev:3 ~/personal/repos";
 }
