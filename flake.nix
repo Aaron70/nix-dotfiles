@@ -10,6 +10,8 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
+    jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
+
     # NOTE: The home-manager modules for stylix are directly imported on the syslib
     # to avoid setting options multiple times 
     stylix.url = "github:nix-community/stylix";
@@ -29,6 +31,7 @@
   let 
     extraNixosModules = [
       inputs.stylix.nixosModules.stylix 
+      inputs.jovian.nixosModules.jovian
     ];
     extraHomeModules = [
       inputs.nvim.homeModule

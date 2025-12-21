@@ -5,6 +5,7 @@ let
   nixAliases = {
     nswitch = "sudo nixos-rebuild switch --flake $HOME/nix-dotfiles#${flakeName}";
     ntest = "sudo nixos-rebuild test --flake $HOME/nix-dotfiles#${flakeName}";
+    nshell = "nix-shell --command ${config.dotfiles.profile.shell.name} -p";
   };
 in
 {
