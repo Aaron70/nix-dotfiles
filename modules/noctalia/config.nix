@@ -294,8 +294,9 @@ with mylib; with lib;
       0
       1
       2
+      3
     ];
-    location = "top_right";
+    location = "top_center";
     monitors = [ ];
     overlayLayer = true;
   };
