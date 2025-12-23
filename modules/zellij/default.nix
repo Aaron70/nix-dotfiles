@@ -1,4 +1,4 @@
-{ mylib, lib, config, pkgs, ... }: 
+{ mylib, lib, config, pkgs, ... }@inputs: 
 with mylib; with lib;
 let
   colors = if (config.lib ? stylix) then config.lib.stylix.colors else { base00 = "FFFFFF"; };
@@ -12,6 +12,7 @@ in
       commonConfig = {};
       nixosConfig = {};
       homeConfig = {
+        xdg.configFile."zellij/config.kdl".text = import ./config.nix inputs;
         programs.zellij = {
           enable = true;
 
@@ -19,7 +20,7 @@ in
           enableBashIntegration = config.programs.bash.enable;
           enableZshIntegration = config.programs.zsh.enable;
 
-          attachExistingSession = true;
+          attachExistingSession = false;
         };
       };
     })

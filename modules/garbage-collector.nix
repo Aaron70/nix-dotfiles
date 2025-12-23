@@ -11,7 +11,7 @@ with mylib; with lib;
         nix.gc = {
           automatic = true;
           dates = "weekly";
-          options = "--delete-generations +7";
+          options = "--delete-older-than 15d";
           persistent = true;
         };
         nix.settings.auto-optimise-store = true;

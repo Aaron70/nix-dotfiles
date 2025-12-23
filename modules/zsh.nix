@@ -28,7 +28,7 @@ with mylib; with lib;
             # auto-suggestions
             bindkey '^Y' autosuggest-accept
 
-            ${if config.programs.tmux.enable then "start-session" else ""}
+            start-session
           '';
 
           oh-my-zsh = {

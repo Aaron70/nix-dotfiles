@@ -14,9 +14,9 @@ if [ -n "$CD_FZF_EXTRA_PATHS" ]; then
   CD_FZF_PATHS+=("${_extra_paths[@]}")
 fi
 
-find_paths() {
+CD_FZF_PATHS=($(printf '%s\n' "${CD_FZF_PATHS[@]}" | sort -u))
 
-  
+find_paths() {
   for entry in "${CD_FZF_PATHS[@]}"; do
     if [[ "$entry" =~ ^([^:]+):([0-9]+)$ ]]; then
       path="${BASH_REMATCH[1]}"

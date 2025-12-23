@@ -26,7 +26,6 @@ in
         xdg.configFile."tmux-sessionizer/tmux-sessionizer.conf".text = import ./tmux-sessionizer.nix { inherit config; };
         home.packages = [
           (pkgs.writeShellScriptBin "tmux-sessionizer" (lib.readFile ./scripts/tmux-sessionizer.sh))
-          (pkgs.writeShellScriptBin "start-session" (lib.readFile ./scripts/start-session.sh))
         ];
 
         programs.tmux = {
