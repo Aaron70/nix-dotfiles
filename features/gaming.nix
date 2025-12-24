@@ -15,6 +15,7 @@ let
       homeConfig = {};
       nixosConfig = {
         environment.systemPackages =  with pkgs; [
+          pokemmo-installer
           (heroic.override {
             extraPkgs = pkgs: [
               pkgs.gamescope
