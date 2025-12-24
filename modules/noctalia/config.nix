@@ -280,7 +280,7 @@ with mylib; with lib;
     lowUrgencyDuration = 2;
     monitors = [
       "eDP-1"
-      "HDMI-A-2"
+      "DP-4"
     ];
     normalUrgencyDuration = 4;
     overlayLayer = true;

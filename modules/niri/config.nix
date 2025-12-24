@@ -48,7 +48,7 @@ in
     }
   
     mouse {
-      accel-speed 0.2
+      accel-speed -0.7
     }
   }
   
@@ -89,6 +89,14 @@ in
       left 13
       right 13
     }
+
+    tab-indicator {
+        gap 4
+        length total-proportion=0.5
+        position "left"
+        place-within-column
+        hide-when-single-tab
+    }
   }
 
   // Set the overview wallpaper on the backdrop.
@@ -109,37 +117,42 @@ in
   window-rule {
       match at-startup=true app-id=r#"^${terminal}$"#
       open-on-workspace "terminal"
+      open-maximized true
   }
   
   workspace "browser"
   window-rule {
       match at-startup=true app-id=r#"^${browser}$"#
       open-on-workspace "browser"
+      open-maximized true
   }
 
   workspace "multimedia"
   window-rule {
       match at-startup=true app-id=r#"^spotify$"#
       open-on-workspace "multimedia"
+      open-maximized true
   }
 
   workspace "gaming"
   window-rule {
       match at-startup=true app-id=r#"^steam$"#
       open-on-workspace "gaming"
+      open-maximized true
   }
   
   workspace "chat"
   window-rule {
       match at-startup=true app-id=r#"^discord$"#
       open-on-workspace "chat"
+      open-maximized true
   }
 
   workspace "temporal"
 
   window-rule {
     // By default maximized 
-    open-maximized true
+    // open-maximized true
     
     // Rounded corners for a modern look.
     geometry-corner-radius 3
@@ -245,6 +258,9 @@ in
     Mod+Shift+J     { move-window-down; }
     Mod+Shift+K     { move-window-up; }
     Mod+Shift+L     { move-column-right; }
+
+    Mod+Ctrl+H { consume-or-expel-window-left; }
+    Mod+Ctrl+L { consume-or-expel-window-right; }
   
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
@@ -265,6 +281,11 @@ in
     Mod+Shift+7 { move-column-to-workspace 7; }
     Mod+Shift+8 { move-column-to-workspace 8; }
     Mod+Shift+9 { move-column-to-workspace 9; }
+
+    Mod+Minus { set-window-width "-10%"; }
+    Mod+Equal { set-window-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
   
     Mod+U { focus-workspace "terminal"; }
     Mod+I { focus-workspace "browser"; }
@@ -280,12 +301,15 @@ in
     Mod+Shift+G { move-column-to-workspace "gaming"; }
     Mod+Shift+T { move-column-to-workspace "temporal"; }
 
-    Mod+Period { move-workspace-to-monitor-previous; }
-    Mod+Comma { move-workspace-to-monitor-next; }
+    Mod+Comma { move-workspace-to-monitor-previous; }
+    Mod+Period { move-workspace-to-monitor-next; }
+
+    Mod+Tab { toggle-column-tabbed-display; }
   
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
     Mod+S { switch-preset-column-width; }
+    Mod+C { center-visible-columns; }
   
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
   
