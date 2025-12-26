@@ -18,7 +18,7 @@ in
 
           enableFishIntegration = config.programs.fish.enable;
           enableBashIntegration = config.programs.bash.enable;
-          enableZshIntegration = config.programs.zsh.enable;
+          enableZshIntegration = !config.dotfiles.modules.tmux.enable && config.programs.zsh.enable;
 
           attachExistingSession = false;
         };

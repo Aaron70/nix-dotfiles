@@ -197,7 +197,7 @@
         bind "d" { Detach; }
         bind "Space" { NextSwapLayout; }
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
-        bind "f" { ToggleFloatingPanes; SwitchToMode "Normal"; }
+        bind "l" { ToggleFloatingPanes; SwitchToMode "Normal"; }
     }
     shared_except "locked" {
         bind "Ctrl g" { SwitchToMode "Locked"; }

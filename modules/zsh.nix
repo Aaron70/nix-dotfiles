@@ -28,7 +28,7 @@ with mylib; with lib;
             # auto-suggestions
             bindkey '^Y' autosuggest-accept
 
-            start-session
+            ${if (config.dotfiles.modules.tmux.enable && !config.dotfiles.modules.zellij.enable) then "start-session" else ""}
           '';
 
           oh-my-zsh = {

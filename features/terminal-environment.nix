@@ -14,7 +14,7 @@ with mylib; with lib;
         dotfiles.profile.browser.name = mkDefault "zen";
 
         dotfiles.modules.git.enable = mkDefault true;
-        dotfiles.modules.tmux.enable = mkDefault false;
+        dotfiles.modules.tmux.enable = mkDefault true;
         dotfiles.modules.zellij.enable = mkDefault true;
       };
       homeConfig = {};
